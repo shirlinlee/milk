@@ -1,0 +1,34 @@
+extends layouts/_layout.pug
+include mixins/components.pug
+
+block variables
+	- var showHomeIcon = false;
+
+block title
+	title 一天一杯克寧 存健康拿好禮
+
+
+block content
+		+coin('images/userphoto.png', 140)
+		.btn_area
+			+btn
+				p 上傳照片拿金幣
+			+btn
+				p 存健康拿好禮
+
+		.achieve
+			img(src="images/title_ medal.svg", alt="")
+			ul
+				li
+					img(src="images/medal_3day_no.png", alt="")
+					.detail
+						h6.title
+						p.des 連續3天上傳
+						 font (3/3)
+						p.add_coin x3
+					.btn.btn_recieve 領取
+
+
+
+
+

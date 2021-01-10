@@ -1,0 +1,10 @@
+mixin coin(imgSrc, coin)
+	div.coin_wrap
+		.photo(style="background-image: url('"+imgSrc+"')")
+		.detail
+			h5 累積健康幣
+			p #{coin}
+
+mixin btn(type)
+	div.btn
+		block
