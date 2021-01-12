@@ -22,12 +22,32 @@ block content
 				li
 					img(src="images/medal_3day_no.png", alt="")
 					.detail
-						h6.title
+						h6.title 勤奮努力獎
 						p.des
 							| 連續3天上傳
 							font (3/3)
-						p.add_coin x3
-					.btn.btn_recieve 領取
+						p.coin x 3
+					.btn.canReceive 領取
+
+				li
+					img(src="images/medal_first.png", alt="")
+					.detail
+						h6.title 首次完成獎
+						p.des
+							| 連續3天上傳
+						p.coin + 5
+					.btn.done 未領取
+
+				li
+					img(src="images/medal_7day_no.png", alt="")
+					.detail
+						h6.title 天天健康獎
+						p.des
+							| 連續7天上傳
+							font (3/7)
+
+						p.coin x 5
+					.btn.notYet 未達成
 
 
 

@@ -83,17 +83,18 @@ body {
 			padding-bottom: 23px;
 			color: #fff;
 		}
-		p {
-			font-size: 70px;
-			font-weight: bold;
-			color: #ffec9e;
-			padding-left: 60px;
-			background-image: url(../images/Kcoin.png);
-			background-size: 50px;
-			background-position: left center;
-			background-repeat: no-repeat;
-		}
 	}
+}
+
+.coin {
+	font-size: 70px;
+	font-weight: bold;
+	color: #ffec9e;
+	padding-left: 60px;
+	background-image: url(../images/Kcoin.png);
+	background-size: 50px;
+	background-position: left center;
+	background-repeat: no-repeat;
 }
 
 .btn {
@@ -128,11 +129,66 @@ body {
 		max-width: 260px;
 	}
 	ul {
-		width: 75%;
-		margin: 0 auto;
+		width: calc(90% - 20px);
+		margin: 0 auto 30px;
 		padding: 20px 0;
 		border-radius: 20px;
 		background-color: #e8e8e8;
+		li {
+			padding: 20px;
+			border-bottom: dashed 4px #ffffff;
+			&:last-child {
+				border-bottom: none;
+			}
+			> * {
+				display: inline-block;
+				box-sizing: border-box;
+				vertical-align: middle;
+			}
+			img {
+				width: 21%;
+				margin-left: 2%;
+			}
+			.detail {
+				width: 52%;
+				text-align: left;
+				padding-left: 5%;
+				h6 {
+					font-size: 32px;
+					color: #44150d;
+					padding-bottom: 10px;
+				}
+				.des {
+					color: #313131;
+					padding-bottom: 10px;
+					font {
+						color: #cc0000;
+					}
+				}
+				p {
+					font-size: 28px;
+					color: #44150d;
+					line-height: 50px;
+					height: 50px;
+				}
+			}
+			.btn {
+				width: 18%;
+				font-size: 32px;
+				&.canReceive {
+					color: #fff;
+					background-color: #cc0000;
+				}
+				&.done {
+					color: #373737;
+					background-color: #b9b9b9;
+				}
+				&.notYet {
+					color: rgba(0, 0, 0, 0.3);
+					background-color: #b9b9b9;
+				}
+			}
+		}
 	}
 }
 
