@@ -1,0 +1,41 @@
+extends layouts/_layout.pug
+include mixins/components.pug
+
+block variables
+	- var showHomeIcon = false;
+
+block title
+	title 一天一杯克寧 存健康拿好禮
+
+
+block content
+	+coin('images/userphoto.png', 140)
+
+	.store_coin
+		b.f45
+			| 每儲值一枚健康幣
+			br
+			span.f32 就有
+				font.f_red 一次機會
+				| 把健康好禮帶回家!
+
+		.animate_img
+			img(src="images/tree.gif", alt="")
+
+		+ads
+			img(src="images/prize_ringfit.png", alt="")
+			p.f26.f_red
+				| 『 三獎
+				b.f32 switch健身環
+				| 5名 』
+
+
+		+pop('success')
+
+
+
+
+
+
+
+

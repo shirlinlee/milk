@@ -1,0 +1,34 @@
+extends layouts/_layout.pug
+include mixins/components.pug
+
+block variables
+	- var showHomeIcon = false;
+
+block title
+	title 一天一杯克寧 存健康拿好禮
+
+
+block content
+	+coin('images/userphoto.png', 140)
+
+	.upload
+		label(for="file_0")
+			p.f45
+				| 請上傳一張
+				br
+				| 飲用
+				font.f_red 克寧牛奶
+				| 的美照
+			img.img-thumbnail(src="images/milkphoto.png" alt="")
+
+		input(type="file" name="uploadedimages0" size="20" multiple="" id="file_0" hidden)
+
+		+btn
+			a(href="upload_get1.html")
+				p.f34.btn_upload 上傳照片
+
+
+
+
+
+

@@ -3,6 +3,15 @@ body {
 	background-repeat: no-repeat;
 	background-size: 100%;
 	max-width: 768px;
+	text-align: center;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+b {
+	font-weight: bold;
 }
 
 .f26 {
@@ -21,12 +30,20 @@ body {
 	font-size: 34px;
 }
 
+.f45 {
+	font-size: 45px;
+}
+
 .f50 {
 	font-size: 50px;
 }
 
 .f70 {
 	font-size: 70px;
+}
+
+.f_red {
+	color: #cc0000;
 }
 
 .app-header {
@@ -84,7 +101,7 @@ body {
 }
 
 .coin_wrap {
-	width: 75%;
+	width: 88%;
 	margin: 0 auto 25px;
 	padding: 25px 50px;
 	border-radius: 25px;
@@ -98,7 +115,6 @@ body {
 		padding: 12px 20px;
 		border-radius: 12px;
 		border-width: 2px;
-		width: 78%;
 		margin-bottom: 12px;
 	}
 	.photo {
@@ -159,6 +175,7 @@ body {
 	p {
 		color: #44150d;
 		display: inline-block;
+		font-weight: bold;
 		&:after {
 			display: inline-block;
 			content: '';
@@ -170,6 +187,16 @@ body {
 			margin-left: 10px;
 			@media (max-width: 600px) {
 				border-width: 7px 0 7px 10px;
+			}
+		}
+		&.btn_upload {
+			background-image: url(../images/upload.svg);
+			background-position: right center;
+			background-repeat: no-repeat;
+			background-size: 42px;
+			padding-right: 50px;
+			&:after {
+				display: none;
 			}
 		}
 	}
@@ -185,11 +212,14 @@ body {
 		}
 	}
 	ul {
-		width: calc(90% - 20px);
+		width: 88%;
 		margin: 0 auto 30px;
 		padding: 10px 0;
-		border-radius: 20px;
+		border-radius: 25px;
 		background-color: #e8e8e8;
+		@media (max-width: 600px) {
+			border-radius: 12px;
+		}
 		li {
 			padding: 30px;
 			border-bottom: dashed 4px #ffffff;
@@ -230,9 +260,6 @@ body {
 				.des {
 					color: #313131;
 					padding-bottom: 10px;
-					font {
-						color: #cc0000;
-					}
 				}
 				p {
 					color: #44150d;
@@ -271,34 +298,162 @@ body {
 	margin: 0 auto;
 }
 
-.btn-file {
+.upload,
+.upload_get,
+.store_coin {
+	width: 88%;
+	background-color: #e8e8e8;
+	border-radius: 25px;
+	padding: 60px 0 40px;
+	margin: 20px auto;
+	@media (max-width: 600px) {
+		border-radius: 12px;
+	}
+	label {
+		display: block;
+		p {
+			line-height: 1.4;
+			margin-bottom: 30px;
+			font-weight: bold;
+			font {
+				color: #cc0000;
+			}
+		}
+	}
+	.btn {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.img-thumbnail {
+		width: 60%;
+		margin: 0 auto 40px;
+	}
+}
+
+.upload_get {
+	> p {
+		margin: 0 5%;
+		position: relative;
+		line-height: 1.8;
+		padding-bottom: 10px;
+		font-weight: bold;
+		img {
+			position: absolute;
+			width: 100%;
+			top: 0;
+			left: 0;
+		}
+	}
+}
+
+.store_coin {
+	.f45 {
+		color: #44150d;
+	}
+	.animate_img {
+		img {
+			margin: 20px auto 40px;
+		}
+	}
+}
+
+.earn_coin {
+	background-color: #cc0000;
+	color: #fff;
+	width: 120px;
+	text-align: center;
+	border-radius: 50%;
+	position: relative;
+	display: inline-block;
+	img {
+		position: absolute;
+		width: 50%;
+		bottom: 0;
+		right: 0;
+		transform: translate(30%, 0%);
+	}
+	p {
+		font-size: 80px;
+		line-height: 120px;
+	}
+}
+
+.comebined_img {
+	width: 60%;
+	margin: 20px auto 40px;
+	img {
+		width: 100%;
+	}
+}
+
+.ads {
+	margin: 0 auto;
+	width: 90%;
+	background-color: #d8d8d8;
+	border-radius: 25px;
+	height: 105px;
+	padding: 12px 12px 12px 65px;
 	position: relative;
 	overflow: hidden;
-}
-.btn-file input[type='file'] {
-	position: absolute;
-	top: 0;
-	right: 0;
-	min-width: 100%;
-	min-height: 100%;
-	text-align: right;
-	filter: alpha(opacity=0);
-	opacity: 0;
-	outline: none;
-	background: white;
-	cursor: inherit;
-	display: block;
+	.sub_title {
+		background-color: #44150d;
+		color: #fecb00;
+		position: absolute;
+		width: 65px;
+		height: 100%;
+		left: 0;
+		top: 0;
+		-webkit-writing-mode: vertical-lr;
+		writing-mode: vertical-lr;
+		line-height: 65px;
+	}
+	> * {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	img {
+		width: 13%;
+		margin-right: 3%;
+	}
 }
 
-#img-upload {
+.pop {
+	background-color: rgba(0, 0, 0, 0.8);
+	position: fixed;
 	width: 100%;
-}
-
-button > a {
-	color: #fff;
-	&:hover {
-		color: #fff;
-		text-decoration: none;
+	height: 100%;
+	top: 0;
+	left: 0;
+	.content {
+		background-color: #ffec9e;
+		border-radius: 25px;
+		padding: 130px 20px;
+		width: 80%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		.cow {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 82%;
+			transform: translate(-6%, -40%);
+		}
+		.close {
+			width: 70px;
+			line-height: 70px;
+			border-radius: 50%;
+			background-color: #fecb00;
+			font-size: 45px;
+			position: absolute;
+			top: 0;
+			right: 0;
+			transform: translate(50%, -50%);
+		}
+	}
+	.success {
 	}
 }
 
@@ -319,7 +474,8 @@ button > a {
 		font-size: 17px;
 	}
 
-	.f50 {
+	.f50,
+	.f45 {
 		font-size: 25px;
 	}
 

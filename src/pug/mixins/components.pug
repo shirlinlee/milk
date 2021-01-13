@@ -8,3 +8,27 @@ mixin coin(imgSrc, coin)
 mixin btn(type)
 	div.btn
 		block
+
+
+mixin ads
+	.ads
+		.sub_title.f26 獎項
+		block
+
+
+mixin pop(type)
+	.pop
+		.content
+			.close X
+			if type==='success'
+				img.cow(src="images/cow_success.png", alt="")
+				p.f50 恭喜您成功獲得
+				p.f_red.f34
+					| 『三獎』
+					br
+					font.f50 switch健身環
+				img(src="images/prize_ringfit.png", alt="")
+
+				+btn
+					p.f34.btn_upload 領取獎品
+

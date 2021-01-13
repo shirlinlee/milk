@@ -3,6 +3,16 @@ body {
   background-repeat: no-repeat;
   background-size: 100%;
   max-width: 768px;
+  text-align: center;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+b {
+  font-weight: bold;
 }
 
 .f26 {
@@ -21,12 +31,20 @@ body {
   font-size: 34px;
 }
 
+.f45 {
+  font-size: 45px;
+}
+
 .f50 {
   font-size: 50px;
 }
 
 .f70 {
   font-size: 70px;
+}
+
+.f_red {
+  color: #cc0000;
 }
 
 .app-header {
@@ -96,7 +114,7 @@ body {
 }
 
 .coin_wrap {
-  width: 75%;
+  width: 88%;
   margin: 0 auto 25px;
   padding: 25px 50px;
   border-radius: 25px;
@@ -113,7 +131,6 @@ body {
     padding: 12px 20px;
     border-radius: 12px;
     border-width: 2px;
-    width: 78%;
     margin-bottom: 12px;
   }
 }
@@ -193,6 +210,7 @@ body {
 .btn p {
   color: #44150d;
   display: inline-block;
+  font-weight: bold;
 }
 
 .btn p:after {
@@ -212,6 +230,18 @@ body {
   }
 }
 
+.btn p.btn_upload {
+  background-image: url(../images/upload.svg);
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: 42px;
+  padding-right: 50px;
+}
+
+.btn p.btn_upload:after {
+  display: none;
+}
+
 .achieve {
   text-align: center;
 }
@@ -228,11 +258,17 @@ body {
 }
 
 .achieve ul {
-  width: calc(90% - 20px);
+  width: 88%;
   margin: 0 auto 30px;
   padding: 10px 0;
-  border-radius: 20px;
+  border-radius: 25px;
   background-color: #e8e8e8;
+}
+
+@media (max-width: 600px) {
+  .achieve ul {
+    border-radius: 12px;
+  }
 }
 
 .achieve ul li {
@@ -298,10 +334,6 @@ body {
   padding-bottom: 10px;
 }
 
-.achieve ul li .detail .des font {
-  color: #cc0000;
-}
-
 .achieve ul li .detail p {
   color: #44150d;
   line-height: 50px;
@@ -344,37 +376,194 @@ body {
   margin: 0 auto;
 }
 
-.btn-file {
+.upload,
+.upload_get,
+.store_coin {
+  width: 88%;
+  background-color: #e8e8e8;
+  border-radius: 25px;
+  padding: 60px 0 40px;
+  margin: 20px auto;
+}
+
+@media (max-width: 600px) {
+  .upload,
+  .upload_get,
+  .store_coin {
+    border-radius: 12px;
+  }
+}
+
+.upload label,
+.upload_get label,
+.store_coin label {
+  display: block;
+}
+
+.upload label p,
+.upload_get label p,
+.store_coin label p {
+  line-height: 1.4;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.upload label p font,
+.upload_get label p font,
+.store_coin label p font {
+  color: #cc0000;
+}
+
+.upload .btn,
+.upload_get .btn,
+.store_coin .btn {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.upload .img-thumbnail,
+.upload_get .img-thumbnail,
+.store_coin .img-thumbnail {
+  width: 60%;
+  margin: 0 auto 40px;
+}
+
+.upload_get > p {
+  margin: 0 5%;
+  position: relative;
+  line-height: 1.8;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+.upload_get > p img {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.store_coin .f45 {
+  color: #44150d;
+}
+
+.store_coin .animate_img img {
+  margin: 20px auto 40px;
+}
+
+.earn_coin {
+  background-color: #cc0000;
+  color: #fff;
+  width: 120px;
+  text-align: center;
+  border-radius: 50%;
+  position: relative;
+  display: inline-block;
+}
+
+.earn_coin img {
+  position: absolute;
+  width: 50%;
+  bottom: 0;
+  right: 0;
+  -webkit-transform: translate(30%, 0%);
+      -ms-transform: translate(30%, 0%);
+          transform: translate(30%, 0%);
+}
+
+.earn_coin p {
+  font-size: 80px;
+  line-height: 120px;
+}
+
+.comebined_img {
+  width: 60%;
+  margin: 20px auto 40px;
+}
+
+.comebined_img img {
+  width: 100%;
+}
+
+.ads {
+  margin: 0 auto;
+  width: 90%;
+  background-color: #d8d8d8;
+  border-radius: 25px;
+  height: 105px;
+  padding: 12px 12px 12px 65px;
   position: relative;
   overflow: hidden;
 }
 
-.btn-file input[type='file'] {
+.ads .sub_title {
+  background-color: #44150d;
+  color: #fecb00;
+  position: absolute;
+  width: 65px;
+  height: 100%;
+  left: 0;
+  top: 0;
+  -webkit-writing-mode: vertical-lr;
+  -ms-writing-mode: tb-lr;
+      writing-mode: vertical-lr;
+  line-height: 65px;
+}
+
+.ads > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.ads img {
+  width: 13%;
+  margin-right: 3%;
+}
+
+.pop {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.pop .content {
+  background-color: #ffec9e;
+  border-radius: 25px;
+  padding: 130px 20px;
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.pop .content .cow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 82%;
+  -webkit-transform: translate(-6%, -40%);
+      -ms-transform: translate(-6%, -40%);
+          transform: translate(-6%, -40%);
+}
+
+.pop .content .close {
+  width: 70px;
+  line-height: 70px;
+  border-radius: 50%;
+  background-color: #fecb00;
+  font-size: 45px;
   position: absolute;
   top: 0;
   right: 0;
-  min-width: 100%;
-  min-height: 100%;
-  text-align: right;
-  filter: alpha(opacity=0);
-  opacity: 0;
-  outline: none;
-  background: white;
-  cursor: inherit;
-  display: block;
-}
-
-#img-upload {
-  width: 100%;
-}
-
-button > a {
-  color: #fff;
-}
-
-button > a:hover {
-  color: #fff;
-  text-decoration: none;
+  -webkit-transform: translate(50%, -50%);
+      -ms-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
 }
 
 @media (max-width: 600px) {
@@ -390,7 +579,8 @@ button > a:hover {
   .f34 {
     font-size: 17px;
   }
-  .f50 {
+  .f50,
+  .f45 {
     font-size: 25px;
   }
   .f70 {

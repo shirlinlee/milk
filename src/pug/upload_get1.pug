@@ -1,0 +1,34 @@
+extends layouts/_layout.pug
+include mixins/components.pug
+
+block variables
+	- var showHomeIcon = false;
+
+block title
+	title 一天一杯克寧 存健康拿好禮
+
+
+block content
+	+coin('images/userphoto.png', 140)
+
+	.upload_get
+		p.f45.f_red
+			| 上傳成功獲得健康幣
+			img(src="images/title_line.svg", alt="")
+
+		.earn_coin
+			p 1
+			img(src="images/Kcoin.png", alt="")
+
+		.comebined_img
+			img(src="images/photostyle_02.png", alt="")
+
+		+btn
+			a(href="store.html")
+				p.f34 分享照片
+
+
+
+
+
+
