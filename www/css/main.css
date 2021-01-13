@@ -5,6 +5,30 @@ body {
   max-width: 768px;
 }
 
+.f26 {
+  font-size: 26px;
+}
+
+.f28 {
+  font-size: 28px;
+}
+
+.f32 {
+  font-size: 32px;
+}
+
+.f34 {
+  font-size: 34px;
+}
+
+.f50 {
+  font-size: 50px;
+}
+
+.f70 {
+  font-size: 70px;
+}
+
 .app-header {
   text-align: center;
   position: relative;
@@ -18,7 +42,6 @@ body {
   line-height: 70px;
   margin: 38px 0 0 38px;
   border-radius: 50%;
-  font-size: 50px;
   font-weight: 900;
   text-align: center;
   color: #44150d;
@@ -26,10 +49,19 @@ body {
   text-decoration: none;
 }
 
+@media (max-width: 600px) {
+  .app-header .ques {
+    width: 50px;
+    line-height: 50px;
+    margin: 20px 0 0 20px;
+  }
+}
+
 .app-header .logo {
   position: absolute;
   top: 18px;
   left: 50%;
+  width: 20%;
   -webkit-transform: translate(-50%, 0);
       -ms-transform: translate(-50%, 0);
           transform: translate(-50%, 0);
@@ -41,14 +73,20 @@ body {
   line-height: 70px;
   margin: 38px 38px 0 0;
   border-radius: 50%;
-  font-size: 50px;
-  font-weight: 900;
-  text-align: center;
   background-color: #44150d;
 }
 
 .app-header .home img {
   width: 60%;
+  vertical-align: text-bottom;
+}
+
+@media (max-width: 600px) {
+  .app-header .home {
+    width: 50px;
+    line-height: 50px;
+    margin: 20px 20px 0 0;
+  }
 }
 
 .kv {
@@ -70,6 +108,16 @@ body {
   text-align: center;
 }
 
+@media (max-width: 600px) {
+  .coin_wrap {
+    padding: 12px 20px;
+    border-radius: 12px;
+    border-width: 2px;
+    width: 78%;
+    margin-bottom: 12px;
+  }
+}
+
 .coin_wrap .photo {
   width: 90px;
   height: 90px;
@@ -82,18 +130,30 @@ body {
   margin-left: -60px;
 }
 
+@media (max-width: 600px) {
+  .coin_wrap .photo {
+    width: 45px;
+    height: 45px;
+    margin-right: 20px;
+  }
+}
+
 .coin_wrap .detail {
   display: inline-block;
 }
 
 .coin_wrap .detail h5 {
-  font-size: 26px;
   padding-bottom: 23px;
   color: #fff;
 }
 
+@media (max-width: 600px) {
+  .coin_wrap .detail h5 {
+    padding-bottom: 15px;
+  }
+}
+
 .coin {
-  font-size: 70px;
   font-weight: bold;
   color: #ffec9e;
   padding-left: 60px;
@@ -103,8 +163,15 @@ body {
   background-repeat: no-repeat;
 }
 
+@media (max-width: 600px) {
+  .coin {
+    background-size: 30px;
+    padding-left: 40px;
+  }
+}
+
 .btn {
-  width: 321px;
+  width: 50%;
   padding: 40px 0;
   border-radius: 15px;
   background-color: #fecb00;
@@ -115,9 +182,16 @@ body {
           flex-grow: 1;
 }
 
+@media (max-width: 600px) {
+  .btn {
+    padding: 20px 0;
+    margin: 0 5px;
+    border-radius: 7px;
+  }
+}
+
 .btn p {
   color: #44150d;
-  font-size: 34px;
   display: inline-block;
 }
 
@@ -132,26 +206,45 @@ body {
   margin-left: 10px;
 }
 
+@media (max-width: 600px) {
+  .btn p:after {
+    border-width: 7px 0 7px 10px;
+  }
+}
+
 .achieve {
   text-align: center;
 }
 
 .achieve > img {
   margin: 25px auto 15px;
-  max-width: 260px;
+  width: 50%;
+}
+
+@media (max-width: 600px) {
+  .achieve > img {
+    margin: 12px auto 8px;
+  }
 }
 
 .achieve ul {
   width: calc(90% - 20px);
   margin: 0 auto 30px;
-  padding: 20px 0;
+  padding: 10px 0;
   border-radius: 20px;
   background-color: #e8e8e8;
 }
 
 .achieve ul li {
-  padding: 20px;
+  padding: 30px;
   border-bottom: dashed 4px #ffffff;
+}
+
+@media (max-width: 600px) {
+  .achieve ul li {
+    padding: 15px;
+    border-width: 2px;
+  }
 }
 
 .achieve ul li:last-child {
@@ -166,8 +259,13 @@ body {
 }
 
 .achieve ul li img {
-  width: 21%;
-  margin-left: 2%;
+  width: 23%;
+}
+
+@media (max-width: 600px) {
+  .achieve ul li img {
+    width: 21%;
+  }
 }
 
 .achieve ul li .detail {
@@ -176,10 +274,23 @@ body {
   padding-left: 5%;
 }
 
+@media (max-width: 600px) {
+  .achieve ul li .detail {
+    width: 48%;
+    padding-left: 3%;
+  }
+}
+
 .achieve ul li .detail h6 {
-  font-size: 32px;
   color: #44150d;
   padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+@media (max-width: 600px) {
+  .achieve ul li .detail h6 {
+    padding-bottom: 0 !important;
+  }
 }
 
 .achieve ul li .detail .des {
@@ -192,15 +303,22 @@ body {
 }
 
 .achieve ul li .detail p {
-  font-size: 28px;
   color: #44150d;
   line-height: 50px;
   height: 50px;
 }
 
+@media (max-width: 600px) {
+  .achieve ul li .detail p {
+    line-height: 30px;
+    height: 30px;
+    padding-bottom: 0 !important;
+  }
+}
+
 .achieve ul li .btn {
-  width: 18%;
-  font-size: 32px;
+  width: 19%;
+  margin: 0;
 }
 
 .achieve ul li .btn.canReceive {
@@ -237,7 +355,6 @@ body {
   right: 0;
   min-width: 100%;
   min-height: 100%;
-  font-size: 100px;
   text-align: right;
   filter: alpha(opacity=0);
   opacity: 0;
@@ -260,99 +377,23 @@ button > a:hover {
   text-decoration: none;
 }
 
-.loading {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  text-align: center;
-  background-color: rgba(15, 158, 155, 0.7);
-  z-index: 9999;
-}
-
-.loading .box {
-  font-size: 0.22rem;
-  color: #fff;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-animation: opac 2s infinite linear;
-          animation: opac 2s infinite linear;
-}
-
-.box.flexBox {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-line-pack: center;
-      align-content: center;
-}
-
-.loading span {
-  width: 50em;
-  height: 50em;
-  display: block;
-  position: absolute;
-  top: calc(50% - 25em);
-  left: calc(50% - 25em);
-  border: 1px solid;
-  border-color: #fff transparent #fff transparent;
-  border-radius: 50%;
-  -webkit-animation: spin 2s infinite linear;
-          animation: spin 2s infinite linear;
-}
-
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+@media (max-width: 600px) {
+  .f26 {
+    font-size: 13px;
   }
-  to {
-    -webkit-transform: rotate(359deg);
-            transform: rotate(359deg);
+  .f28 {
+    font-size: 14px;
   }
-}
-
-@keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+  .f32 {
+    font-size: 16px;
   }
-  to {
-    -webkit-transform: rotate(359deg);
-            transform: rotate(359deg);
+  .f34 {
+    font-size: 17px;
   }
-}
-
-@-webkit-keyframes opac {
-  0% {
-    opacity: 1;
+  .f50 {
+    font-size: 25px;
   }
-  50% {
-    opacity: 0.4;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes opac {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.4;
-  }
-  to {
-    opacity: 1;
+  .f70 {
+    font-size: 35px;
   }
 }
