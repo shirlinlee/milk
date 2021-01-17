@@ -11,9 +11,9 @@ block title
 block content
 	+coin('images/userphoto.png', 140)
 
-	.store_coin
+	.store_coin#store
 		b.f45
-			| 每儲值一枚健康幣
+			| 每儲值一枚健康幣{{count}}
 			br
 			span.f32 就有
 				font.f_red 一次機會
@@ -28,9 +28,6 @@ block content
 				| 『 三獎
 				b.f32 switch健身環
 				| 5名 』
-
-
-		+pop('success')
 
 
 

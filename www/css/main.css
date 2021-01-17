@@ -15,6 +15,10 @@ b {
   font-weight: bold;
 }
 
+.f23 {
+  font-size: 23px;
+}
+
 .f26 {
   font-size: 26px;
 }
@@ -189,7 +193,7 @@ b {
 
 .btn {
   width: 50%;
-  padding: 40px 0;
+  padding: 33px 0;
   border-radius: 15px;
   background-color: #fecb00;
   text-align: center;
@@ -532,7 +536,7 @@ b {
 .pop .content {
   background-color: #ffec9e;
   border-radius: 25px;
-  padding: 130px 20px;
+  padding: 130px 20px 90px;
   width: 80%;
   position: absolute;
   top: 50%;
@@ -540,6 +544,7 @@ b {
   -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  color: #44150d;
 }
 
 .pop .content .cow {
@@ -550,6 +555,43 @@ b {
   -webkit-transform: translate(-6%, -40%);
       -ms-transform: translate(-6%, -40%);
           transform: translate(-6%, -40%);
+}
+
+.pop .content p {
+  line-height: 1.2;
+}
+
+.pop .content .f_red {
+  padding-top: 20px;
+  display: inline-block;
+  width: 100%;
+}
+
+.pop .content .award {
+  width: 40%;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.pop .content .milk {
+  width: 20%;
+  margin-top: 40px;
+}
+
+.pop .content .login_list ul {
+  border: dashed 4px #cc0000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.pop .content .login_list li {
+  background-color: #fff;
+  border-radius: 25px;
+  margin: 16px;
+  width: 33%;
 }
 
 .pop .content .close {
@@ -566,7 +608,20 @@ b {
           transform: translate(50%, -50%);
 }
 
+.pop .content .btn {
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 60%;
+}
+
 @media (max-width: 600px) {
+  .f23 {
+    font-size: 11px;
+  }
   .f26 {
     font-size: 13px;
   }

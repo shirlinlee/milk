@@ -27,8 +27,41 @@ mixin pop(type)
 					| 『三獎』
 					br
 					font.f50 switch健身環
-				img(src="images/prize_ringfit.png", alt="")
+				img.award(src="images/prize_ringfit.png", alt="")
 
 				+btn
-					p.f34.btn_upload 領取獎品
+					p.f34 領取獎品
+
+			else if type==='failure'
+				img.cow(src="images/cow_failure.png", alt="")
+				p.f50
+					font.f_red 很可惜!
+					br
+					| 您沒有抽中好禮喔
+				img.milk(src="images/milkcup.png", alt="")
+
+				+btn
+					p.f34 再存一次健康幣
+
+			else if type==='login'
+				img(src="images/present.png", alt="")
+				.present_title
+					| 每日登入驚喜
+					img(src="images/title_line.svg", alt="")
+				p.f34 首
+					font.f_red 7
+					| 日登入，天天有驚喜
+				.login_list
+					ul.f23
+						li.done Day1
+						li Day2
+						li Day3
+						li Day4
+						li Day5
+						li Day6
+						li.W100 Day7
+
+
+
+
 

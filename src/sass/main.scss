@@ -14,6 +14,10 @@ b {
 	font-weight: bold;
 }
 
+.f23 {
+	font-size: 23px;
+}
+
 .f26 {
 	font-size: 26px;
 }
@@ -161,7 +165,7 @@ b {
 
 .btn {
 	width: 50%;
-	padding: 40px 0;
+	padding: 33px 0;
 	border-radius: 15px;
 	background-color: #fecb00;
 	text-align: center;
@@ -428,18 +432,49 @@ b {
 	.content {
 		background-color: #ffec9e;
 		border-radius: 25px;
-		padding: 130px 20px;
+		padding: 130px 20px 90px;
 		width: 80%;
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		color: #44150d;
 		.cow {
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 82%;
 			transform: translate(-6%, -40%);
+		}
+		p {
+			line-height: 1.2;
+		}
+		.f_red {
+			padding-top: 20px;
+			display: inline-block;
+			width: 100%;
+		}
+		.award {
+			width: 40%;
+			margin-top: 40px;
+			margin-bottom: 20px;
+		}
+		.milk {
+			width: 20%;
+			margin-top: 40px;
+		}
+		.login_list {
+			ul {
+				border: dashed 4px #cc0000;
+				display: flex;
+				flex-wrap: wrap;
+			}
+			li {
+				background-color: #fff;
+				border-radius: 25px;
+				margin: 16px;
+				width: 33%;
+			}
 		}
 		.close {
 			width: 70px;
@@ -452,12 +487,22 @@ b {
 			right: 0;
 			transform: translate(50%, -50%);
 		}
+		.btn {
+			position: absolute;
+			bottom: -100px;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 60%;
+		}
 	}
 	.success {
 	}
 }
 
 @media (max-width: 600px) {
+	.f23 {
+		font-size: 11px;
+	}
 	.f26 {
 		font-size: 13px;
 	}
