@@ -3,7 +3,11 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		watch: {
-			options: { livereload: true },
+			options: {
+				livereload: 35730,
+				livereloadOnError: false,
+				spawn: false,
+			},
 			scss: {
 				files: ['src/sass/**/*.sass', 'src/sass/**/*.scss'],
 				tasks: ['sass', 'postcss'],
@@ -26,7 +30,11 @@ module.exports = function (grunt) {
 				},
 				files: [
 					{
-						src: ['**/*.pug', '!**/_*.pug', "!**/{examples,includes,layouts,mixins,components}/*.pug"],
+						src: [
+							'**/*.pug',
+							'!**/_*.pug',
+							'!**/{examples,includes,layouts,mixins,components}/*.pug',
+						],
 						dest: 'www/',
 						ext: '.html',
 						cwd: 'src/pug/',
