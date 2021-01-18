@@ -49,6 +49,12 @@
           <ul>
             <li><img src="images/medal_3day_no.png" alt="">
               <div class="detail">
+                <h6 class="title f32">每日登入驚喜</h6>
+              </div>
+              <div class="btn f32 canCheck">查看</div>
+            </li>
+            <li><img src="images/medal_3day_no.png" alt="">
+              <div class="detail">
                 <h6 class="title f32">勤奮努力獎</h6>
                 <p class="des f28">連續3天上傳<font>(3/3)</font></p>
                 <p class="coin f32">x 3</p>
@@ -83,7 +89,7 @@
                 <p class="f50">存入一枚健康幣，<br>立即抽一次獎</p><img src="images/finger.svg" alt="">
               </div>
               <div class="item slide_3">
-                <p class="f50">立刻上傳照片拿金幣</p><img src="images/finger.svg" alt="">
+                <p class="f50">只要達成特定條件<br>就可以讓健康幣加倍喔!</p><img src="images/finger.svg" alt="">
               </div>
             </div>
           </div>
@@ -105,23 +111,26 @@
         		infinite: false,
         	});
         
-        	$('.slider').on('init', function(event, slick){
-        		$('.btn.red').addClass('spotLight');
-        	});
+        	$('.btn.red').addClass('spotLight');
+        
+        	$('.slider').on('beforeChange', function(event, slick, direction){
+        		$('.spotLight').removeClass('spotLight');
+        	})
         
         	$('.slider').on('afterChange', function(event, slick, direction){
         		var currentSlide = slick.currentSlide;
         		switch(currentSlide) {
-        			case 0:
-        				$('.btn.red').addClass('spotLight');
+        			case 0: {
+        					$('.btn.red').addClass('spotLight');
+        				}
         				break;
-        			case 1:
-        
+        			case 1: {
+        					$('.btn.small').addClass('spotLight');
+        				}
         				break;
-        			case 2:
-        				break;
-        			default:
-        				return
+        			default: {
+        					$('.canReceive').addClass('spotLight');
+        				}
         
         		}
         
