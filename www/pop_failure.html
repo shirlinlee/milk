@@ -19,40 +19,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/plugins/slick.css">
+    <link rel="stylesheet" type="text/css" href="css/plugins/slick-theme.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
   </head>
-  <body class="app sidebar-mini">
-    <!-- Navbar-->
-    <header class="app-header"><a class="ques f50" href="ques.html">?</a>
-      <!-- Sidebar toggle button--><img class="logo" src="images/logo.png" alt=""><a class="home" href="/"><img src="images/home.svg" alt=""></a>
-    </header><img class="kv" src="images/title.svg" alt="">
-    <main class="app-content">
-      <div class="pop">
-        <div class="content">
-          <div class="close">X</div><img class="cow" src="images/cow_failure.png" alt=""/>
-          <p class="f50"><font class="f_red">很可惜!</font><br/>您沒有抽中好禮喔</p><img class="milk" src="images/milkcup.png" alt=""/>
-          <div class="btn">
-            <p class="f34">再存一次健康幣</p>
+  <body class="sidebar-mini">
+    <div id="app">
+      <!-- Navbar-->
+      <header class="app-header"><a class="ques f50" href="ques.html">?</a>
+        <!-- Sidebar toggle button--><img class="logo" src="images/logo.png" alt=""><a class="home" href="/"><img src="images/home.svg" alt=""></a>
+      </header><img class="kv" src="images/title.svg" alt="">
+      <main class="app-content">
+        <div class="pop">
+          <div class="content failure">
+            <div class="close">X</div><img class="cow" src="images/cow_failure.png" alt=""/>
+            <p class="f50"><font class="f_red W100">很可惜!</font><br/>您沒有抽中好禮喔</p><img class="milk" src="images/milkcup.png" alt=""/>
+            <div class="btn">
+              <p class="f34">再存一次健康幣</p>
+            </div>
           </div>
         </div>
-      </div>
-    </main>
-    <!-- Essential javascripts for application to work-->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/main.js"></script>
-    <!-- The javascript plugin to display page loading on top-->
-    <script src="js/plugins/pace.min.js"></script>
-    <!-- Page specific javascripts-->
-    <!-- Google analytics script-->
-    <script type="text/javascript">
-      if(document.location.hostname == 'pratikborsadiya.in') {
-      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      	ga('create', 'UA-72504830-1', 'auto');
-      	ga('send', 'pageview');
-      }
-    </script>
+      </main>
+      <!-- Essential javascripts for application to work-->
+      <script src="js/jquery-3.3.1.min.js"></script>
+      <script src="js/main.js"></script>
+      <!-- The javascript plugin to display page loading on top-->
+      <script src="js/plugins/pace.min.js"></script>
+      <!-- Page specific javascripts-->
+      <!-- Page specific css-->
+      <!-- Google analytics script-->
+      <script type="text/javascript">
+        if(document.location.hostname == 'pratikborsadiya.in') {
+        	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        	ga('create', 'UA-72504830-1', 'auto');
+        	ga('send', 'pageview');
+        }
+      </script>
+    </div>
   </body>
 </html>

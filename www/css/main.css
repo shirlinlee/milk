@@ -1,14 +1,23 @@
 body {
+  text-align: center;
+}
+
+#app {
   background-image: url(../images/milkbg.jpg);
   background-repeat: no-repeat;
   background-size: 100%;
   max-width: 768px;
-  text-align: center;
+  position: relative;
+  margin: 0 auto;
 }
 
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
 }
 
 b {
@@ -43,12 +52,28 @@ b {
   font-size: 50px;
 }
 
+.f55 {
+  font-size: 55px;
+}
+
 .f70 {
   font-size: 70px;
 }
 
+.f80 {
+  font-size: 80px;
+}
+
 .f_red {
   color: #cc0000;
+}
+
+.W100 {
+  width: 100% !important;
+}
+
+.bg_white {
+  background-color: #fff;
 }
 
 .app-header {
@@ -120,35 +145,37 @@ b {
 .coin_wrap {
   width: 88%;
   margin: 0 auto 25px;
-  padding: 25px 50px;
+  padding: 25px 30px;
   border-radius: 25px;
   border: dashed 4px #ffffff;
   background-color: #44150d;
   background-image: url(../images/Kcoin_bg.png);
-  background-position: right bottom;
+  background-position: left bottom;
   background-repeat: no-repeat;
   text-align: center;
-}
-
-@media (max-width: 600px) {
-  .coin_wrap {
-    padding: 12px 20px;
-    border-radius: 12px;
-    border-width: 2px;
-    margin-bottom: 12px;
-  }
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .coin_wrap .photo {
-  width: 90px;
-  height: 90px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   border: solid 2px #ffffff;
   background-repeat: no-repeat;
   background-size: cover;
   display: inline-block;
   margin-right: 40px;
-  margin-left: -60px;
+  margin-left: 20px;
 }
 
 @media (max-width: 600px) {
@@ -164,7 +191,7 @@ b {
 }
 
 .coin_wrap .detail h5 {
-  padding-bottom: 23px;
+  padding-bottom: 12px;
   color: #fff;
 }
 
@@ -201,6 +228,44 @@ b {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn.small {
+  padding: 15px 15px 15px 20px;
+  width: auto;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+}
+
+.btn.small p {
+  line-height: 1.2;
+}
+
+.btn.red {
+  width: 80%;
+  background-color: #cc0000;
+}
+
+.btn.red p {
+  color: #fff;
+}
+
+.btn.red p:after {
+  border-color: transparent transparent transparent #fff;
+}
+
+.btn .milk {
+  width: 67px;
+  opacity: 0.4;
+  position: absolute;
+  right: 0;
+  top: 27px;
+  -webkit-transform: rotate(-18deg);
+      -ms-transform: rotate(-18deg);
+          transform: rotate(-18deg);
 }
 
 @media (max-width: 600px) {
@@ -215,10 +280,13 @@ b {
   color: #44150d;
   display: inline-block;
   font-weight: bold;
+  position: relative;
+  padding-right: 35px;
 }
 
 .btn p:after {
   display: inline-block;
+  position: absolute;
   content: '';
   width: 0;
   height: 0;
@@ -226,6 +294,13 @@ b {
   border-width: 15px 0 15px 20px;
   border-color: transparent transparent transparent #44150d;
   margin-left: 10px;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
 }
 
 @media (max-width: 600px) {
@@ -252,7 +327,7 @@ b {
 
 .achieve > img {
   margin: 25px auto 15px;
-  width: 50%;
+  width: 34%;
 }
 
 @media (max-width: 600px) {
@@ -531,6 +606,7 @@ b {
   height: 100%;
   top: 0;
   left: 0;
+  z-index: 20;
 }
 
 .pop .content {
@@ -547,7 +623,69 @@ b {
   color: #44150d;
 }
 
-.pop .content .cow {
+.pop .content.login {
+  padding-bottom: 60px;
+  padding-top: 65px;
+}
+
+.pop .content.login_award {
+  padding: 0 20px 0;
+  background-color: transparent;
+}
+
+.pop .content.login_award .close {
+  display: none;
+}
+
+.pop .content.login_award h3 {
+  color: #ffec9e;
+  font-weight: bold;
+}
+
+.pop .content.login_award h4 {
+  color: #fff;
+  line-height: 62px;
+  padding-top: 24px;
+}
+
+.pop .content.login_award h4 span {
+  padding-left: 5px;
+  line-height: 62px;
+  display: inline-block;
+  vertical-align: text-top;
+}
+
+.pop .content.login_award h4 span.f80 {
+  color: #fecb00;
+  margin: -6px 10px 0;
+}
+
+.pop .content.login_award .img_wrap {
+  margin-top: -150px;
+  margin-bottom: 140px;
+  position: relative;
+}
+
+.pop .content.login_award .img_wrap .gift {
+  width: 100%;
+}
+
+.pop .content.login_award .img_wrap .pure_coin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  animation: coinShow 1.4s;
+  -webkit-animation: coinShow 1.4s;
+  -moz-animation-iteration-count: 1;
+}
+
+.pop .content .cow,
+.pop .content .present {
   position: absolute;
   top: 0;
   left: 0;
@@ -557,6 +695,16 @@ b {
           transform: translate(-6%, -40%);
 }
 
+.pop .content .present {
+  width: 40%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  -webkit-transform: translate(-50%, -30%);
+  -moz-transform: translate(-50%, -30%);
+  -ms-transform: translate(-50%, -30%);
+  -o-transform: translate(-50%, -30%);
+}
+
 .pop .content p {
   line-height: 1.2;
 }
@@ -564,7 +712,6 @@ b {
 .pop .content .f_red {
   padding-top: 20px;
   display: inline-block;
-  width: 100%;
 }
 
 .pop .content .award {
@@ -578,6 +725,30 @@ b {
   margin-top: 40px;
 }
 
+.pop .content .present_title {
+  position: relative;
+  padding: 0 14%;
+  margin-bottom: -20px;
+}
+
+.pop .content .present_title img {
+  position: relative;
+  line-height: 1.8;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+.pop .content .present_title img.line {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.pop .content .login_list {
+  margin: 40px 4% 0;
+}
+
 .pop .content .login_list ul {
   border: dashed 4px #cc0000;
   display: -webkit-box;
@@ -585,13 +756,46 @@ b {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  padding: 10px 0;
 }
 
 .pop .content .login_list li {
+  padding: 8px 16px;
+  width: 33%;
+  text-align: center;
+}
+
+.pop .content .login_list li .bg_white {
+  padding: 12px;
   background-color: #fff;
   border-radius: 25px;
-  margin: 16px;
-  width: 33%;
+}
+
+.pop .content .login_list li span {
+  display: block;
+}
+
+.pop .content .login_list li p {
+  display: inline-block;
+  width: 80%;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  padding: 12px 18px;
+  margin-top: 8px;
+  max-width: 93px;
+}
+
+.pop .content .login_list li.done p {
+  background-color: #cc0000;
+}
+
+.pop .content .login_list li.W100 .bg_white {
+  background-image: url(../images/login_bg.png);
+  background-size: cover;
+  background-position: center;
 }
 
 .pop .content .close {
@@ -618,6 +822,59 @@ b {
   width: 60%;
 }
 
+.spotLight {
+  position: relative;
+  z-index: 100;
+  border: 3px solid #fff;
+}
+
+.guide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.guide .slideshow {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.guide .slideshow .slider,
+.guide .slideshow .slick-list {
+  height: 100vh;
+  z-index: 100;
+}
+
+.guide .item {
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.guide .item p {
+  color: #ffec9e;
+  position: absolute;
+}
+
+.guide .item img {
+  width: 100px;
+  position: absolute;
+  z-index: 1200;
+}
+
+.guide .item.slide_1 p {
+  top: calc(26vw + 380px);
+  width: 100%;
+}
+
+.guide .item.slide_1 img {
+  top: calc(26vw + 300px);
+  right: 0;
+}
+
 @media (max-width: 600px) {
   .f23 {
     font-size: 11px;
@@ -638,7 +895,37 @@ b {
   .f45 {
     font-size: 25px;
   }
+  .f55 {
+    font-size: 27px;
+  }
   .f70 {
     font-size: 35px;
+  }
+  .f80 {
+    font-size: 40px;
+  }
+}
+
+@-webkit-keyframes coinShow {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes coinShow {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

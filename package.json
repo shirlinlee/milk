@@ -1,5 +1,5 @@
 {
-	"name": "fuplus-admin",
+	"name": "klim",
 	"version": "",
 	"private": true,
 	"devDependencies": {
@@ -23,5 +23,5 @@
 	},
 	"license": "MIT",
 	"readme": "ERROR: No README data found!",
-	"_id": "fuplus-admin@"
+	"_id": "klim@"
 }

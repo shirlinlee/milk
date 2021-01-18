@@ -19,74 +19,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/plugins/slick.css">
+    <link rel="stylesheet" type="text/css" href="css/plugins/slick-theme.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
   </head>
-  <body class="app sidebar-mini">
-    <!-- Navbar-->
-    <header class="app-header"><a class="ques f50" href="ques.html">?</a>
-      <!-- Sidebar toggle button--><img class="logo" src="images/logo.png" alt=""><a class="home" href="/"><img src="images/home.svg" alt=""></a>
-    </header><img class="kv" src="images/title.svg" alt="">
-    <main class="app-content">
-      <div class="coin_wrap">
-        <div class="photo" style="background-image: url('images/userphoto.png')"></div>
-        <div class="detail">
-          <h5 class="f26">累積健康幣</h5>
-          <div class="coin f70">140</div>
+  <body class="sidebar-mini">
+    <div id="app">
+      <!-- Navbar-->
+      <header class="app-header"><a class="ques f50" href="ques.html">?</a>
+        <!-- Sidebar toggle button--><img class="logo" src="images/logo.png" alt=""><a class="home" href="/"><img src="images/home.svg" alt=""></a>
+      </header><img class="kv" src="images/title.svg" alt="">
+      <main class="app-content">
+        <div class="coin_wrap">
+          <div class="photo" style="background-image: url('images/userphoto.png')"></div>
+          <div class="detail">
+            <h5 class="f26">累積健康幣</h5>
+            <div class="coin f70">140</div>
+          </div>
+          <div class="btn small">
+            <p class="f34">存健康幣<br/>立即抽獎</p>
+          </div>
         </div>
-      </div>
-      <div class="btn_area">
-        <div class="btn"><a href="upload.html">
-            <p class="f34">上傳照片拿金幣</p></a>
+        <div class="btn_area" style="width: 80%">
+          <div class="btn red"><a href="upload.html">
+              <p class="f34">上傳喝克寧照片拿健康幣</p></a><img class="milk" src="images/milkphoto_w.png" alt="">
+          </div>
         </div>
-        <div class="btn">
-          <p class="f34">存健康拿好禮</p>
+        <div class="achieve"><img src="images/title_medal.svg" alt="">
+          <ul>
+            <li><img src="images/medal_3day_no.png" alt="">
+              <div class="detail">
+                <h6 class="title f32">勤奮努力獎</h6>
+                <p class="des f28">連續3天上傳<font>(3/3)</font></p>
+                <p class="coin f32">x 3</p>
+              </div>
+              <div class="btn f32 canReceive">領取</div>
+            </li>
+            <li><img src="images/medal_first.png" alt="">
+              <div class="detail">
+                <h6 class="title f32">首次完成獎</h6>
+                <p class="des f28">連續3天上傳</p>
+                <p class="coin f32">+ 5</p>
+              </div>
+              <div class="btn f32 done">未領取</div>
+            </li>
+            <li><img src="images/medal_7day_no.png" alt="">
+              <div class="detail">
+                <h6 class="title f32 f32">天天健康獎</h6>
+                <p class="des f28">連續7天上傳<font>(3/7)</font></p>
+                <p class="coin f32 f28">x 5</p>
+              </div>
+              <div class="btn f32 notYet">未達成</div>
+            </li>
+          </ul>
         </div>
-      </div>
-      <div class="achieve"><img src="images/title_medal.svg" alt="">
-        <ul>
-          <li><img src="images/medal_3day_no.png" alt="">
-            <div class="detail">
-              <h6 class="title f32">勤奮努力獎</h6>
-              <p class="des f28">連續3天上傳<font>(3/3)</font></p>
-              <p class="coin f32">x 3</p>
-            </div>
-            <div class="btn f32 canReceive">領取</div>
-          </li>
-          <li><img src="images/medal_first.png" alt="">
-            <div class="detail">
-              <h6 class="title f32">首次完成獎</h6>
-              <p class="des f28">連續3天上傳</p>
-              <p class="coin f32">+ 5</p>
-            </div>
-            <div class="btn f32 done">未領取</div>
-          </li>
-          <li><img src="images/medal_7day_no.png" alt="">
-            <div class="detail">
-              <h6 class="title f32 f32">天天健康獎</h6>
-              <p class="des f28">連續7天上傳<font>(3/7)</font></p>
-              <p class="coin f32 f28">x 5</p>
-            </div>
-            <div class="btn f32 notYet">未達成</div>
-          </li>
-        </ul>
-      </div>
-    </main>
-    <!-- Essential javascripts for application to work-->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/main.js"></script>
-    <!-- The javascript plugin to display page loading on top-->
-    <script src="js/plugins/pace.min.js"></script>
-    <!-- Page specific javascripts-->
-    <!-- Google analytics script-->
-    <script type="text/javascript">
-      if(document.location.hostname == 'pratikborsadiya.in') {
-      	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      	ga('create', 'UA-72504830-1', 'auto');
-      	ga('send', 'pageview');
-      }
-    </script>
+      </main>
+      <!-- Essential javascripts for application to work-->
+      <script src="js/jquery-3.3.1.min.js"></script>
+      <script src="js/main.js"></script>
+      <!-- The javascript plugin to display page loading on top-->
+      <script src="js/plugins/pace.min.js"></script>
+      <!-- Page specific javascripts-->
+      <!-- Page specific css-->
+      <!-- Google analytics script-->
+      <script type="text/javascript">
+        if(document.location.hostname == 'pratikborsadiya.in') {
+        	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        	ga('create', 'UA-72504830-1', 'auto');
+        	ga('send', 'pageview');
+        }
+      </script>
+    </div>
   </body>
 </html>

@@ -1,0 +1,38 @@
+extends layouts/_layout.pug
+
+block variables
+	- var showHomeIcon = false;
+
+block title
+	title 克寧切版頁面一覽
+
+
+
+block content
+	.pageList
+		a(href="pop_award.html") 登入成功燈箱
+		a(href="pop_login.html") 每日登入驚喜紀錄
+		a(href="guide.html") 活動教學
+		a(href="index.html") 首頁
+		a(href="upload_index.html") 上傳示意頁
+		a(href="upload.html") 上傳頁
+		a(href="upload_get1.html") 上傳成功頁
+		a(href="store.html") 儲存動效頁
+		a(href="pop_success.html") 抽獎成功頁
+		a(href="pop_failure.html") 抽獎失敗頁
+
+
+
+block specific-css
+	style(type='text/css').
+		.pageList {
+			margin: 100px auto;
+		}
+		a {
+			font-size: 20px;
+			display: block;
+			line-height: 1.8;
+			margin-bottom: 10px;
+			color: #44150d;
+		}
+

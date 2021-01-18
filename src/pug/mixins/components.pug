@@ -4,9 +4,15 @@ mixin coin(imgSrc, coin)
 		.detail
 			h5.f26 累積健康幣
 			.coin.f70 #{coin}
+		+btn('small')
+			p.f34
+				| 存健康幣
+				br
+				| 立即抽獎
+
 
 mixin btn(type)
-	div.btn
+	div.btn(class=type)
 		block
 
 
@@ -18,15 +24,15 @@ mixin ads
 
 mixin pop(type)
 	.pop
-		.content
+		.content(class=type)
 			.close X
 			if type==='success'
 				img.cow(src="images/cow_success.png", alt="")
 				p.f50 恭喜您成功獲得
-				p.f_red.f34
+				p.f_red.f34.W100
 					| 『三獎』
 					br
-					font.f50 switch健身環
+					font.f50.W100 switch健身環
 				img.award(src="images/prize_ringfit.png", alt="")
 
 				+btn
@@ -35,7 +41,7 @@ mixin pop(type)
 			else if type==='failure'
 				img.cow(src="images/cow_failure.png", alt="")
 				p.f50
-					font.f_red 很可惜!
+					font.f_red.W100 很可惜!
 					br
 					| 您沒有抽中好禮喔
 				img.milk(src="images/milkcup.png", alt="")
@@ -44,24 +50,64 @@ mixin pop(type)
 					p.f34 再存一次健康幣
 
 			else if type==='login'
-				img(src="images/present.png", alt="")
+				img.present(src="images/2gift.png", alt="")
 				.present_title
-					| 每日登入驚喜
-					img(src="images/title_line.svg", alt="")
+					img(src="images/title_login.svg", alt="")
+					img.line(src="images/title_line.svg", alt="")
 				p.f34 首
 					font.f_red 7
 					| 日登入，天天有驚喜
 				.login_list
 					ul.f23
-						li.done Day1
-						li Day2
-						li Day3
-						li Day4
-						li Day5
-						li Day6
-						li.W100 Day7
+						li.done
+							.bg_white
+								span Day1
+								p
+									img(src="images/gift.svg", alt="")
+						li
+							.bg_white
+								span Day2
+								p
+									img(src="images/gift.svg", alt="")
+						li
+							.bg_white
+								span Day3
+								p
+									img(src="images/gift.svg", alt="")
+						li
+							.bg_white
+								span Day4
+								p
+									img(src="images/gift.svg", alt="")
+						li
+							.bg_white
+								span Day5
+								p
+									img(src="images/gift.svg", alt="")
+						li
+							.bg_white
+								span Day6
+								p
+									img(src="images/gift.svg", alt="")
+						li.W100
+							.bg_white
+								span Day7
+								p
+									img(src="images/gift.svg", alt="")
 
 
 
+			else if type==='login_award'
+				h3.f55 登入成功!
+				h4.f45
+					span 獲得
+					span.f80 1
+					span 健康幣
+				.img_wrap
+					img.gift(src="images/openbox.gif", alt="")
+					img.pure_coin(src="images/Kcoin.png", alt="")
+				+btn
+					a(href="pop_login.html")
+						p.f34 立即領取
 
 
