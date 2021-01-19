@@ -1,14 +1,19 @@
-mixin coin(imgSrc, coin)
+mixin coin(imgSrc, coin, type)
 	div.coin_wrap
 		.photo(style="background-image: url('"+imgSrc+"')")
 		.detail
 			h5.f26 累積健康幣
 			.coin.f70 #{coin}
 		+btn('small')
-			p.f34
-				| 存健康幣
-				br
-				| 立即抽獎
+			if type==='goDraw'
+				p.f34
+					| 馬上抽
+			else
+				p.f34
+					| 存健康幣
+					br
+					| 立即抽獎
+
 
 
 mixin btn(type)

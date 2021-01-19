@@ -125,7 +125,7 @@ b {
 
 .app-header .home img {
   width: 60%;
-  vertical-align: text-bottom;
+  vertical-align: middle;
 }
 
 @media (max-width: 650px) {
@@ -375,6 +375,13 @@ b {
   padding-right: 50px;
 }
 
+@media (max-width: 650px) {
+  .btn p.btn_upload {
+    background-size: 21px;
+    padding-right: 25px;
+  }
+}
+
 .btn p.btn_upload:after {
   display: none;
 }
@@ -528,6 +535,7 @@ b {
   .upload_get,
   .store_coin {
     border-radius: 12px;
+    padding: 30px 0 20px;
   }
 }
 
@@ -543,6 +551,14 @@ b {
   line-height: 1.4;
   margin-bottom: 30px;
   font-weight: bold;
+}
+
+@media (max-width: 650px) {
+  .upload label p,
+  .upload_get label p,
+  .store_coin label p {
+    margin-bottom: 15px;
+  }
 }
 
 .upload label p font,
@@ -563,6 +579,46 @@ b {
 .store_coin .img-thumbnail {
   width: 60%;
   margin: 0 auto 40px;
+}
+
+@media (max-width: 650px) {
+  .upload .img-thumbnail,
+  .upload_get .img-thumbnail,
+  .store_coin .img-thumbnail {
+    margin: 0 auto 20px;
+  }
+}
+
+.warning {
+  text-align: left;
+  line-height: 1.4;
+  width: 88%;
+  margin: 0 auto 40px;
+}
+
+.warning .f_red {
+  margin-bottom: 24px;
+}
+
+@media (max-width: 650px) {
+  .warning .f_red {
+    margin-bottom: 12px;
+  }
+}
+
+.warning ul {
+  padding-left: 20px;
+}
+
+.warning li {
+  color: #44150d;
+  list-style-position: outside;
+  list-style: decimal;
+}
+
+.upload .btn {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .upload_get > p {
@@ -681,9 +737,23 @@ b {
   color: #44150d;
 }
 
+@media (max-width: 650px) {
+  .pop .content {
+    padding: 65px 10px 45px;
+    border-radius: 12px;
+  }
+}
+
 .pop .content.login {
   padding-bottom: 60px;
   padding-top: 65px;
+}
+
+@media (max-width: 650px) {
+  .pop .content.login {
+    padding-bottom: 30px;
+    padding-top: 33px;
+  }
 }
 
 .pop .content.login_award {
@@ -724,6 +794,12 @@ b {
   position: relative;
 }
 
+@media (max-width: 650px) {
+  .pop .content.login_award .img_wrap {
+    margin-bottom: 70px;
+  }
+}
+
 .pop .content.login_award .img_wrap .gift {
   width: 100%;
 }
@@ -740,6 +816,12 @@ b {
   animation: coinShow 1.4s;
   -webkit-animation: coinShow 1.4s;
   -moz-animation-iteration-count: 1;
+}
+
+@media (max-width: 650px) {
+  .pop .content.login_award .img_wrap .pure_coin {
+    width: 50px;
+  }
 }
 
 .pop .content .cow,
@@ -807,6 +889,12 @@ b {
   margin: 40px 4% 0;
 }
 
+@media (max-width: 650px) {
+  .pop .content .login_list {
+    margin: 20px 4% 0;
+  }
+}
+
 .pop .content .login_list ul {
   border: dashed 4px #cc0000;
   display: -webkit-box;
@@ -823,11 +911,24 @@ b {
   text-align: center;
 }
 
+@media (max-width: 650px) {
+  .pop .content .login_list li {
+    padding: 4px 8px 8px;
+  }
+}
+
 .pop .content .login_list li .bg_white {
   padding: 12px;
   background-color: #fff;
   border-radius: 25px;
   position: relative;
+}
+
+@media (max-width: 650px) {
+  .pop .content .login_list li .bg_white {
+    border-radius: 12px;
+    padding: 6px;
+  }
 }
 
 .pop .content .login_list li .bg_white .check {
@@ -858,6 +959,12 @@ b {
   max-width: 93px;
 }
 
+@media (max-width: 650px) {
+  .pop .content .login_list li p {
+    padding: 6px 9px;
+  }
+}
+
 .pop .content .login_list li.done p {
   background-color: #cc0000;
 }
@@ -876,6 +983,10 @@ b {
   width: 12%;
 }
 
+.pop .content .login_list li.W100 p {
+  width: 23%;
+}
+
 .pop .content .close {
   width: 70px;
   line-height: 70px;
@@ -888,6 +999,14 @@ b {
   -webkit-transform: translate(50%, -50%);
       -ms-transform: translate(50%, -50%);
           transform: translate(50%, -50%);
+}
+
+@media (max-width: 650px) {
+  .pop .content .close {
+    width: 40px;
+    line-height: 40px;
+    font-size: 22px;
+  }
 }
 
 .pop .content .btn {
@@ -929,6 +1048,7 @@ b {
   height: 100vh;
   position: relative;
   z-index: 1;
+  outline: none;
 }
 
 .guide .item p {
@@ -1006,6 +1126,12 @@ b {
   }
 }
 
+@media (max-width: 425px) {
+  .guide .item.slide_3 p {
+    top: calc(26vw + 310px);
+  }
+}
+
 @media (max-width: 375px) {
   .guide .item.slide_3 p {
     top: calc(26vw + 290px);
@@ -1020,6 +1146,12 @@ b {
 @media (max-width: 650px) {
   .guide .item.slide_3 img {
     top: calc(26vw + 500px);
+  }
+}
+
+@media (max-width: 425px) {
+  .guide .item.slide_3 img {
+    top: calc(26vw + 460px);
   }
 }
 

@@ -113,7 +113,7 @@ b {
 		background-color: #44150d;
 		img {
 			width: 60%;
-			vertical-align: text-bottom;
+			vertical-align: middle;
 		}
 		@media (max-width: 650px) {
 			width: 50px;
@@ -293,6 +293,10 @@ b {
 			background-repeat: no-repeat;
 			background-size: 42px;
 			padding-right: 50px;
+			@media (max-width: 650px) {
+				background-size: 21px;
+				padding-right: 25px;
+			}
 			&:after {
 				display: none;
 			}
@@ -407,6 +411,7 @@ b {
 	margin: 20px auto;
 	@media (max-width: 650px) {
 		border-radius: 12px;
+		padding: 30px 0 20px;
 	}
 	label {
 		display: block;
@@ -414,6 +419,9 @@ b {
 			line-height: 1.4;
 			margin-bottom: 30px;
 			font-weight: bold;
+			@media (max-width: 650px) {
+				margin-bottom: 15px;
+			}
 			font {
 				color: #cc0000;
 			}
@@ -427,6 +435,37 @@ b {
 	.img-thumbnail {
 		width: 60%;
 		margin: 0 auto 40px;
+		@media (max-width: 650px) {
+			margin: 0 auto 20px;
+		}
+	}
+}
+
+.warning {
+	text-align: left;
+	line-height: 1.4;
+	width: 88%;
+	margin: 0 auto 40px;
+	.f_red {
+		margin-bottom: 24px;
+		@media (max-width: 650px) {
+			margin-bottom: 12px;
+		}
+	}
+	ul {
+		padding-left: 20px;
+	}
+	li {
+		color: #44150d;
+		list-style-position: outside;
+		list-style: decimal;
+	}
+}
+
+.upload {
+	.btn {
+		margin-left: 5px;
+		margin-right: 5px;
 	}
 }
 
@@ -535,9 +574,17 @@ b {
 		left: 50%;
 		transform: translate(-50%, -50%);
 		color: #44150d;
+		@media (max-width: 650px) {
+			padding: 65px 10px 45px;
+			border-radius: 12px;
+		}
 		&.login {
 			padding-bottom: 60px;
 			padding-top: 65px;
+			@media (max-width: 650px) {
+				padding-bottom: 30px;
+				padding-top: 33px;
+			}
 		}
 		&.login_award {
 			padding: 0 20px 0;
@@ -568,6 +615,9 @@ b {
 				margin-top: -150px;
 				margin-bottom: 140px;
 				position: relative;
+				@media (max-width: 650px) {
+					margin-bottom: 70px;
+				}
 				.gift {
 					width: 100%;
 				}
@@ -583,6 +633,9 @@ b {
 					animation: coinShow 1.4s;
 					-webkit-animation: coinShow 1.4s;
 					-moz-animation-iteration-count: 1;
+					@media (max-width: 650px) {
+						width: 50px;
+					}
 				}
 			}
 		}
@@ -640,6 +693,9 @@ b {
 		}
 		.login_list {
 			margin: 40px 4% 0;
+			@media (max-width: 650px) {
+				margin: 20px 4% 0;
+			}
 			ul {
 				border: dashed 4px #cc0000;
 				display: flex;
@@ -650,11 +706,18 @@ b {
 				padding: 8px 16px 16px;
 				width: 33%;
 				text-align: center;
+				@media (max-width: 650px) {
+					padding: 4px 8px 8px;
+				}
 				.bg_white {
 					padding: 12px;
 					background-color: #fff;
 					border-radius: 25px;
 					position: relative;
+					@media (max-width: 650px) {
+						border-radius: 12px;
+						padding: 6px;
+					}
 					.check {
 						position: absolute;
 						right: 0;
@@ -680,6 +743,9 @@ b {
 					padding: 12px 18px;
 					margin-top: 8px;
 					max-width: 93px;
+					@media (max-width: 650px) {
+						padding: 6px 9px;
+					}
 				}
 				&.done {
 					p {
@@ -698,6 +764,9 @@ b {
 					.check {
 						width: 12%;
 					}
+					p {
+						width: 23%;
+					}
 				}
 			}
 		}
@@ -711,6 +780,11 @@ b {
 			top: 0;
 			right: 0;
 			transform: translate(50%, -50%);
+			@media (max-width: 650px) {
+				width: 40px;
+				line-height: 40px;
+				font-size: 22px;
+			}
 		}
 		.btn {
 			position: absolute;
@@ -749,6 +823,7 @@ b {
 		height: 100vh;
 		position: relative;
 		z-index: 1;
+		outline: none;
 		p {
 			color: #ffec9e;
 			position: absolute;
@@ -803,6 +878,9 @@ b {
 				@media (max-width: 650px) {
 					top: calc(26vw + 360px);
 				}
+				@media (max-width: 425px) {
+					top: calc(26vw + 310px);
+				}
 				@media (max-width: 375px) {
 					top: calc(26vw + 290px);
 				}
@@ -812,6 +890,9 @@ b {
 				right: 10px;
 				@media (max-width: 650px) {
 					top: calc(26vw + 500px);
+				}
+				@media (max-width: 425px) {
+					top: calc(26vw + 460px);
 				}
 				@media (max-width: 375px) {
 					top: calc(26vw + 445px);
