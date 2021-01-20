@@ -114,6 +114,7 @@ b {
 		img {
 			width: 60%;
 			vertical-align: middle;
+			margin-top: -10%;
 		}
 		@media (max-width: 650px) {
 			width: 50px;
@@ -148,6 +149,7 @@ b {
 		border-radius: 12px;
 		border-width: 2px;
 		margin-bottom: 12px;
+		background-size: 60px;
 	}
 	@media (max-width: 414px) {
 		padding: 11px 10px;
@@ -175,7 +177,6 @@ b {
 			width: 40px;
 			height: 40px;
 			margin-right: 10px;
-			margin-left: 0;
 		}
 	}
 	.detail {
@@ -218,11 +219,16 @@ b {
 	flex-grow: 1;
 	position: relative;
 	overflow: hidden;
-	&.small {
-		padding: 15px 15px 15px 20px;
+	&.small,
+	&.goDraw {
 		width: auto;
 		flex-grow: 0;
 		margin-right: 0;
+		padding-left: 15px;
+		padding-right: 20px;
+	}
+	&.small {
+		padding: 15px 15px 15px 20px;
 		@media (max-width: 650px) {
 			padding: 8px 8px 8px 10px;
 		}
@@ -412,6 +418,7 @@ b {
 	@media (max-width: 650px) {
 		border-radius: 12px;
 		padding: 30px 0 20px;
+		margin: 10px auto;
 	}
 	label {
 		display: block;
@@ -448,12 +455,23 @@ b {
 	margin: 0 auto 40px;
 	.f_red {
 		margin-bottom: 24px;
+
+		background-image: url(../images/note.svg);
+		background-position: left 5px top;
+		background-repeat: no-repeat;
+		padding-left: 60px;
+		background-size: 34px;
 		@media (max-width: 650px) {
 			margin-bottom: 12px;
+			padding-left: 30px;
+			background-size: 17px;
 		}
 	}
 	ul {
-		padding-left: 20px;
+		padding-left: 40px;
+		@media (max-width: 650px) {
+			padding-left: 20px;
+		}
 	}
 	li {
 		color: #44150d;
@@ -504,6 +522,9 @@ b {
 	border-radius: 50%;
 	position: relative;
 	display: inline-block;
+	@media (max-width: 650px) {
+		width: 60px;
+	}
 	img {
 		position: absolute;
 		width: 50%;
@@ -514,12 +535,19 @@ b {
 	p {
 		font-size: 80px;
 		line-height: 120px;
+		@media (max-width: 650px) {
+			font-size: 40px;
+			line-height: 60px;
+		}
 	}
 }
 
 .comebined_img {
 	width: 60%;
 	margin: 20px auto 40px;
+	@media (max-width: 650px) {
+		margin: 10px auto 20px;
+	}
 	img {
 		width: 100%;
 	}
@@ -534,6 +562,15 @@ b {
 	padding: 12px 12px 12px 65px;
 	position: relative;
 	overflow: hidden;
+	@media (max-width: 650px) {
+		border-radius: 12px;
+		height: 52px;
+		padding: 6px 6px 6px 32px;
+		-webkit-border-radius: 12px;
+		-moz-border-radius: 12px;
+		-ms-border-radius: 12px;
+		-o-border-radius: 12px;
+	}
 	.sub_title {
 		background-color: #44150d;
 		color: #fecb00;
@@ -545,6 +582,10 @@ b {
 		-webkit-writing-mode: vertical-lr;
 		writing-mode: vertical-lr;
 		line-height: 65px;
+		@media (max-width: 650px) {
+			line-height: 32px;
+			width: 32px;
+		}
 	}
 	> * {
 		display: inline-block;
@@ -600,6 +641,10 @@ b {
 				color: #fff;
 				line-height: 62px;
 				padding-top: 24px;
+				@media (max-width: 650px) {
+					padding-top: 10px;
+					line-height: 30px;
+				}
 				span {
 					padding-left: 5px;
 					line-height: 62px;
@@ -616,7 +661,8 @@ b {
 				margin-bottom: 140px;
 				position: relative;
 				@media (max-width: 650px) {
-					margin-bottom: 70px;
+					margin-bottom: 60px;
+					margin-top: -70px;
 				}
 				.gift {
 					width: 100%;
@@ -663,21 +709,35 @@ b {
 		.f_red {
 			padding-top: 20px;
 			display: inline-block;
+			@media (max-width: 650px) {
+				padding-top: 10px;
+			}
 		}
 		.award {
 			width: 40%;
 			margin-top: 40px;
 			margin-bottom: 20px;
+			@media (max-width: 650px) {
+				margin-top: 20px;
+				margin-bottom: 10px;
+			}
 		}
 		.milk {
 			width: 20%;
 			margin-top: 40px;
+			margin-bottom: 20px;
+			@media (max-width: 650px) {
+				margin-top: 20px;
+			}
 		}
 
 		.present_title {
 			position: relative;
 			padding: 0 14%;
 			margin-bottom: -20px;
+			@media (max-width: 650px) {
+				margin-bottom: -10px;
+			}
 			img {
 				position: relative;
 				line-height: 1.8;
@@ -792,6 +852,9 @@ b {
 			left: 50%;
 			transform: translate(-50%, -50%);
 			width: 60%;
+			@media (max-width: 650px) {
+				bottom: -50px;
+			}
 		}
 	}
 	.success {
