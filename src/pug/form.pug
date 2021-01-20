@@ -1,0 +1,45 @@
+extends layouts/_layout_no_header.pug
+include mixins/components.pug
+
+block variables
+	- var showHomeIcon = false;
+
+block title
+	title 一天一杯克寧 存健康拿好禮
+
+block content
+	.form_page
+		.form_title
+			img(src="images/title_send.svg", alt="")
+			img.line(src="images/title_line02.svg", alt="")
+
+		h3.f34.under_line
+			font 獎品內容
+		h4.f50.f_red Switch健身環組
+
+		form
+			div.tr.f34
+				label 姓名
+				input(type="text")
+			div.tr.f34
+				label 手機
+				input(type="tel")
+			div.tr.f34
+				label Email
+				input(type="mail")
+			div.tr.f34
+				label 地址
+				input(type="text")
+			.agree_wrap
+				input#agreement(type="radio")
+				label.f34(for="agreement") 我以詳閱並同意本活動的
+					a.f_red 活動辦法
+
+
+		+btn('submit')
+			a(href="sent_form.html")
+				p.f34 確認送出
+
+
+block specific-css
+	link(rel='stylesheet', type='text/css', href='css/form_rules.css')

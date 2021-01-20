@@ -39,8 +39,8 @@ mixin pop(type)
 				p.f_red.f34.W100
 					| 『三獎』
 					br
-					font.f50.W100 switch健身環
-				img.award(src="images/prize_ringfit.png", alt="")
+					font.f50.W100 Switch健身環組
+				img.award(src="images/switch.png", alt="")
 
 				+btn
 					p.f34 領取獎品
@@ -119,9 +119,44 @@ mixin pop(type)
 					span 健康幣
 				.img_wrap
 					img.gift(src="images/openbox.gif", alt="")
-					img.pure_coin(src="images/Kcoin.png", alt="")
+					//- linepoint.png / momo.png / Hcoin.png
+					img.pure_coin(src="images/Hcoin.png", alt="")
 				+btn
 					a(href="pop_login.html")
 						p.f34 立即領取
 
+
+			else if type==='receive_success'
+				h3.f55.f_red
+					b 領取成功
+				h4.f34
+					b 請至LINE查看訊息!
+
+
+			else if type==='rules'
+				.present_title
+					img(src="images/title_note.svg", alt="", width="70%")
+					img.line(src="images/title_line03.svg", alt="")
+				p.f34.under_line
+					font 獎項
+
+				.dash_box
+					.item
+						h2.f_red.f45 Switch健身環組
+						img(src="images/switch.png", alt="", width="90%")
+						p.f26 6組/ 每月抽出兩組
+
+					.item
+						h2.f_red.f45
+							| 身心純淨之旅
+							br
+							font.f32 涵碧樓湖景雙人套房
+						img(src="images/hotel.png", alt="", width="50%")
+						p.f26 3份/ 每月抽出一份
+
+					.item
+						h2.f_red.f45
+							| LINE Points
+						img(src="images/hotel.png", alt="", width="50%")
+						p.f26 3份/ 每月抽出一份
 

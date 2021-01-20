@@ -24,37 +24,37 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
   </head>
   <body class="sidebar-mini">
-    <div id="app">
-      <!-- Navbar-->
-      <header class="app-header"><a class="ques f50" href="ques.html">?</a>
-        <!-- Sidebar toggle button--><img class="logo" src="images/logo.png" alt=""><a class="home" href="/"><img src="images/home.svg" alt=""></a>
-      </header><img class="kv" src="images/title.svg" alt="">
+    <div id="app_form">
       <main class="app-content">
-        <div class="coin_wrap">
-          <div class="photo" style="background-image: url('images/userphoto.png')"></div>
-          <div class="detail">
-            <h5 class="f26">累積健康幣</h5>
-            <div class="coin f70">140</div>
+        <div class="form_page">
+          <div class="form_title"><img src="images/title_send.svg" alt=""><img class="line" src="images/title_line02.svg" alt=""></div>
+          <h3 class="f34 under_line"><font>獎品內容</font></h3>
+          <h4 class="f50 f_red">Switch健身環組</h4>
+          <form>
+            <div class="tr f34">
+              <label>姓名</label>
+              <input type="text">
+            </div>
+            <div class="tr f34">
+              <label>手機</label>
+              <input type="tel">
+            </div>
+            <div class="tr f34">
+              <label>Email</label>
+              <input type="mail">
+            </div>
+            <div class="tr f34">
+              <label>地址</label>
+              <input type="text">
+            </div>
+            <div class="agree_wrap">
+              <input id="agreement" type="radio">
+              <label class="f34" for="agreement">我以詳閱並同意本活動的<a class="f_red">活動辦法</a></label>
+            </div>
+          </form>
+          <div class="btn submit"><a href="sent_form.html">
+              <p class="f34">確認送出</p></a>
           </div>
-          <div class="btn goDraw">
-            <p class="f34">馬上抽</p>
-          </div>
-        </div>
-        <div class="upload_get">
-          <label for="file_0">
-            <p class="f45">請上傳一張<br><font class="f_red">今日飲用克寧牛奶</font>的美照</p><img class="img-thumbnail" src="images/daily_pic.jpg" alt="">
-          </label>
-          <input type="file" name="uploadedimages0" size="20" multiple="" id="file_0" hidden>
-          <div class="btn"><a href="upload_get1.html">
-              <p class="f34 btn_upload">上傳照片</p></a>
-          </div>
-        </div>
-        <div class="warning"><br>
-          <ul class="f26">
-            <li>一天僅能上傳一次照片，重複上傳恕只能得到一枚健康幣</li>
-            <li>請勿重複上傳相同的照片，經發現將取消獲獎資格</li>
-            <li>請勿盜用他人的照片，經發現將取消獲獎資格</li>
-          </ul>
         </div>
       </main>
       <!-- Essential javascripts for application to work-->
@@ -64,6 +64,7 @@
       <script src="js/plugins/pace.min.js"></script>
       <!-- Page specific javascripts-->
       <!-- Page specific css-->
+      <link rel="stylesheet" type="text/css" href="css/form_rules.css">
       <!-- Google analytics script-->
       <script type="text/javascript">
         if(document.location.hostname == 'pratikborsadiya.in') {

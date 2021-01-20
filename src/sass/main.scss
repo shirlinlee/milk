@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
 body {
 	text-align: center;
 }
@@ -13,6 +14,7 @@ body {
 
 * {
 	box-sizing: border-box;
+	font-family: 'Noto Sans TC', sans-serif !important;
 }
 
 img {
@@ -136,7 +138,7 @@ b {
 	border-radius: 25px;
 	border: dashed 4px #ffffff;
 	background-color: #44150d;
-	background-image: url(../images/Kcoin_bg.png);
+	background-image: url(../images/Hcoin_bg.png);
 	background-position: left bottom;
 	background-repeat: no-repeat;
 	text-align: center;
@@ -195,7 +197,7 @@ b {
 	font-weight: bold;
 	color: #ffec9e;
 	padding-left: 60px;
-	background-image: url(../images/Kcoin.png);
+	background-image: url(../images/Hcoin.png);
 	background-size: 50px;
 	background-position: left center;
 	background-repeat: no-repeat;
@@ -239,6 +241,15 @@ b {
 	&.red {
 		width: 80%;
 		background-color: #cc0000;
+		p {
+			color: #fff;
+			&:after {
+				border-color: transparent transparent transparent #fff;
+			}
+		}
+	}
+	&.submit {
+		background-color: #44150d;
 		p {
 			color: #fff;
 			&:after {
@@ -361,6 +372,7 @@ b {
 					color: #44150d;
 					padding-bottom: 10px;
 					padding-top: 10px;
+					font-weight: bold;
 					@media (max-width: 650px) {
 						padding-bottom: 0 !important;
 					}
@@ -506,10 +518,11 @@ b {
 .store_coin {
 	.f45 {
 		color: #44150d;
+		line-height: 1.5;
 	}
 	.animate_img {
 		img {
-			margin: 20px auto 40px;
+			// margin: 20px auto 40px;
 		}
 	}
 }
@@ -534,10 +547,12 @@ b {
 	}
 	p {
 		font-size: 80px;
-		line-height: 120px;
+		line-height: 110px;
+		height: 120px;
 		@media (max-width: 650px) {
 			font-size: 40px;
-			line-height: 60px;
+			line-height: 55px;
+			height: 60px;
 		}
 	}
 }
@@ -615,9 +630,17 @@ b {
 		left: 50%;
 		transform: translate(-50%, -50%);
 		color: #44150d;
+		line-height: 1.5;
 		@media (max-width: 650px) {
 			padding: 65px 10px 45px;
 			border-radius: 12px;
+		}
+		&.receive_success {
+			padding: 110px 0 140px;
+			line-height: 1.5;
+			@media (max-width: 650px) {
+				padding: 50px 0 70px;
+			}
 		}
 		&.login {
 			padding-bottom: 60px;
@@ -661,8 +684,8 @@ b {
 				margin-bottom: 140px;
 				position: relative;
 				@media (max-width: 650px) {
-					margin-bottom: 60px;
-					margin-top: -70px;
+					margin-bottom: 70px;
+					margin-top: -90px;
 				}
 				.gift {
 					width: 100%;
@@ -682,6 +705,29 @@ b {
 					@media (max-width: 650px) {
 						width: 50px;
 					}
+				}
+			}
+		}
+
+		&.rules {
+			overflow-y: scroll;
+			.under_line:before {
+				background-color: #fecb00;
+			}
+		}
+		.dash_box {
+			width: 96%;
+			padding: 5%;
+			border: dashed 4px #cc0000;
+			margin: 4% auto;
+			.item {
+				padding: 0 5% 5%;
+				border-bottom: solid 1px #cc0000;
+				.f_red {
+					padding-bottom: 5%;
+				}
+				p {
+					padding-top: 5%;
 				}
 			}
 		}
@@ -707,19 +753,19 @@ b {
 			line-height: 1.2;
 		}
 		.f_red {
-			padding-top: 20px;
+			padding-top: 30px;
 			display: inline-block;
 			@media (max-width: 650px) {
-				padding-top: 10px;
+				padding-top: 15px;
 			}
 		}
 		.award {
-			width: 40%;
-			margin-top: 40px;
-			margin-bottom: 20px;
+			width: 80%;
+			margin-top: 50px;
+			margin-bottom: 120px;
 			@media (max-width: 650px) {
-				margin-top: 20px;
-				margin-bottom: 10px;
+				margin-top: 25px;
+				margin-bottom: 60px;
 			}
 		}
 		.milk {
@@ -865,6 +911,26 @@ b {
 	position: relative;
 	z-index: 100;
 	border: 3px solid #fff;
+}
+
+.under_line {
+	font-weight: bold;
+	position: relative;
+	display: inline-block;
+	&:before {
+		content: '';
+		display: block;
+		height: 80%;
+		width: 120%;
+		left: -10%;
+		position: absolute;
+		bottom: -20%;
+		background-color: #ffec9e;
+	}
+	font {
+		position: relative;
+		z-index: 5;
+	}
 }
 
 .guide {

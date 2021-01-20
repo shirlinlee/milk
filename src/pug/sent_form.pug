@@ -1,0 +1,31 @@
+extends layouts/_layout_no_header.pug
+include mixins/components.pug
+
+block variables
+	- var showHomeIcon = false;
+
+block title
+	title 一天一杯克寧 存健康拿好禮
+
+block content
+	.sent_page
+		img.cow(src="images/cow.png", alt="")
+		h6.f50.f_red 您的寄送資料已經成功送出!
+		p.f34 待活動小組查驗您的資格，
+			br
+			| 若確認您的符合得獎資格，
+			br
+			| 贈品將於OO日內統一寄送!
+			br
+			br
+			| 有任何問題請聯繫活動專線：0000000
+
+
+		+btn('submit')
+			a(href="#")
+				p.f34 確認
+
+
+
+block specific-css
+	link(rel='stylesheet', type='text/css', href='css/form_rules.css')

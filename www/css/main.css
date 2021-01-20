@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
 body {
   text-align: center;
 }
@@ -14,6 +15,7 @@ body {
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: 'Noto Sans TC', sans-serif !important;
 }
 
 img {
@@ -150,7 +152,7 @@ b {
   border-radius: 25px;
   border: dashed 4px #ffffff;
   background-color: #44150d;
-  background-image: url(../images/Kcoin_bg.png);
+  background-image: url(../images/Hcoin_bg.png);
   background-position: left bottom;
   background-repeat: no-repeat;
   text-align: center;
@@ -237,7 +239,7 @@ b {
   font-weight: bold;
   color: #ffec9e;
   padding-left: 60px;
-  background-image: url(../images/Kcoin.png);
+  background-image: url(../images/Hcoin.png);
   background-size: 50px;
   background-position: left center;
   background-repeat: no-repeat;
@@ -305,6 +307,18 @@ b {
 }
 
 .btn.red p:after {
+  border-color: transparent transparent transparent #fff;
+}
+
+.btn.submit {
+  background-color: #44150d;
+}
+
+.btn.submit p {
+  color: #fff;
+}
+
+.btn.submit p:after {
   border-color: transparent transparent transparent #fff;
 }
 
@@ -471,6 +485,7 @@ b {
   color: #44150d;
   padding-bottom: 10px;
   padding-top: 10px;
+  font-weight: bold;
 }
 
 @media (max-width: 650px) {
@@ -658,10 +673,7 @@ b {
 
 .store_coin .f45 {
   color: #44150d;
-}
-
-.store_coin .animate_img img {
-  margin: 20px auto 40px;
+  line-height: 1.5;
 }
 
 .earn_coin {
@@ -692,13 +704,15 @@ b {
 
 .earn_coin p {
   font-size: 80px;
-  line-height: 120px;
+  line-height: 110px;
+  height: 120px;
 }
 
 @media (max-width: 650px) {
   .earn_coin p {
     font-size: 40px;
-    line-height: 60px;
+    line-height: 55px;
+    height: 60px;
   }
 }
 
@@ -793,12 +807,24 @@ b {
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   color: #44150d;
+  line-height: 1.5;
 }
 
 @media (max-width: 650px) {
   .pop .content {
     padding: 65px 10px 45px;
     border-radius: 12px;
+  }
+}
+
+.pop .content.receive_success {
+  padding: 110px 0 140px;
+  line-height: 1.5;
+}
+
+@media (max-width: 650px) {
+  .pop .content.receive_success {
+    padding: 50px 0 70px;
   }
 }
 
@@ -861,8 +887,8 @@ b {
 
 @media (max-width: 650px) {
   .pop .content.login_award .img_wrap {
-    margin-bottom: 60px;
-    margin-top: -70px;
+    margin-bottom: 70px;
+    margin-top: -90px;
   }
 }
 
@@ -888,6 +914,34 @@ b {
   .pop .content.login_award .img_wrap .pure_coin {
     width: 50px;
   }
+}
+
+.pop .content.rules {
+  overflow-y: scroll;
+}
+
+.pop .content.rules .under_line:before {
+  background-color: #fecb00;
+}
+
+.pop .content .dash_box {
+  width: 96%;
+  padding: 5%;
+  border: dashed 4px #cc0000;
+  margin: 4% auto;
+}
+
+.pop .content .dash_box .item {
+  padding: 0 5% 5%;
+  border-bottom: solid 1px #cc0000;
+}
+
+.pop .content .dash_box .item .f_red {
+  padding-bottom: 5%;
+}
+
+.pop .content .dash_box .item p {
+  padding-top: 5%;
 }
 
 .pop .content .cow,
@@ -916,26 +970,26 @@ b {
 }
 
 .pop .content .f_red {
-  padding-top: 20px;
+  padding-top: 30px;
   display: inline-block;
 }
 
 @media (max-width: 650px) {
   .pop .content .f_red {
-    padding-top: 10px;
+    padding-top: 15px;
   }
 }
 
 .pop .content .award {
-  width: 40%;
-  margin-top: 40px;
-  margin-bottom: 20px;
+  width: 80%;
+  margin-top: 50px;
+  margin-bottom: 120px;
 }
 
 @media (max-width: 650px) {
   .pop .content .award {
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 25px;
+    margin-bottom: 60px;
   }
 }
 
@@ -1121,6 +1175,28 @@ b {
   position: relative;
   z-index: 100;
   border: 3px solid #fff;
+}
+
+.under_line {
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+}
+
+.under_line:before {
+  content: '';
+  display: block;
+  height: 80%;
+  width: 120%;
+  left: -10%;
+  position: absolute;
+  bottom: -20%;
+  background-color: #ffec9e;
+}
+
+.under_line font {
+  position: relative;
+  z-index: 5;
 }
 
 .guide {
