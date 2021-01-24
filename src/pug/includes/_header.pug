@@ -3,7 +3,21 @@ header.app-header
 	// Sidebar toggle button
 	img.logo(src="images/logo.png", alt="")
 
-	a.home(href='/')
-		img(src="images/home.svg", alt="")
+	nav(role="navigation")
+		ul#menu
+			a(href="/")
+				li.f45
+					span 回首頁
+			a(href="/pop_rules.html")
+				li.f45
+					span 活動辦法
+			a(href="#")
+				li.f45
+					span 得獎名單
+		#menuToggle
+			span
+			span
+			span
+
 
 img.kv(src="images/title.svg", alt="")

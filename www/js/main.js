@@ -1,5 +1,7 @@
-;(function () {
-	'use strict'
-
-	var treeviewMenu = $('.app-menu')
-})()
+$(function () {
+	console.log('123')
+	$('body').on('click', '#menuToggle', function () {
+		$('#menu').toggleClass('show')
+		$(this).toggleClass('show')
+	})
+})
