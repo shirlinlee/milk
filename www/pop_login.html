@@ -27,7 +27,14 @@
     <div id="app" style="display: none" v-show="isMounted">
       <!-- Navbar-->
       <header class="app-header"><a class="ques f50" href="ques.html">?</a>
-        <!-- Sidebar toggle button--><img class="logo" src="images/logo.png" alt=""><a class="home" href="/"><img src="images/home.svg" alt=""></a>
+        <!-- Sidebar toggle button--><img class="logo" src="images/logo.png" alt="">
+        <nav role="navigation">
+          <ul id="menu"><a href="/">
+              <li class="f45"><span>回首頁</span></li></a><a href="/pop_rules.html">
+              <li class="f45"><span>活動辦法</span></li></a><a href="#">
+              <li class="f45"><span>得獎名單</span></li></a></ul>
+          <div id="menuToggle"><span></span><span></span><span></span></div>
+        </nav>
       </header><img class="kv" src="images/title.svg" alt="">
       <main class="app-content">
         <div class="pop" style="display: ">
