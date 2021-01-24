@@ -14,20 +14,20 @@ block content
 			a(href="upload.html")
 				p.f34 上傳喝克寧照片拿健康幣
 
-			img.milk(src="images/milkphoto_w.png", alt="")
+			img.milk(src="images/milkphoto_w.png" alt="")
 
 
 	.achieve
-		img(src="images/title_medal.svg", alt="")
+		img(src="images/title_medal.svg" alt="")
 		ul
 			li
-				img(src="images/medal_login.png", alt="")
+				img(src="images/medal_login.png" alt="")
 				.detail
 					h6.title.f32 每日登入驚喜
 				.btn.f32.canCheck 查看
 
 			li
-				img(src="images/medal_3day_no.png", alt="")
+				img(src="images/medal_3day_no.png" alt="")
 				.detail
 					h6.title.f32 勤奮努力獎
 					p.des.f28
@@ -37,7 +37,7 @@ block content
 				.btn.f32.canReceive 領取
 
 			li
-				img(src="images/medal_first.png", alt="")
+				img(src="images/medal_first.png" alt="")
 				.detail
 					h6.title.f32 首次完成獎
 					p.des.f28
@@ -46,7 +46,7 @@ block content
 				.btn.f32.done 未領取
 
 			li
-				img(src="images/medal_7day_no.png", alt="")
+				img(src="images/medal_7day_no.png" alt="")
 				.detail
 					h6.title.f32.f32 天天健康獎
 					p.des.f28
@@ -63,27 +63,27 @@ block content
 			.slider
 				.item.slide_1
 					p.f50 立刻上傳照片拿金幣
-					img(src="images/finger.svg", alt="")
+					img(src="images/finger.svg" alt="")
 				.item.slide_2
 					p.f50
 						| 存入一枚健康幣，
 						br
 						| 立即抽一次獎
-					img(src="images/finger.svg", alt="")
+					img(src="images/finger.svg" alt="")
 				.item.slide_3
 					p.f50
 						| 只要達成特定條件
 						br
 						| 就可以讓健康幣加倍喔!
+					img(src="images/finger.svg" alt="")
 
-					img(src="images/finger.svg", alt="")
 
 
 
 
 
 block specific-js
-	script(type='text/javascript', src="js/plugins/slick.min.js")
+	script(type='text/javascript' src="js/plugins/slick.min.js")
 	script(type='text/javascript').
 		$(document).ready(function(){
 			$('.slider').slick({
@@ -103,21 +103,28 @@ block specific-js
 				var currentSlide = slick.currentSlide;
 				switch(currentSlide) {
 					case 0: {
-							$('.btn.red').addClass('spotLight');
+						$('.btn.red').addClass('spotLight');
 						}
 						break;
 					case 1: {
-							$('.btn.small').addClass('spotLight');
+						$('.btn.small').addClass('spotLight');
 						}
 						break;
-					default: {
-							$('.canReceive').addClass('spotLight');
+					case 2: {
+						$('.canReceive').addClass('spotLight');
 						}
-
 				}
-
 			});
 
+			$('.slider').on('edge', function(event, slick, direction){
+				if(direction === 'left'){
+					$('.guide').hide();
+					setTimeout(
+						(function(){
+							$('.spotLight').removeClass('spotLight');
+						}), 620);
+				}
+			});
 		})
 
 

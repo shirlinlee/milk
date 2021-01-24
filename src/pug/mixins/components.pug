@@ -29,38 +29,41 @@ mixin ads
 		block
 
 
-mixin pop(type)
-	.pop
+mixin pop(type, isVue, typePop, typeClose)
+	- var defaultPop = isVue ? 'none' : ''
+
+	.pop(style="display: "+defaultPop v-show=isVue)
 		.content(class=type)
-			.close X
+			.close(@click.prevent=typeClose)
+				| X
 			if type==='success'
-				img.cow(src="images/cow_success.png", alt="")
+				img.cow(src="images/cow_success.png" alt="")
 				p.f50 恭喜您成功獲得
 				p.f_red.f34.W100
 					| 『三獎』
 					br
 					font.f50.W100 Switch健身環組
-				img.award(src="images/switch.png", alt="")
+				img.award(src="images/switch.png" alt="")
 
 				+btn
 					p.f34 領取獎品
 
 			else if type==='failure'
-				img.cow(src="images/cow_failure.png", alt="")
+				img.cow(src="images/cow_failure.png" alt="")
 				p.f50
 					font.f_red.W100 很可惜!
 					br
 					| 您沒有抽中好禮喔
-				img.milk(src="images/milkcup.png", alt="")
+				img.milk(src="images/milkcup.png" alt="")
 
 				+btn
 					p.f34 再存一次健康幣
 
 			else if type==='login'
-				img.present(src="images/2gift.png", alt="")
+				img.present(src="images/2gift.png" alt="")
 				.present_title
-					img(src="images/title_login.svg", alt="")
-					img.line(src="images/title_line.svg", alt="")
+					img(src="images/title_login.svg" alt="")
+					img.line(src="images/title_line.svg" alt="")
 				p.f34 首
 					font.f_red 7
 					| 日登入，天天有驚喜
@@ -70,61 +73,137 @@ mixin pop(type)
 							.bg_white
 								span Day1
 								p
-									img(src="images/gift.svg", alt="")
-								img.check(src="images/check.png", alt="")
+									img(src="images/gift.svg" alt="")
+								img.check(src="images/check.png" alt="")
 						li
 							.bg_white
 								span Day2
 								p
-									img(src="images/gift.svg", alt="")
-								img.check(src="images/check.png", alt="")
+									img(src="images/gift.svg" alt="")
+								img.check(src="images/check.png" alt="")
 						li
 							.bg_white
 								span Day3
 								p
-									img(src="images/gift.svg", alt="")
-								img.check(src="images/check.png", alt="")
+									img(src="images/gift.svg" alt="")
+								img.check(src="images/check.png" alt="")
 						li
 							.bg_white
 								span Day4
 								p
-									img(src="images/gift.svg", alt="")
-								img.check(src="images/check.png", alt="")
+									img(src="images/gift.svg" alt="")
+								img.check(src="images/check.png" alt="")
 						li
 							.bg_white
 								span Day5
 								p
-									img(src="images/gift.svg", alt="")
-								img.check(src="images/check.png", alt="")
+									img(src="images/gift.svg" alt="")
+								img.check(src="images/check.png" alt="")
 						li
 							.bg_white
 								span Day6
 								p
-									img(src="images/gift.svg", alt="")
-								img.check(src="images/check.png", alt="")
+									img(src="images/gift.svg" alt="")
+								img.check(src="images/check.png" alt="")
 						li.W100
 							.bg_white
 								span Day7
 								p
-									img(src="images/gift.svg", alt="")
-								img.check(src="images/check.png", alt="")
+									img(src="images/gift.svg" alt="")
+								img.check(src="images/check.png" alt="")
 
+			else if typePop==='login_award_1'
+				h3.f55 登入成功!
+				h4.f45
+					span 獲得
+					span MOMO折價券
+					span.f80 $50
+				.img_wrap
+					img.gift(src="images/openbox.gif" alt="")
+					img.pure_coin(src="images/momo.png" alt="")
+				div.btn(@click.prevent="GetReward")
+					a(href="pop_login.html")
+						p.f34 立即領取
 
-
-			else if type==='login_award'
+			else if typePop==='login_award_2'
 				h3.f55 登入成功!
 				h4.f45
 					span 獲得
 					span.f80 1
 					span 健康幣
 				.img_wrap
-					img.gift(src="images/openbox.gif", alt="")
-					//- linepoint.png / momo.png / Hcoin.png
-					img.pure_coin(src="images/Hcoin.png", alt="")
-				+btn
+					img.gift(src="images/openbox.gif" alt="")
+					img.pure_coin(src="images/Hcoin.png" alt="")
+				div.btn(@click.prevent="GetReward")
 					a(href="pop_login.html")
 						p.f34 立即領取
 
+			else if typePop==='login_award_3'
+				h3.f55 登入成功!
+				h4.f45
+					span 獲得
+					span.f80 2
+					span 健康幣
+				.img_wrap
+					img.gift(src="images/openbox.gif" alt="")
+					img.pure_coin(src="images/Hcoin.png" alt="")
+				div.btn(@click.prevent="GetReward")
+					a(href="pop_login.html")
+						p.f34 立即領取
+
+			else if typePop==='login_award_4'
+				h3.f55 登入成功!
+				h4.f45
+					span 獲得
+					span.f80 3
+					span 健康幣
+				.img_wrap
+					img.gift(src="images/openbox.gif" alt="")
+					img.pure_coin(src="images/Hcoin.png" alt="")
+				div.btn(@click.prevent="GetReward")
+					a(href="pop_login.html")
+						p.f34 立即領取
+
+			else if typePop==='login_award_5'
+				h3.f55 登入成功!
+				h4.f45
+					span 獲得
+					span LINE Points
+					span.f80 $30
+				.img_wrap
+					img.gift(src="images/openbox.gif" alt="")
+					img.pure_coin(src="images/linepoint.png" alt="")
+				div.btn(@click.prevent="GetReward")
+					a(href="pop_login.html")
+						p.f34 立即領取
+
+			else if typePop==='login_award_6'
+				h3.f55 登入成功!
+				h4.f45
+					span 獲得
+					span.f80 5
+					span 健康幣
+				.img_wrap
+					img.gift(src="images/openbox.gif" alt="")
+					//- linepoint.png / momo.png / Hcoin.png
+					img.pure_coin(src="images/Hcoin.png" alt="")
+				div.btn(@click.prevent="GetReward")
+					a(href="pop_login.html")
+						p.f34 立即領取
+
+			else if typePop==='login_award_7'
+				h3.f55 登入成功!
+				h4.f45
+					span 獲得
+					span.f80 10
+					span 健康幣
+				.img_wrap
+					img.gift(src="images/openbox.gif" alt="")
+					//- linepoint.png / momo.png / Hcoin.png
+					img.pure_coin(src="images/Hcoin.png" alt="")
+				div.btn(@click.prevent="GetReward")
+					a(href="pop_login.html")
+						p.f34 立即領取
 
 			else if type==='receive_success'
 				h3.f55.f_red
@@ -132,18 +211,17 @@ mixin pop(type)
 				h4.f34
 					b 請至LINE查看訊息!
 
-
 			else if type==='rules'
 				.present_title
-					img(src="images/title_note.svg", alt="", width="70%")
-					img.line(src="images/title_line03.svg", alt="")
+					img(src="images/title_note.svg" alt="" width="70%")
+					img.line(src="images/title_line03.svg" alt="")
 				p.f34.under_line
 					font 獎項
 
 				.dash_box
 					.item
 						h2.f_red.f45 Switch健身環組
-						img(src="images/switch.png", alt="", width="90%")
+						img(src="images/switch.png" alt="" width="90%")
 						p.f26 6組/ 每月抽出兩組
 
 					.item
@@ -151,12 +229,12 @@ mixin pop(type)
 							| 身心純淨之旅
 							br
 							font.f32 涵碧樓湖景雙人套房
-						img(src="images/hotel.png", alt="", width="50%")
+						img(src="images/hotel.png" alt="" width="50%")
 						p.f26 3份/ 每月抽出一份
 
 					.item
 						h2.f_red.f45
 							| LINE Points
-						img(src="images/hotel.png", alt="", width="50%")
+						img(src="images/hotel.png" alt="" width="50%")
 						p.f26 3份/ 每月抽出一份
 

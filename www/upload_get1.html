@@ -9,7 +9,7 @@
     <!-- Open Graph Meta-->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="">
-    <meta property="og:title" content="Fu+ Admin">
+    <meta property="og:title" content="一天一杯克寧 存健康拿好禮">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
     <meta property="og:description" content="">
@@ -24,7 +24,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
   </head>
   <body class="sidebar-mini">
-    <div id="app">
+    <div id="app" style="display: none" v-show="isMounted">
       <!-- Navbar-->
       <header class="app-header"><a class="ques f50" href="ques.html">?</a>
         <!-- Sidebar toggle button--><img class="logo" src="images/logo.png" alt=""><a class="home" href="/"><img src="images/home.svg" alt=""></a>
@@ -56,7 +56,9 @@
       </main>
       <!-- Essential javascripts for application to work-->
       <script src="js/jquery-3.3.1.min.js"></script>
-      <script src="js/main.js"></script>
+      <script src="js/plugins/axios.min.js"></script>
+      <script src="js/request.js" defer></script>
+      <script src="js/main.js" defer></script>
       <!-- The javascript plugin to display page loading on top-->
       <script src="js/plugins/pace.min.js"></script>
       <!-- Page specific javascripts-->
