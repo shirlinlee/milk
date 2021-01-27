@@ -9,8 +9,8 @@ block title
 
 
 block content
-	+coin('images/userphoto.png', "{{info.coins}}")
-	.btn_area(style="width: 80%")
+	+vue_coin('','{{info.coins}}','')
+	.btn_area(style="width: 80%" @click.prevent="GoToURL('upload.html')")
 		+btn('red')
 			a(href="upload.html")
 				p.f34 上傳喝克寧照片拿健康幣
@@ -29,7 +29,7 @@ block content
 				img(src="images/medal_login.png" alt="")
 				.detail
 					h6.title.f32 每日登入驚喜
-				.btn.f32.canCheck 查看
+				.btn.f32.canCheck(@click.prevent="OpenPopLogin") 查看
 
 			li(v-for="(item, index) in info.achievements")
 				img(src="images/medal_3day_no.png" alt="")
@@ -40,13 +40,12 @@ block content
 						font.f_red(v-show="true")
 							| ({{item.currentCount}}/{{item.amount}})
 					p.coin.f32 + {{item.reward}}
-				.btn.f32.notYet(v-if="item.is_finished===0 && item.is_received===0")
+				.btn.f32.notYet(v-if="item.isFinished===false && item.isReceived===false")
 					| 未達成
-				.btn.f32.done(v-if="item.is_finished===1 && item.is_received===0")
-					| 未領取
-				.btn.f32.canReceive(v-if="item.is_finished===1 && item.is_received===1")
+				.btn.f32.canReceive(v-if="item.isFinished===true && item.isReceived===false" @click.prevent="GetAchievement(item.name)")
 					| 領取
-
+				.btn.f32.done(v-if="item.isFinished===true && item.isReceived===true")
+					| 已領取
 
 	.guide(style="display: none" v-show="isShowGuide")
 		.slideshow
@@ -69,6 +68,7 @@ block content
 
 	+pop('login','popLogin','','ClosePopLogin')
 	+pop('receive_success','popReceive','','ClosePopReceive')
+	+pop('receive_success_short','popReceiveShort','','ClosePopReceiveShort')
 	+pop('login_award', 'popLoginAward_1', 'login_award_1')
 	+pop('login_award', 'popLoginAward_2', 'login_award_2')
 	+pop('login_award', 'popLoginAward_3', 'login_award_3')
@@ -81,7 +81,6 @@ block content
 
 block specific-js
 	script(src='js/plugins/vue.min.js')
-	script(type='text/javascript' src="js/plugins/slick.min.js")
 	script(type='text/javascript' src="js/index.js")
 
 

@@ -786,7 +786,7 @@ b {
 .upload .img-thumbnail,
 .upload_get .img-thumbnail,
 .store_coin .img-thumbnail {
-  width: 60%;
+  width: 75%;
   margin: 0 auto 40px;
 }
 
@@ -838,7 +838,8 @@ b {
   list-style: decimal;
 }
 
-.upload .btn {
+.upload .btn,
+.upload_get .btn {
   margin-left: 5px;
   margin-right: 5px;
 }
@@ -904,7 +905,7 @@ b {
 }
 
 .comebined_img {
-  width: 60%;
+  width: 75%;
   margin: 20px auto 40px;
 }
 
@@ -1613,6 +1614,10 @@ ul.slick-dots {
 
 .slick-dots li.slick-active button {
   background-color: #fecb00;
+}
+
+div.jsgif > canvas {
+  max-width: 100%;
 }
 
 @media (max-width: 650px) {

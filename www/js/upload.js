@@ -28,10 +28,6 @@
 		}
 	}
 
-	/**
-	 * @url - Source of the image to use
-	 * @aspectRatio - The aspect ratio to apply
-	 */
 	function Crop(url, aspectRatio) {
 		return new Promise((resolve) => {
 			// this image will hold our source image data

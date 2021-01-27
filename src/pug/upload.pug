@@ -9,30 +9,58 @@ block title
 
 
 block content
-	+coin('images/userphoto.png', 140, 'goDraw')
-
-	.upload
+	+vue_coin('','{{info.coins}}','goDraw')
+	.upload(v-if="upload.step==1")
 		label(for="file_0")
 			p.f45
 				| 請上傳一張
 				br
 				font.f_red 今日飲用克寧牛奶
 				| 的美照
-			img.img-thumbnail(src="images/milkphoto.png" alt="")
+			img.img-thumbnail(:src="upload.imgThumbnail" alt="")
 
-		input(type="file" name="uploadedimages0" size="20" multiple="" id="file_0" hidden)
+		input(type="file" id="file_0" name="uploadedimages0" accept="image/*" hidden @change="HandleUpload" ref="fileInput")
 
 		.btn_area
-			+btn
+			div.btn(@click.prevent="TriggerUpload")
 				a(href="#")
-					p.f34 重新上傳
-			+btn
+					p.f34.btn_upload 上傳照片
+			div.btn(@click.prevent="SendUpload")
 				a(href="#")
 					p.f34 確認送出
+	.upload_get(v-if="upload.step==2")
+		p.f45.f_red
+			| 上傳成功獲得健康幣
+			img(src="images/title_line.svg", alt="")
 
+		.earn_coin
+			p 1
+			img(src="images/Hcoin.png", alt="")
+
+		.comebined_img
+			img.img-merged(:src="upload.imgMerged" , alt="")
+
+		.btn_area
+			div.btn()
+				a(href="./upload.html")
+					p.f34.btn_upload 重新上傳
+			div.btn(@click.prevent="SendShare")
+				a(href="#")
+					p.f34 立即分享
+
+
+	.warning
+		br
+		ul.f26
+			li 一天僅能上傳一次照片，重複上傳恕只能得到一枚健康幣
+			li 請勿重複上傳相同的照片，經發現將取消獲獎資格
+			li 請勿盜用他人的照片，經發現將取消獲獎資格
 
 block specific-js
-	script(type='text/javascript' src="js/upload.js")
+	script(src='js/plugins/vue.min.js')
+	script(type='text/javascript' src="js/plugins/slick.min.js")
+	script(type='text/javascript' src="js/index.js")
+	//- script(type='text/javascript' src="js/upload.js")
 
 
 

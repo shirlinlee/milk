@@ -9,7 +9,7 @@ block title
 
 
 block content
-	+coin('images/userphoto.png', 140)
+	+vue_coin('','{{info.coins}}','goDraw')
 
 	.store_coin#store
 		b.f45
@@ -20,17 +20,16 @@ block content
 			| 喔!
 
 		.animate_img
-			img(src="images/tree.gif", alt="")
+			img(style="max-width: 100%;" id="gifStoreTree" src="images/tree.gif" alt="")
 
-		//- +ads
-			img(src="images/prize_ringfit.png", alt="")
-			p.f26.f_red
-				| 『 三獎
-				b.f32 switch健身環
-				| 5名 』
+	+pop('success',"popSuccess",'','ClosePopSuccess')
+	+pop('failure',"popFailure",'','ClosePopFailure')
 
 
-
+block specific-js
+	script(src='js/plugins/vue.min.js')
+	script(type='text/javascript' src="js/plugins/slick.min.js")
+	script(type='text/javascript' src="js/index.js")
 
 
 

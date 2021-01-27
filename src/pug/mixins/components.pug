@@ -6,16 +6,33 @@ mixin coin(imgSrc, coin, type)
 			.coin.f70 #{coin}
 
 		if type==='goDraw'
-			+btn('goDraw')
+			div.btn(class='goDraw' @click.prevent="GoToURL('store.html')")
 				p.f34
 					| 馬上抽
 		else
-			+btn('small')
+			div.btn(class='small' @click.prevent="GoToURL('store.html')")
 				p.f34
 					| 存健康幣
 					br
 					| 立即抽獎
 
+mixin vue_coin(imgSrc, coin, type)
+	div.coin_wrap
+		.photo(v-bind:style="{ backgroundImage: 'url(' + imgAvatar + ')' }")
+		.detail
+			h5.f26 累積健康幣
+			.coin.f70 #{coin}
+
+		if type==='goDraw'
+			div.btn(class='goDraw' @click.prevent="GoToURL('store.html')")
+				p.f34
+					| 馬上抽
+		else
+			div.btn(class='small' @click.prevent="GoToURL('store.html')")
+				p.f34
+					| 存健康幣
+					br
+					| 立即抽獎
 
 
 mixin btn(type)
@@ -62,6 +79,7 @@ mixin pop(type, isVue, typePop, typeClose)
 				img.milk(src="images/milkcup.png" alt="")
 
 				+btn
+				div.btn(@click.prevent="ReLottery")
 					p.f34 再存一次健康幣
 
 			else if type==='login'
@@ -70,47 +88,47 @@ mixin pop(type, isVue, typePop, typeClose)
 					img(src="images/title_login.svg" alt="")
 					img.line(src="images/title_line.svg" alt="")
 				p.f34 首
-					font.f_red 7
+					font.f_red &nbsp;7&nbsp;
 					| 日登入，天天有驚喜
 				.login_list
 					ul.f23
-						li.done
+						li(v-bind:class="{ done: info.signInCount>=1 }")
 							.bg_white
 								span Day1
 								p
 									img(src="images/gift.svg" alt="")
 								img.check(src="images/check.png" alt="")
-						li
+						li(v-bind:class="{ done: info.signInCount>=2 }")
 							.bg_white
 								span Day2
 								p
 									img(src="images/gift.svg" alt="")
 								img.check(src="images/check.png" alt="")
-						li
+						li(v-bind:class="{ done: info.signInCount>=3 }")
 							.bg_white
 								span Day3
 								p
 									img(src="images/gift.svg" alt="")
 								img.check(src="images/check.png" alt="")
-						li
+						li(v-bind:class="{ done: info.signInCount>=4 }")
 							.bg_white
 								span Day4
 								p
 									img(src="images/gift.svg" alt="")
 								img.check(src="images/check.png" alt="")
-						li
+						li(v-bind:class="{ done: info.signInCount>=5 }")
 							.bg_white
 								span Day5
 								p
 									img(src="images/gift.svg" alt="")
 								img.check(src="images/check.png" alt="")
-						li
+						li(v-bind:class="{ done: info.signInCount>=6 }")
 							.bg_white
 								span Day6
 								p
 									img(src="images/gift.svg" alt="")
 								img.check(src="images/check.png" alt="")
-						li.W100
+						li(class="W100" v-bind:class="{ done: info.signInCount>=7 }")
 							.bg_white
 								span Day7
 								p
@@ -126,7 +144,7 @@ mixin pop(type, isVue, typePop, typeClose)
 				.img_wrap
 					img.gift(src="images/openbox.gif" alt="")
 					img.pure_coin(src="images/momo.png" alt="")
-				div.btn(@click.prevent="GetReward")
+				div.btn(@click.prevent="GetRewardWithMessage('momo')")
 					a(href="pop_login.html")
 						p.f34 立即領取
 
@@ -178,7 +196,7 @@ mixin pop(type, isVue, typePop, typeClose)
 				.img_wrap
 					img.gift(src="images/openbox.gif" alt="")
 					img.pure_coin(src="images/linepoint.png" alt="")
-				div.btn(@click.prevent="GetReward")
+				div.btn(@click.prevent="GetRewardWithMessage('line')")
 					a(href="pop_login.html")
 						p.f34 立即領取
 
@@ -216,6 +234,10 @@ mixin pop(type, isVue, typePop, typeClose)
 				h4.f34
 					b 請至LINE查看訊息!
 
+			else if type==='receive_success_short'
+				h3.f55.f_red
+					b 領取成功
+
 			else if type==='close_award'
 				img.note(src="images/note.svg", alt="")
 				h3.f55.f_red
@@ -229,8 +251,6 @@ mixin pop(type, isVue, typePop, typeClose)
 					+btn
 						a(href="#")
 							p.f34 取消
-
-
 
 			else if type==='rules'
 				.scroll

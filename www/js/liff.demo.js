@@ -93,6 +93,7 @@ function registerHandlers() {
                     window.alert('token error');
                 }
             } else {
+				// 當不是好友，提供客戶加克寧好友
                 liff.openWindow({
                     url: 'https://lin.ee/dw2zwyq',
                     external: true
@@ -102,7 +103,7 @@ function registerHandlers() {
         })
         .catch((err) => {
             window.alert(err);
-        });;
+        });
     }
 }
 

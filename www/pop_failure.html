@@ -42,18 +42,27 @@
             <div class="close">X</div><img class="cow" src="images/cow_failure.png" alt=""/>
             <p class="f50"><font class="f_red W100">很可惜!</font><br/>您沒有抽中好禮喔</p><img class="milk" src="images/milkcup.png" alt=""/>
             <div class="btn">
+            </div>
+            <div class="btn" @click.prevent="ReLottery">
               <p class="f34">再存一次健康幣</p>
             </div>
           </div>
         </div>
       </main>
       <!-- Essential javascripts for application to work-->
+      <script src="js/plugins/pace.min.js"></script>
+      <script src="js/plugins/libgif.js"></script>
       <script src="js/jquery-3.3.1.min.js"></script>
       <script src="js/plugins/axios.min.js"></script>
+      <script src="js/plugins/slick.min.js"></script>
+      <script src="https://static.line-scdn.net/liff/edge/2/sdk.js" charset="utf-8"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vconsole@3.2.0/dist/vconsole.min.js"></script>
+      <script>
+        var vConsole = new VConsole();
+        
+      </script>
       <script src="js/request.js" defer></script>
       <script src="js/main.js" defer></script>
-      <!-- The javascript plugin to display page loading on top-->
-      <script src="js/plugins/pace.min.js"></script>
       <!-- Page specific javascripts-->
       <!-- Page specific css-->
       <!-- Google analytics script-->
