@@ -9,7 +9,111 @@ block title
 
 
 block content
-	+pop('rules')
+	.pop
+		.content.rules
+			.close X
+			.scroll
+				.present_title
+					img(src="images/title_note.svg", alt="", width="70%")
+					img.line(src="images/title_line03.svg", alt="")
+
+
+				p.f34.under_line
+					font 活動期間
+
+				.txt
+					p.f26.t_left
+						| 2021/1/29 00:00至2021/4/30 23:59
+						br
+
+				p.f34.under_line
+					font 活動辦法
+
+				.txt
+					ul.f26.t_left
+						li 參加者每上傳一張符合指定規則「內含克寧純生乳/克寧全家人奶粉系列產品+一杯牛奶」的照片，即可獲得一枚健康幣，一枚健康幣可抽一次獎。
+						li 上傳的每張照片皆須符合「內含克寧純生乳或是克寧全家人奶粉系列產品+一杯牛奶」規則，方能獲獎，若有任一照片經主辦單位檢查後不符合規則，將取消獲獎資格。
+						li 不得重複上傳相同的照片，或與他人重複上傳相同的照片，經主辦單位檢查後重複者，將取消獲獎資格。
+						li 一天僅限上傳一張照片。
+						li 上傳照片若符合以下指定條件者，則可以累積更多健康幣：
+						.detail.f26
+							p.circle 達成以下成就指定條件，即可解鎖該成就
+							p.circle 每項成就僅能解鎖一次，惟親朋好友獎不在此限
+							p.circle 每人可解鎖多項成就，每項成就可同時累積兌換
+							.t_center
+								h4.f32 成就種類
+
+							p.f_red 見面禮：
+							p 上傳第一張照片，健康幣
+								font.f_red +3
+							p.f_red 邁向健康獎：
+							p 累積上傳3天照片者，健康幣
+								font.f_red +5
+							p.f_red 健康鼓勵獎：
+							p 累積上傳5天照片者，健康幣
+								font.f_red +10
+							p.f_red 頭好壯壯獎：
+							p 累積上傳7天照片者，健康幣
+								font.f_red +15
+							p.f_red 超級健康獎：
+							p 連續3天上傳照片者，健康幣
+								font.f_red +10
+							p.f_red 親朋好友獎：
+							p 上傳照片並分享該合成圖框給好友者，健康幣
+								font.f_red +1
+							p.f_red 新春特別獎：
+							p 新春年假期間(2/10-2/16)上傳1次照片者，健康幣
+								font.f_red +3
+
+
+
+
+
+
+				p.f34.under_line
+					font 獎項
+
+				.dash_box
+					.item
+						h2.f_red.f45 Switch健身環組
+						img(src="images/switch.png", alt="", width="90%")
+						p.f26 6組/ 每月抽出兩組
+
+					.item
+						h2.f_red.f45
+							| 身心純淨之旅
+							br
+							font.f32 涵碧樓湖景雙人套房
+						img(src="images/hotel.png", alt="", width="50%")
+						p.f26 3份/ 每月抽出一份
+
+					.item
+						h2.f_red.f45
+							| LINE Points
+						+linePoint('50', '90組/每月抽出30份')
+						br
+						br
+						+linePoint('30', '300組/每月抽出100份')
+
+					.item
+						h2.f_red.f45 克寧限量馬克杯
+						img(src="images/cup.png", alt="", width="45%", style="margin-left: -10%; padding: 10px 0;")
+						p.f26 480個/ 每月抽出160個
+
+					.item
+						h2.f_red.f45 克寧純生乳奶粉隨手包
+						img(src="images/milkbag.png", alt="", width="30%", style="padding: 10px 0;")
+						p.f26 720包/ 每月抽出240包
+
+				p.f34.under_line
+					font 注意事項
+
+				.warning
+					ul.f26
+						li 一天僅能上傳一次照片，重複上傳恕只能得到一枚健康幣
+						li 請勿重複上傳相同的照片，經發現將取消獲獎資格
+						li 請勿與他人上傳重複的照片，經發現將取消得獎資格
+
 
 
 
