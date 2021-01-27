@@ -13,6 +13,12 @@ block content
 			img(src="images/title_send.svg", alt="")
 			img.line(src="images/title_line02.svg", alt="")
 
+		.warning
+			.f_red.f26
+				| 請填入真實資料，以利活動小組進行後續中獎通知，
+				br
+				| 若是資料有誤，將無法參與本活動唷!
+
 		h3.f34.under_line
 			font 獎品內容
 		h4.f50.f_red Switch健身環組
@@ -32,8 +38,11 @@ block content
 				input(type="text")
 			.agree_wrap
 				input#agreement(type="radio")
-				label.f34(for="agreement") 我以詳閱並同意本活動的
-					a.f_red 活動辦法
+				label.f26(for="agreement") 我已詳細閱讀
+					a.f_red(href="rules.html") 活動辦法
+					| 與
+					a.f_red(href="person.html") 個資法
+					| 並同意該聲明書
 
 
 		+btn('submit')

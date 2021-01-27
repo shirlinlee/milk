@@ -756,25 +756,25 @@ b {
   display: block;
 }
 
-.upload label p,
-.upload_get label p,
-.store_coin label p {
+.upload label > p,
+.upload_get label > p,
+.store_coin label > p {
   line-height: 1.4;
   margin-bottom: 30px;
   font-weight: bold;
 }
 
 @media (max-width: 650px) {
-  .upload label p,
-  .upload_get label p,
-  .store_coin label p {
+  .upload label > p,
+  .upload_get label > p,
+  .store_coin label > p {
     margin-bottom: 15px;
   }
 }
 
-.upload label p font,
-.upload_get label p font,
-.store_coin label p font {
+.upload label > p font,
+.upload_get label > p font,
+.store_coin label > p font {
   color: #cc0000;
 }
 
@@ -804,11 +804,11 @@ b {
   text-align: left;
   line-height: 1.4;
   width: 88%;
-  margin: 0 auto 40px;
+  margin: 0 auto 20px;
 }
 
 .warning .f_red {
-  margin-bottom: 24px;
+  margin-bottom: 10px;
   background-image: url(../images/note.svg);
   background-position: left 5px top;
   background-repeat: no-repeat;
@@ -818,7 +818,7 @@ b {
 
 @media (max-width: 650px) {
   .warning .f_red {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     padding-left: 30px;
     background-size: 17px;
   }
@@ -858,6 +858,12 @@ b {
   width: 100%;
   top: 0;
   left: 0;
+}
+
+.upload_get .btn {
+  margin-left: 5px;
+  margin-right: 5px;
+  letter-spacing: -1px;
 }
 
 .store_coin .f45 {

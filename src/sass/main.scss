@@ -567,7 +567,7 @@ b {
 	}
 	label {
 		display: block;
-		p {
+		> p {
 			line-height: 1.4;
 			margin-bottom: 30px;
 			font-weight: bold;
@@ -597,17 +597,16 @@ b {
 	text-align: left;
 	line-height: 1.4;
 	width: 88%;
-	margin: 0 auto 40px;
+	margin: 0 auto 20px;
 	.f_red {
-		margin-bottom: 24px;
-
+		margin-bottom: 10px;
 		background-image: url(../images/note.svg);
 		background-position: left 5px top;
 		background-repeat: no-repeat;
 		padding-left: 60px;
 		background-size: 34px;
 		@media (max-width: 650px) {
-			margin-bottom: 12px;
+			margin-bottom: 10px;
 			padding-left: 30px;
 			background-size: 17px;
 		}
@@ -645,6 +644,11 @@ b {
 			top: 0;
 			left: 0;
 		}
+	}
+	.btn {
+		margin-left: 5px;
+		margin-right: 5px;
+		letter-spacing: -1px;
 	}
 }
 
