@@ -29,11 +29,14 @@ mixin ads
 		block
 
 
-mixin linePoint(point, des)
+mixin linePoint(point, des, ps)
 	.point_wrap
 		img(src="images/linepoint.png", alt="")
-		h6.f50 #{point}
+		h6.f50 #{point}點
 	b.f26(style="color: #44150d") &nbsp;#{des}
+	br
+	b.f26(style="color: #cc0000") &nbsp;#{ps}
+
 
 mixin pop(type)
 	.pop
