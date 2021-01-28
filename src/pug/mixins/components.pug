@@ -139,12 +139,12 @@ mixin pop(type, isVue, typePop, typeClose)
 				h3.f55 登入成功!
 				h4.f45
 					span 獲得
-					span MOMO折價券
+					span MOMO 折價券
 					span.f80 $50
 				.img_wrap
 					img.gift(src="images/openbox.gif" alt="")
 					img.pure_coin(src="images/momo.png" alt="")
-				div.btn(@click.prevent="GetRewardWithMessage('momo')")
+				div.btn(@click.prevent="GetRewardWithMessage")
 					a(href="pop_login.html")
 						p.f34 立即領取
 
@@ -196,7 +196,7 @@ mixin pop(type, isVue, typePop, typeClose)
 				.img_wrap
 					img.gift(src="images/openbox.gif" alt="")
 					img.pure_coin(src="images/linepoint.png" alt="")
-				div.btn(@click.prevent="GetRewardWithMessage('line')")
+				div.btn(@click.prevent="GetRewardWithMessage")
 					a(href="pop_login.html")
 						p.f34 立即領取
 
@@ -237,6 +237,8 @@ mixin pop(type, isVue, typePop, typeClose)
 			else if type==='receive_success_short'
 				h3.f55.f_red
 					b 領取成功
+				h4.f34
+					b &nbsp;
 
 			else if type==='close_award'
 				img.note(src="images/note.svg", alt="")

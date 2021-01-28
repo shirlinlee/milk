@@ -13,6 +13,14 @@
     <meta property="og:url" content="">
     <meta property="og:image" content="">
     <meta property="og:description" content="">
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-K7KMVH4');
+      
+    </script>
     <title>一天一杯克寧 存健康拿好禮</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,14 +32,17 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
   </head>
   <body class="sidebar-mini">
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7KMVH4" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
     <div id="app" style="display: none" v-show="isMounted">
       <!-- Navbar-->
-      <header class="app-header"><a class="ques f50" href="ques.html">?</a>
+      <header class="app-header">
         <!-- Sidebar toggle button--><img class="logo" src="images/logo.png" alt="">
         <nav role="navigation">
-          <ul id="menu"><a href="/">
-              <li class="f45"><span>回首頁</span></li></a><a href="/pop_rules.html">
-              <li class="f45"><span>活動辦法</span></li></a><a href="#">
+          <ul id="menu"><a href="./index.html">
+              <li class="f45"><span>回首頁</span></li></a><a href="javascript:alert('製作中...')">
+              <li class="f45"><span>活動辦法</span></li></a><a href="javascript:alert('敬請期待')">
               <li class="f45"><span>得獎名單</span></li></a></ul>
           <div id="menuToggle"><span></span><span></span><span></span></div>
         </nav>
@@ -58,9 +69,10 @@
               <div class="detail">
                 <h6 class="title f32">每日登入驚喜</h6>
               </div>
-              <div class="btn f32 canCheck" @click.prevent="OpenPopLogin">查看</div>
+              <div class="btn f32 canCheck" v-if="info.signInCount &gt; 0" @click.prevent="OpenPopLogin">查看</div>
+              <div class="btn f32 done" v-if="info.signInCount == 0" @click.prevent="OpenPopLogin">無資格</div>
             </li>
-            <li v-for="(item, index) in info.achievements"><img src="images/medal_3day_no.png" alt="">
+            <li v-for="(item, index) in info.achievements"><img :src="item.icon" alt="">
               <div class="detail">
                 <h6 class="title f32">{{item.title}}</h6>
                 <p class="des f28">{{item.description}}<font class="f_red" v-show="true">({{item.currentCount}}/{{item.amount}})</font></p>
@@ -144,15 +156,16 @@
           <div class="content receive_success_short">
             <div class="close" @click.prevent="ClosePopReceiveShort">X</div>
             <h3 class="f55 f_red"><b>領取成功</b></h3>
+            <h4 class="f34"><b>&nbsp;</b></h4>
           </div>
         </div>
         <div class="pop" style="display: none" v-show="popLoginAward_1">
           <div class="content login_award">
             <div class="close">X</div>
             <h3 class="f55">登入成功!</h3>
-            <h4 class="f45"><span>獲得</span><span>MOMO折價券</span><span class="f80">$50</span></h4>
+            <h4 class="f45"><span>獲得</span><span>MOMO 折價券</span><span class="f80">$50</span></h4>
             <div class="img_wrap"><img class="gift" src="images/openbox.gif" alt=""/><img class="pure_coin" src="images/momo.png" alt=""/></div>
-            <div class="btn" @click.prevent="GetRewardWithMessage('momo')"><a href="pop_login.html">
+            <div class="btn" @click.prevent="GetRewardWithMessage"><a href="pop_login.html">
                 <p class="f34">立即領取</p></a></div>
           </div>
         </div>
@@ -192,7 +205,7 @@
             <h3 class="f55">登入成功!</h3>
             <h4 class="f45"><span>獲得</span><span>LINE Points</span><span class="f80">$30</span></h4>
             <div class="img_wrap"><img class="gift" src="images/openbox.gif" alt=""/><img class="pure_coin" src="images/linepoint.png" alt=""/></div>
-            <div class="btn" @click.prevent="GetRewardWithMessage('line')"><a href="pop_login.html">
+            <div class="btn" @click.prevent="GetRewardWithMessage"><a href="pop_login.html">
                 <p class="f34">立即領取</p></a></div>
           </div>
         </div>
@@ -233,7 +246,7 @@
       <script src="js/main.js" defer></script>
       <!-- Page specific javascripts-->
       <script src="js/plugins/vue.min.js"></script>
-      <script type="text/javascript" src="js/index.js"></script>
+      <script type="text/javascript" src="js/index.js?v=2"></script>
       <!-- Page specific css-->
       <!-- Google analytics script-->
       <script type="text/javascript">

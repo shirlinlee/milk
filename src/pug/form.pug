@@ -8,38 +8,55 @@ block title
 	title 一天一杯克寧 存健康拿好禮
 
 block content
-	.form_page
+	.form_page(v-if="form.step=='form'")
 		.form_title
 			img(src="images/title_send.svg", alt="")
 			img.line(src="images/title_line02.svg", alt="")
 
 		h3.f34.under_line
 			font 獎品內容
-		h4.f50.f_red Switch健身環組
+		h4.f50.f_red {{form.award}}
 
 		form
 			div.tr.f34
 				label 姓名
-				input(type="text")
+				input(type="text" v-model="form.name")
 			div.tr.f34
 				label 手機
-				input(type="tel")
+				input(type="tel" v-model="form.mobile")
 			div.tr.f34
 				label Email
-				input(type="mail")
+				input(type="mail" v-model="form.email")
 			div.tr.f34
 				label 地址
-				input(type="text")
+				input(type="text" v-model="form.address")
 			.agree_wrap
-				input#agreement(type="radio")
+				input#agreement(type="checkbox" v-model="form.agree")
 				label.f34(for="agreement") 我以詳閱並同意本活動的
 					a.f_red 活動辦法
-
-
-		+btn('submit')
+		div.btn(class='submit' @click.prevent="SendForm")
 			a(href="sent_form.html")
 				p.f34 確認送出
+
+	.sent_page(v-if="form.step=='sent'")
+		img.cow(src="images/cow.png", alt="")
+		h6.f50.f_red 您的寄送資料已經成功送出!
+		p.f34 待活動小組查驗您的資格，
+			br
+			| 若確認您的符合得獎資格，
+			br
+			| 贈品將於OO日內統一寄送!
+			br
+			br
+			| 有任何問題請聯繫活動專線：0000000
+		+btn('submit')
+			a(href="./form.html")
+				p.f34 確認
 
 
 block specific-css
 	link(rel='stylesheet', type='text/css', href='css/form_rules.css')
+
+block specific-js
+	script(src='js/plugins/vue.min.js')
+	script(type='text/javascript' src="js/index.js?v=2")

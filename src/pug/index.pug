@@ -29,10 +29,11 @@ block content
 				img(src="images/medal_login.png" alt="")
 				.detail
 					h6.title.f32 每日登入驚喜
-				.btn.f32.canCheck(@click.prevent="OpenPopLogin") 查看
+				.btn.f32.canCheck(v-if="info.signInCount > 0" @click.prevent="OpenPopLogin") 查看
+				.btn.f32.done(v-if="info.signInCount == 0" @click.prevent="OpenPopLogin") 無資格
 
 			li(v-for="(item, index) in info.achievements")
-				img(src="images/medal_3day_no.png" alt="")
+				img(:src="item.icon" alt="")
 				.detail
 					h6.title.f32 {{item.title}}
 					p.des.f28
@@ -81,7 +82,7 @@ block content
 
 block specific-js
 	script(src='js/plugins/vue.min.js')
-	script(type='text/javascript' src="js/index.js")
+	script(type='text/javascript' src="js/index.js?v=2")
 
 
 

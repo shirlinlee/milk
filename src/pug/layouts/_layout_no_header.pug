@@ -28,7 +28,7 @@ html(lang="en")
 		include ../includes/_head.pug
 
 	body.sidebar-mini
-		#app_form
+		#app_form(style="display: none" v-show="isMounted")
 
 			main.app-content
 				block content

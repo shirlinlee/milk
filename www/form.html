@@ -24,36 +24,42 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
   </head>
   <body class="sidebar-mini">
-    <div id="app_form">
+    <div id="app_form" style="display: none" v-show="isMounted">
       <main class="app-content">
-        <div class="form_page">
+        <div class="form_page" v-if="form.step=='form'">
           <div class="form_title"><img src="images/title_send.svg" alt=""><img class="line" src="images/title_line02.svg" alt=""></div>
           <h3 class="f34 under_line"><font>獎品內容</font></h3>
-          <h4 class="f50 f_red">Switch健身環組</h4>
+          <h4 class="f50 f_red">{{form.award}}</h4>
           <form>
             <div class="tr f34">
               <label>姓名</label>
-              <input type="text">
+              <input type="text" v-model="form.name">
             </div>
             <div class="tr f34">
               <label>手機</label>
-              <input type="tel">
+              <input type="tel" v-model="form.mobile">
             </div>
             <div class="tr f34">
               <label>Email</label>
-              <input type="mail">
+              <input type="mail" v-model="form.email">
             </div>
             <div class="tr f34">
               <label>地址</label>
-              <input type="text">
+              <input type="text" v-model="form.address">
             </div>
             <div class="agree_wrap">
-              <input id="agreement" type="radio">
+              <input id="agreement" type="checkbox" v-model="form.agree">
               <label class="f34" for="agreement">我以詳閱並同意本活動的<a class="f_red">活動辦法</a></label>
             </div>
           </form>
-          <div class="btn submit"><a href="sent_form.html">
-              <p class="f34">確認送出</p></a>
+          <div class="btn submit" @click.prevent="SendForm"><a href="sent_form.html">
+              <p class="f34">確認送出</p></a></div>
+        </div>
+        <div class="sent_page" v-if="form.step=='sent'"><img class="cow" src="images/cow.png" alt="">
+          <h6 class="f50 f_red">您的寄送資料已經成功送出!</h6>
+          <p class="f34">待活動小組查驗您的資格，<br>若確認您的符合得獎資格，<br>贈品將於OO日內統一寄送!<br><br>有任何問題請聯繫活動專線：0000000</p>
+          <div class="btn submit"><a href="./form.html">
+              <p class="f34">確認</p></a>
           </div>
         </div>
       </main>
@@ -72,6 +78,8 @@
       <script src="js/request.js" defer></script>
       <script src="js/main.js" defer></script>
       <!-- Page specific javascripts-->
+      <script src="js/plugins/vue.min.js"></script>
+      <script type="text/javascript" src="js/index.js?v=2"></script>
       <!-- Page specific css-->
       <link rel="stylesheet" type="text/css" href="css/form_rules.css">
       <!-- Google analytics script-->

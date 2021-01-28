@@ -3,8 +3,9 @@ var Index = {
 
 	setups: {
 		Vue: function () {
+			const el = document.getElementById('app') ? '#app' : '#app_form'
 			Index.instanceVue = new Vue({
-				el: '#app',
+				el,
 				data: {
 					imgAvatar: '',
 					gifStoreTree: null,
@@ -36,9 +37,9 @@ var Index = {
 							// 	reward: 0,
 							// },
 						],
-						isFirst: true,
+						isFirst: false,
 						isSignInToday: false,
-						signInCount: 1,
+						signInCount: 0,
 						reward_type: null,
 						reward_item: null,
 						coins: '',
@@ -58,6 +59,16 @@ var Index = {
 						frame: null,
 						imgThumbnail: 'images/milkphoto1.jpg',
 						imgMerged: '',
+					},
+					form: {
+						id: 0,
+						award: '尚未中獎',
+						step: 'form',
+						name: '',
+						mobile: '',
+						email: '',
+						address: '',
+						agree: false,
 					},
 				},
 				computed: {},
@@ -256,23 +267,24 @@ var Index = {
 
 						window
 							.UploadPicture(this.upload.imgMerged)
-							.then((res) => {
-								const { data } = res
+							.then(({ data }) => {
+								// 第一次上傳圖片
 								if (data.isFirst == true) {
 									this.info.coins++
+									this.GetInfo()
 								}
 								this.upload.id = data.id
 							})
-							.catch((res) => {})
+							.catch((res) => {
+								alert('圖片上傳失敗')
+							})
 							.finally(() => {
 								this.upload.step = 2
 							})
 					},
 					SendShare() {
-						console.log(this.upload.id)
-
 						if (!liff.isApiAvailable('shareTargetPicker')) {
-							alert('shareTargetPicker Error')
+							alert('您不同意 Line 的分享功能')
 							return
 						}
 						liff.shareTargetPicker([
@@ -290,16 +302,15 @@ var Index = {
 										})
 										.then((res) => {
 											const { data } = res
+											console.log('put.share success')
 											console.log(data)
 											if (data.isFirst == true) {
 												this.info.coins++
 											}
 										})
 										.catch((res) => {
+											console.log('put.share fail')
 											console.log(res.response)
-										})
-										.finally(() => {
-											console.log('shared')
 										})
 								}
 							})
@@ -308,7 +319,54 @@ var Index = {
 								console.log('something wrong happen')
 							})
 					},
+					SendForm() {
+						function ValidateEmail(text) {
+							if (
+								text.match(
+									/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+								)
+							) {
+								return true
+							} else {
+								return false
+							}
+						}
 
+						if (!this.form.agree) {
+							alert('請同意活動辦法')
+							return
+						}
+						if (
+							!this.form.name ||
+							!this.form.mobile ||
+							!this.form.email ||
+							!this.form.address
+						) {
+							alert('表單資料未完成')
+							return
+						}
+						if (!ValidateEmail(this.form.email)) {
+							alert('Email 格式錯誤')
+							return
+						}
+						window
+							.SendInfo({
+								lottery_id: this.form.id,
+								name: this.form.name,
+								phone: this.form.mobile,
+								email: this.form.email,
+								address: this.form.address,
+							})
+							.then((res) => {
+								const { data } = res
+								console.log(data)
+								this.form.step = 'sent'
+							})
+							.catch((res) => {
+								console.log(res.response)
+								alert('表單送出失敗')
+							})
+					},
 					ShowGuide() {
 						this.isShowGuide = true
 						$('.slider').on(
@@ -365,12 +423,12 @@ var Index = {
 									Index.instanceVue.isShowGuide = false
 									setTimeout(function () {
 										$('.spotLight').removeClass('spotLight')
-										Index.instanceVue.popLogin = true
-										Index.instanceVue[
-											'popLoginAward_' +
-												Index.instanceVue.info
-													.signInCount
-										] = true
+										// Index.instanceVue.popLogin = true
+										// Index.instanceVue[
+										// 	'popLoginAward_' +
+										// 		Index.instanceVue.info
+										// 			.signInCount
+										// ] = true
 									}, 620)
 								}
 							}
@@ -403,14 +461,45 @@ var Index = {
 						this.ClosePopAward()
 						this.popReceiveShort = true
 					},
-					GetRewardWithMessage(text) {
+					GetRewardWithMessage() {
 						this.ClosePopAward()
-						liff.sendMessages([
-							{
-								type: 'text',
-								text: text,
-							},
-						])
+						var message = []
+						switch (this.info.reward_type) {
+							case 'momo':
+								message = [
+									{
+										type: 'text',
+										text:
+											'恭喜您獲得克寧晚安奶粉momo$50元折價序號',
+									},
+									{
+										type: 'text',
+										text: '請複製以下序號使用👇🏼👇🏼👇🏼',
+									},
+									{
+										type: 'text',
+										text: this.info.reward_item,
+									},
+								]
+
+								break
+							case 'line':
+								message = [
+									{
+										type: 'text',
+										text:
+											'恭喜您通過審查獲得LINE POINTS 30點，請點擊以下連結儲值👇🏼👇🏼👇🏼',
+									},
+									{
+										type: 'text',
+										text: this.info.reward_item,
+									},
+								]
+								break
+							default:
+								break
+						}
+						liff.sendMessages(message)
 							.then(() => {
 								console.log('message sent')
 							})
@@ -519,7 +608,8 @@ var Index = {
 
 								if (
 									!this.info.isFirst &&
-									!this.info.isSignInToday
+									!this.info.isSignInToday &&
+									this.info.signInCount > 0
 								) {
 									this.popLogin = true
 									this.ShowAward()
@@ -527,6 +617,7 @@ var Index = {
 							})
 							liff.getFriendship()
 								.then((data) => {
+									console.log('liff.getFriendship: ', data)
 									if (data.friendFlag) {
 										// user has friendship
 										window.accessToken = liff.getAccessToken()
