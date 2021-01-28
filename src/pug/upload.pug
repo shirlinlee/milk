@@ -18,6 +18,8 @@ block content
 				font.f_red 今日飲用克寧牛奶
 				| 的美照
 			img.img-thumbnail(:src="upload.imgThumbnail" alt="")
+			.warning
+				p.f_red.f26 照片需含有克寧純生乳/全家人奶粉系列產品和一杯牛奶哦!
 
 		input(type="file" id="file_0" name="uploadedimages0" accept="image/*" hidden @change="HandleUpload" ref="fileInput")
 

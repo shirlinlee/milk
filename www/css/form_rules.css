@@ -52,12 +52,12 @@
 }
 
 .form_page form {
-  padding: 0 12%;
+  padding: 0 8%;
 }
 
 @media (max-width: 320px) {
   .form_page form {
-    padding: 0 4%;
+    padding: 0 6%;
   }
 }
 
@@ -67,7 +67,7 @@
       -ms-flex-align: center;
           align-items: center;
   padding: 8px 0;
-  margin-bottom: 20px;
+  margin: 0 4% 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -113,32 +113,36 @@
 }
 
 .form_page form .agree_wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  padding: 20px 0;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  margin-top: 20px;
+  padding: 0 0 20px 40px;
+  position: relative;
+  line-height: 1.5;
+  text-align: left;
+}
+
+@media (max-width: 650px) {
+  .form_page form .agree_wrap {
+    padding: 0 0 20px 30px;
+  }
 }
 
 .form_page form .agree_wrap input#agreement {
   width: 30px;
   height: 30px;
-  margin: 0 10px 0 0;
   padding: 0;
   border-radius: 50%;
   border: solid 3px #44150d;
   background-color: #fecb00;
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: 5px;
 }
 
 @media (max-width: 650px) {
   .form_page form .agree_wrap input#agreement {
     width: 20px;
     height: 20px;
+    top: 0;
   }
 }
 
@@ -173,13 +177,13 @@
 .form_title {
   position: relative;
   padding: 0 11%;
-  margin: 0 6% 50px;
+  margin: 0 6% 30px;
   width: 88%;
 }
 
 @media (max-width: 650px) {
   .form_title {
-    margin: 0 6% 25px;
+    margin: 0 6% 10px;
   }
 }
 
@@ -197,6 +201,16 @@
   left: 0;
 }
 
+.warning {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 650px) {
+  .warning {
+    margin-bottom: 10px;
+  }
+}
+
 input {
   -webkit-appearance: none;
   border: none;
@@ -212,10 +226,18 @@ input {
   margin-bottom: 10%;
 }
 
-.sent_page p {
+.sent_page > p {
   color: #44150d;
   line-height: 1.5;
   font-weight: bold;
+  display: block;
+  text-align: left;
+  padding: 0 6%;
+}
+
+.sent_page > p font {
+  display: block;
+  margin-bottom: 15px;
 }
 
 .sent_page .btn {

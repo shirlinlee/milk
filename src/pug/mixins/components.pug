@@ -46,11 +46,14 @@ mixin ads
 		block
 
 
-mixin linePoint(point, des)
+mixin linePoint(point, des, ps)
 	.point_wrap
 		img(src="images/linepoint.png", alt="")
-		h6.f50 #{point}
+		h6.f50 #{point}點
 	b.f26(style="color: #44150d") &nbsp;#{des}
+	br
+	b.f26(style="color: #cc0000") &nbsp;#{ps}
+
 
 mixin pop(type, isVue, typePop, typeClose)
 	- var defaultPop = isVue ? 'none' : ''
@@ -232,7 +235,9 @@ mixin pop(type, isVue, typePop, typeClose)
 				h3.f55.f_red
 					b 領取成功
 				h4.f34
-					b 請至LINE查看訊息!
+					b 請至克寧KLIM MILK LINE官方帳號
+						br
+						| 查看訊息!
 
 			else if type==='receive_success_short'
 				h3.f55.f_red

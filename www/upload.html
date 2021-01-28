@@ -41,8 +41,10 @@
         <!-- Sidebar toggle button--><img class="logo" src="images/logo.png" alt="">
         <nav role="navigation">
           <ul id="menu"><a href="./index.html">
-              <li class="f45"><span>回首頁</span></li></a><a href="javascript:alert('製作中...')">
-              <li class="f45"><span>活動辦法</span></li></a><a href="javascript:alert('敬請期待')">
+              <li class="f45"><span>回首頁</span></li></a><a href="/upload.html">
+              <li class="f45"><span>上傳照片</span></li></a><a href="store.html">
+              <li class="f45"><span>立即存健康抽獎</span></li></a><a href="/pop_rules.html">
+              <li class="f45"><span>活動辦法</span></li></a><a href="https://business.facebook.com/972686996155075/posts/3680394908717590/" target="_blank">
               <li class="f45"><span>得獎名單</span></li></a></ul>
           <div id="menuToggle"><span></span><span></span><span></span></div>
         </nav>
@@ -61,6 +63,9 @@
         <div class="upload" v-if="upload.step==1">
           <label for="file_0">
             <p class="f45">請上傳一張<br><font class="f_red">今日飲用克寧牛奶</font>的美照</p><img class="img-thumbnail" :src="upload.imgThumbnail" alt="">
+            <div class="warning">
+              <p class="f_red f26">照片需含有克寧純生乳/全家人奶粉系列產品和一杯牛奶哦!</p>
+            </div>
           </label>
           <input type="file" id="file_0" name="uploadedimages0" accept="image/*" hidden @change="HandleUpload" ref="fileInput">
           <div class="btn_area">
