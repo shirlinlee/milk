@@ -41,14 +41,14 @@
         <!-- Sidebar toggle button--><img class="logo" src="images/logo.png" alt="">
         <nav role="navigation">
           <ul id="menu"><a href="./index.html">
-              <li class="f45"><span>回首頁</span></li></a><a href="/upload.html">
-              <li class="f45"><span>上傳照片</span></li></a><a href="store.html">
-              <li class="f45"><span>立即存健康抽獎</span></li></a><a href="/pop_rules.html">
-              <li class="f45"><span>活動辦法</span></li></a><a href="https://business.facebook.com/972686996155075/posts/3680394908717590/" target="_blank">
+              <li class="f45"><span>回首頁</span></li></a><a href="./upload.html">
+              <li class="f45"><span>上傳照片</span></li></a><a href="./store.html">
+              <li class="f45"><span>立即存健康抽獎</span></li></a><a href="./pop_rules.html">
+              <li class="f45"><span>活動辦法</span></li></a><a href="javascript:alert('敬請期待');">
               <li class="f45"><span>得獎名單</span></li></a></ul>
           <div id="menuToggle"><span></span><span></span><span></span></div>
         </nav>
-      </header><img class="kv" src="images/title.svg" alt="">
+      </header><img class="kv" src="images/title.svg?v=1" alt="">
       <main class="app-content">
         <div class="coin_wrap">
           <div class="photo" v-bind:style="{ backgroundImage: 'url(' + imgAvatar + ')' }"></div>
@@ -56,11 +56,11 @@
             <h5 class="f26">累積健康幣</h5>
             <div class="coin f70">{{info.coins}}</div>
           </div>
-          <div class="btn small" @click.prevent="GoToURL('store.html')">
+          <div class="btn small" @click.prevent="GoToURL('./store.html')">
             <p class="f34">存健康幣<br/>立即抽獎</p>
           </div>
         </div>
-        <div class="btn_area" style="width: 80%" @click.prevent="GoToURL('upload.html')">
+        <div class="btn_area" style="width: 80%" @click.prevent="GoToURL('./upload.html')">
           <div class="btn red"><a href="upload.html">
               <p class="f34">上傳喝克寧照片拿健康幣</p></a><img class="milk" src="images/milkphoto_w.png" alt="">
           </div>
@@ -106,6 +106,7 @@
             <div class="close" @click.prevent="ClosePopLogin">X</div><img class="present" src="images/2gift.png" alt=""/>
             <div class="present_title"><img src="images/title_login.svg" alt=""/><img class="line" src="images/title_line.svg" alt=""/></div>
             <p class="f34">首<font class="f_red">&nbsp;7&nbsp;</font>日登入，天天有驚喜</p>
+            <p class="f34">有機會拿到Line Points 30點好禮喔!</p>
             <div class="login_list">
               <ul class="f23">
                 <li v-bind:class="{ done: info.signInCount&gt;=1 }">
@@ -161,6 +162,19 @@
             <h4 class="f34"><b>&nbsp;</b></h4>
           </div>
         </div>
+        <div class="pop" style="display: none" v-show="popClose">
+          <div class="content close_award">
+            <div class="close" @click.prevent="ClosePopClose">X</div><img class="note" src="images/note.svg" alt=""/>
+            <h3 class="f55 f_red"><b>您還沒領獎喔!</b></h3>
+            <div class="btn_area">
+              <div class="btn"><a href="./form.html">
+                  <p class="f34">前往領獎</p></a>
+              </div>
+              <div class="btn" @click.prevent="ClosePopClose"><a href="#">
+                  <p class="f34">關閉</p></a></div>
+            </div>
+          </div>
+        </div>
         <div class="pop" style="display: none" v-show="popLoginAward_1">
           <div class="content login_award">
             <div class="close">X</div>
@@ -205,9 +219,9 @@
           <div class="content login_award">
             <div class="close">X</div>
             <h3 class="f55">登入成功!</h3>
-            <h4 class="f45"><span>獲得</span><span>LINE Points</span><span class="f80">$30</span></h4>
-            <div class="img_wrap"><img class="gift" src="images/openbox.gif" alt=""/><img class="pure_coin" src="images/linepoint.png" alt=""/></div>
-            <div class="btn" @click.prevent="GetRewardWithMessage"><a href="pop_login.html">
+            <h4 class="f45"><span>獲得</span><span class="f80">5</span><span>健康幣</span></h4>
+            <div class="img_wrap"><img class="gift" src="images/openbox.gif" alt=""/><img class="pure_coin" src="images/Hcoin.png" alt=""/></div>
+            <div class="btn" @click.prevent="GetReward"><a href="pop_login.html">
                 <p class="f34">立即領取</p></a></div>
           </div>
         </div>
@@ -215,7 +229,7 @@
           <div class="content login_award">
             <div class="close">X</div>
             <h3 class="f55">登入成功!</h3>
-            <h4 class="f45"><span>獲得</span><span class="f80">5</span><span>健康幣</span></h4>
+            <h4 class="f45"><span>獲得</span><span class="f80">10</span><span>健康幣</span></h4>
             <div class="img_wrap"><img class="gift" src="images/openbox.gif" alt=""/><img class="pure_coin" src="images/Hcoin.png" alt=""/></div>
             <div class="btn" @click.prevent="GetReward"><a href="pop_login.html">
                 <p class="f34">立即領取</p></a></div>
@@ -225,9 +239,9 @@
           <div class="content login_award">
             <div class="close">X</div>
             <h3 class="f55">登入成功!</h3>
-            <h4 class="f45"><span>獲得</span><span class="f80">10</span><span>健康幣</span></h4>
-            <div class="img_wrap"><img class="gift" src="images/openbox.gif" alt=""/><img class="pure_coin" src="images/Hcoin.png" alt=""/></div>
-            <div class="btn" @click.prevent="GetReward"><a href="pop_login.html">
+            <h4 class="f45"><span>獲得</span><span>LINE Points</span><span class="f80">$30</span></h4>
+            <div class="img_wrap"><img class="gift" src="images/openbox.gif" alt=""/><img class="pure_coin" src="images/linepoint.png" alt=""/></div>
+            <div class="btn" @click.prevent="GetRewardWithMessage"><a href="pop_login.html">
                 <p class="f34">立即領取</p></a></div>
           </div>
         </div>
@@ -240,15 +254,11 @@
       <script src="js/plugins/slick.min.js"></script>
       <script src="https://static.line-scdn.net/liff/edge/2/sdk.js" charset="utf-8"></script>
       <script src="https://cdn.jsdelivr.net/npm/vconsole@3.2.0/dist/vconsole.min.js"></script>
-      <script>
-        var vConsole = new VConsole();
-        
-      </script>
-      <script src="js/request.js" defer></script>
-      <script src="js/main.js" defer></script>
+      <script src="js/request.js?v=1"></script>
+      <script src="js/main.js?v=1" defer></script>
       <!-- Page specific javascripts-->
       <script src="js/plugins/vue.min.js"></script>
-      <script type="text/javascript" src="js/index.js?v=2"></script>
+      <script type="text/javascript" src="js/index.js?v=11"></script>
       <!-- Page specific css-->
       <!-- Google analytics script-->
       <script type="text/javascript">

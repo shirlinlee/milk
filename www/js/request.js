@@ -1,10 +1,17 @@
-window.req = () => {
-	window.accessToken = liff.getAccessToken()
-		? liff.getAccessToken()
-		: 'tokenJunx'
+// 正式：klim-healthcoin.bigc.tw
+// 開發：cell.bigc.tw
+window.baseURL =
+	window.location.hostname === 'klim-healthcoin.bigc.tw'
+		? 'https://klim-healthcoin.bigc.tw/api'
+		: 'https://cell.bigc.tw/klim-healthcoin/api'
 
+window.req = () => {
+	window.accessToken =
+		typeof liff !== 'undefined' && liff.getAccessToken()
+			? liff.getAccessToken()
+			: 'tokenJunx'
 	return axios.create({
-		baseURL: 'https://cell.bigc.tw/klim-healthcoin/api',
+		baseURL: window.baseURL,
 		headers: {
 			Authorization: 'Bearer ' + window.accessToken,
 			'Content-Type': 'application/json',
@@ -17,7 +24,7 @@ const fakeAPI = (data) => {
 		console.log(data)
 		setTimeout(() => {
 			resolve(data)
-		}, 1000)
+		}, 20)
 	})
 }
 
@@ -70,8 +77,9 @@ window.GetInfo = () => {
 	// 		coins: 10,
 	// 	},
 	// })
-
-	return window.req().get('/info')
+	var path = window.location.pathname.split('/').pop()
+	var isIndex = path === '' || path === 'index.html' ? 'index' : ''
+	return window.req().get('/info', { params: { from: isIndex } })
 }
 
 window.GetAchievement = ({ name }) => {
@@ -82,7 +90,7 @@ window.GetAchievement = ({ name }) => {
 }
 
 window.StartLottery = () => {
-	// is_winning	    是否中獎	             boolean
+	// isWinning	    是否中獎	             boolean
 	// type	            獎項	                integer
 	// lottery_id	    抽獎id	                integer
 	// isInfo	        是否需要填寄送資料	       boolean
@@ -107,3 +115,13 @@ window.SendInfo = ({ name, phone, email, address, lottery_id }) => {
 		lottery_id,
 	})
 }
+
+window.CheckBind = () => {
+	axios.get(window.baseURL + '/isBind').then(({ data }) => {
+		if (!data.isBind) {
+			window.location.href = 'https://liff.line.me/1655235209-YmOz1vaz'
+		}
+	})
+}
+
+// window.CheckBind()

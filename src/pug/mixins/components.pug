@@ -6,11 +6,11 @@ mixin coin(imgSrc, coin, type)
 			.coin.f70 #{coin}
 
 		if type==='goDraw'
-			div.btn(class='goDraw' @click.prevent="GoToURL('store.html')")
+			div.btn(class='goDraw' @click.prevent="ReLottery")
 				p.f34
 					| 馬上抽
 		else
-			div.btn(class='small' @click.prevent="GoToURL('store.html')")
+			div.btn(class='small' @click.prevent="GoToURL('./store.html')")
 				p.f34
 					| 存健康幣
 					br
@@ -24,11 +24,11 @@ mixin vue_coin(imgSrc, coin, type)
 			.coin.f70 #{coin}
 
 		if type==='goDraw'
-			div.btn(class='goDraw' @click.prevent="GoToURL('store.html')")
+			div.btn(class='goDraw' @click.prevent="ReLottery")
 				p.f34
 					| 馬上抽
 		else
-			div.btn(class='small' @click.prevent="GoToURL('store.html')")
+			div.btn(class='small' @click.prevent="GoToURL('./store.html')")
 				p.f34
 					| 存健康幣
 					br
@@ -48,7 +48,7 @@ mixin ads
 
 mixin linePoint(point, des, ps)
 	.point_wrap
-		img(src="images/linepoint.png", alt="")
+		img(src="images/linepoint.png" alt="")
 		h6.f50 #{point}點
 	b.f26(style="color: #44150d") &nbsp;#{des}
 	br
@@ -65,12 +65,12 @@ mixin pop(type, isVue, typePop, typeClose)
 				img.cow(src="images/cow_success.png" alt="")
 				p.f50 恭喜您成功獲得
 				p.f_red.f34.W100
-					| 『三獎』
+					| 『{{lottery.title}}』
 					br
-					font.f50.W100 Switch健身環組
-				img.award(src="images/switch.png" alt="")
+					font.f50.W100 {{lottery.name}}
+				img.award(:src="lottery.icon" alt="")
 
-				+btn
+				div.btn(@click.prevent="GoToURL('./form.html')")
 					p.f34 領取獎品
 
 			else if type==='failure'
@@ -79,6 +79,8 @@ mixin pop(type, isVue, typePop, typeClose)
 					font.f_red.W100 很可惜!
 					br
 					| 您沒有抽中好禮喔
+					br
+					| 再接再勵! 記得每天參加累積更多抽獎機會喔!
 				img.milk(src="images/milkcup.png" alt="")
 
 				+btn
@@ -93,6 +95,7 @@ mixin pop(type, isVue, typePop, typeClose)
 				p.f34 首
 					font.f_red &nbsp;7&nbsp;
 					| 日登入，天天有驚喜
+				p.f34 有機會拿到Line Points 30點好禮喔!
 				.login_list
 					ul.f23
 						li(v-bind:class="{ done: info.signInCount>=1 }")
@@ -190,20 +193,8 @@ mixin pop(type, isVue, typePop, typeClose)
 					a(href="pop_login.html")
 						p.f34 立即領取
 
-			else if typePop==='login_award_5'
-				h3.f55 登入成功!
-				h4.f45
-					span 獲得
-					span LINE Points
-					span.f80 $30
-				.img_wrap
-					img.gift(src="images/openbox.gif" alt="")
-					img.pure_coin(src="images/linepoint.png" alt="")
-				div.btn(@click.prevent="GetRewardWithMessage")
-					a(href="pop_login.html")
-						p.f34 立即領取
 
-			else if typePop==='login_award_6'
+			else if typePop==='login_award_5'
 				h3.f55 登入成功!
 				h4.f45
 					span 獲得
@@ -217,7 +208,7 @@ mixin pop(type, isVue, typePop, typeClose)
 					a(href="pop_login.html")
 						p.f34 立即領取
 
-			else if typePop==='login_award_7'
+			else if typePop==='login_award_6'
 				h3.f55 登入成功!
 				h4.f45
 					span 獲得
@@ -228,6 +219,19 @@ mixin pop(type, isVue, typePop, typeClose)
 					//- linepoint.png / momo.png / Hcoin.png
 					img.pure_coin(src="images/Hcoin.png" alt="")
 				div.btn(@click.prevent="GetReward")
+					a(href="pop_login.html")
+						p.f34 立即領取
+
+			else if typePop==='login_award_7'
+				h3.f55 登入成功!
+				h4.f45
+					span 獲得
+					span LINE Points
+					span.f80 $30
+				.img_wrap
+					img.gift(src="images/openbox.gif" alt="")
+					img.pure_coin(src="images/linepoint.png" alt="")
+				div.btn(@click.prevent="GetRewardWithMessage")
 					a(href="pop_login.html")
 						p.f34 立即領取
 
@@ -245,32 +249,36 @@ mixin pop(type, isVue, typePop, typeClose)
 				h4.f34
 					b &nbsp;
 
+			else if type==='share_success'
+				h3.f55.f_red
+					b 分享成功
+				h4.f34
+					b &nbsp;
+
 			else if type==='close_award'
-				img.note(src="images/note.svg", alt="")
+				img.note(src="images/note.svg" alt="")
 				h3.f55.f_red
 					b 您還沒領獎喔!
-				h4.f34
-					b 確定要關閉嗎?
 				.btn_area
 					+btn
+						a(href="./form.html")
+							p.f34 前往領獎
+					div.btn(@click.prevent=typeClose)
 						a(href="#")
-							p.f34 確定
-					+btn
-						a(href="#")
-							p.f34 取消
+							p.f34 關閉
 
 			else if type==='rules'
 				.scroll
 					.present_title
-						img(src="images/title_note.svg", alt="", width="70%")
-						img.line(src="images/title_line03.svg", alt="")
+						img(src="images/title_note.svg" alt="" width="70%")
+						img.line(src="images/title_line03.svg" alt="")
 					p.f34.under_line
 						font 獎項
 
 					.dash_box
 						.item
 							h2.f_red.f45 Switch健身環組
-							img(src="images/switch.png", alt="", width="90%")
+							img(src="images/switch.png" alt="" width="90%")
 							p.f26 6組/ 每月抽出兩組
 
 						.item
@@ -278,7 +286,7 @@ mixin pop(type, isVue, typePop, typeClose)
 								| 身心純淨之旅
 								br
 								font.f32 涵碧樓湖景雙人套房
-							img(src="images/hotel.png", alt="", width="50%")
+							img(src="images/hotel.png" alt="" width="50%")
 							p.f26 3份/ 每月抽出一份
 
 						.item
@@ -291,12 +299,12 @@ mixin pop(type, isVue, typePop, typeClose)
 
 						.item
 							h2.f_red.f45 克寧限量馬克杯
-							img(src="images/cup.png", alt="", width="45%", style="margin-left: -10%; padding: 10px 0;")
+							img(src="images/cup.png" alt="" width="45%" style="margin-left: -10%; padding: 10px 0;")
 							p.f26 480個/ 每月抽出160個
 
 						.item
 							h2.f_red.f45 克寧純生乳奶粉隨手包
-							img(src="images/milkbag.png", alt="", width="30%", style="padding: 10px 0;")
+							img(src="images/milkbag.png" alt="" width="30%" style="padding: 10px 0;")
 							p.f26 720包/ 每月抽出240包
 
 					p.f34.under_line

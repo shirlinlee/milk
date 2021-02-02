@@ -41,14 +41,14 @@
         <!-- Sidebar toggle button--><img class="logo" src="images/logo.png" alt="">
         <nav role="navigation">
           <ul id="menu"><a href="./index.html">
-              <li class="f45"><span>回首頁</span></li></a><a href="/upload.html">
-              <li class="f45"><span>上傳照片</span></li></a><a href="store.html">
-              <li class="f45"><span>立即存健康抽獎</span></li></a><a href="/pop_rules.html">
-              <li class="f45"><span>活動辦法</span></li></a><a href="https://business.facebook.com/972686996155075/posts/3680394908717590/" target="_blank">
+              <li class="f45"><span>回首頁</span></li></a><a href="./upload.html">
+              <li class="f45"><span>上傳照片</span></li></a><a href="./store.html">
+              <li class="f45"><span>立即存健康抽獎</span></li></a><a href="./pop_rules.html">
+              <li class="f45"><span>活動辦法</span></li></a><a href="javascript:alert('敬請期待');">
               <li class="f45"><span>得獎名單</span></li></a></ul>
           <div id="menuToggle"><span></span><span></span><span></span></div>
         </nav>
-      </header><img class="kv" src="images/title.svg" alt="">
+      </header><img class="kv" src="images/title.svg?v=1" alt="">
       <main class="app-content">
         <div class="coin_wrap">
           <div class="photo" style="background-image: url('images/userphoto.png')"></div>
@@ -56,7 +56,7 @@
             <h5 class="f26">累積健康幣</h5>
             <div class="coin f70">140</div>
           </div>
-          <div class="btn goDraw" @click.prevent="GoToURL('store.html')">
+          <div class="btn goDraw" @click.prevent="ReLottery">
             <p class="f34">馬上抽</p>
           </div>
         </div>
@@ -85,12 +85,8 @@
       <script src="js/plugins/slick.min.js"></script>
       <script src="https://static.line-scdn.net/liff/edge/2/sdk.js" charset="utf-8"></script>
       <script src="https://cdn.jsdelivr.net/npm/vconsole@3.2.0/dist/vconsole.min.js"></script>
-      <script>
-        var vConsole = new VConsole();
-        
-      </script>
-      <script src="js/request.js" defer></script>
-      <script src="js/main.js" defer></script>
+      <script src="js/request.js?v=1"></script>
+      <script src="js/main.js?v=1" defer></script>
       <!-- Page specific javascripts-->
       <!-- Page specific css-->
       <!-- Google analytics script-->

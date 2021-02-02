@@ -8,3 +8,7 @@ $(function () {
 		$(this).toggleClass('show')
 	})
 })
+
+if (window.location.hostname === 'cell.bigc.tw') {
+	var vConsole = new VConsole()
+}

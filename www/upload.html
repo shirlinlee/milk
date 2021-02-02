@@ -41,14 +41,14 @@
         <!-- Sidebar toggle button--><img class="logo" src="images/logo.png" alt="">
         <nav role="navigation">
           <ul id="menu"><a href="./index.html">
-              <li class="f45"><span>回首頁</span></li></a><a href="/upload.html">
-              <li class="f45"><span>上傳照片</span></li></a><a href="store.html">
-              <li class="f45"><span>立即存健康抽獎</span></li></a><a href="/pop_rules.html">
-              <li class="f45"><span>活動辦法</span></li></a><a href="https://business.facebook.com/972686996155075/posts/3680394908717590/" target="_blank">
+              <li class="f45"><span>回首頁</span></li></a><a href="./upload.html">
+              <li class="f45"><span>上傳照片</span></li></a><a href="./store.html">
+              <li class="f45"><span>立即存健康抽獎</span></li></a><a href="./pop_rules.html">
+              <li class="f45"><span>活動辦法</span></li></a><a href="javascript:alert('敬請期待');">
               <li class="f45"><span>得獎名單</span></li></a></ul>
           <div id="menuToggle"><span></span><span></span><span></span></div>
         </nav>
-      </header><img class="kv" src="images/title.svg" alt="">
+      </header><img class="kv" src="images/title.svg?v=1" alt="">
       <main class="app-content">
         <div class="coin_wrap">
           <div class="photo" v-bind:style="{ backgroundImage: 'url(' + imgAvatar + ')' }"></div>
@@ -56,16 +56,16 @@
             <h5 class="f26">累積健康幣</h5>
             <div class="coin f70">{{info.coins}}</div>
           </div>
-          <div class="btn goDraw" @click.prevent="GoToURL('store.html')">
-            <p class="f34">馬上抽</p>
+          <div class="btn small" @click.prevent="GoToURL('./store.html')">
+            <p class="f34">存健康幣<br/>立即抽獎</p>
           </div>
         </div>
         <div class="upload" v-if="upload.step==1">
           <label for="file_0">
-            <p class="f45">請上傳一張<br><font class="f_red">今日飲用克寧牛奶</font>的美照</p><img class="img-thumbnail" :src="upload.imgThumbnail" alt="">
+            <p class="f45">請上傳一張<br><font class="f_red">今日飲用克寧牛奶</font>的美照</p>
             <div class="warning">
-              <p class="f_red f26">照片需含有克寧純生乳/全家人奶粉系列產品和一杯牛奶哦!</p>
-            </div>
+              <p class="f_red f28">照片需含有克寧純生乳/全家人奶粉系列產品和一杯牛奶，不然<span class="f32" style="background-color:red; color:white; font-weight:bold;">將失去得獎資格</span></p>
+            </div><img class="img-thumbnail" :src="upload.imgThumbnail" alt="">
           </label>
           <input type="file" id="file_0" name="uploadedimages0" accept="image/*" hidden @change="HandleUpload" ref="fileInput">
           <div class="btn_area">
@@ -75,25 +75,36 @@
                 <p class="f34">確認送出</p></a></div>
           </div>
         </div>
-        <div class="upload_get" v-if="upload.step==2">
-          <p class="f45 f_red">上傳成功獲得健康幣<img src="images/title_line.svg" alt=""></p>
-          <div class="earn_coin">
-            <p>1</p><img src="images/Hcoin.png" alt="">
-          </div>
-          <div class="comebined_img"><img class="img-merged" :src="upload.imgMerged" alt=""></div>
-          <div class="btn_area">
-            <div class="btn"><a href="./upload.html">
-                <p class="f34 btn_upload">重新上傳</p></a></div>
-            <div class="btn" @click.prevent="SendShare"><a href="#">
-                <p class="f34">立即分享</p></a></div>
-          </div>
-        </div>
-        <div class="warning"><br>
+        <div class="warning" v-if="upload.step==1"><br>
           <ul class="f26">
             <li>一天僅能上傳一次照片，重複上傳恕只能得到一枚健康幣</li>
             <li>請勿重複上傳相同的照片，經發現將取消獲獎資格</li>
             <li>請勿盜用他人的照片，經發現將取消獲獎資格</li>
           </ul>
+        </div>
+        <div class="upload_get" v-if="upload.step==2">
+          <p class="f45 f_red" v-if="picture.isFirst == true">上傳成功獲得健康幣<img src="images/title_line.svg" alt=""></p>
+          <p class="f45 f_red" v-if="picture.isFirst == false">上傳成功<img src="images/title_line.svg" alt=""></p>
+          <div class="earn_coin" v-if="picture.isFirst == true">
+            <p>1</p><img src="images/Hcoin.png" alt="">
+          </div>
+          <div class="comebined_img"><img class="img-merged" :src="upload.imgMerged" alt=""></div>
+          <div class="btn_area">
+            <div class="btn"><a href="./index.html">
+                <p class="f34 btn_upload">回首頁</p></a></div>
+            <div class="btn" @click.prevent="SendShare"><a href="#">
+                <p class="f34">立即分享</p></a></div>
+          </div>
+        </div>
+        <div class="warning" v-if="upload.step==2">
+          <p class="f_red f26">小秘訣: 分享照片給親朋好友可以獲得一枚健康幣哦 (一天僅限一次)</p>
+        </div>
+        <div class="pop" style="display: none" v-show="popShareSuccess">
+          <div class="content share_success">
+            <div class="close" @click.prevent="ClosePopShareSuccess">X</div>
+            <h3 class="f55 f_red"><b>分享成功</b></h3>
+            <h4 class="f34"><b>&nbsp;</b></h4>
+          </div>
         </div>
       </main>
       <!-- Essential javascripts for application to work-->
@@ -104,16 +115,12 @@
       <script src="js/plugins/slick.min.js"></script>
       <script src="https://static.line-scdn.net/liff/edge/2/sdk.js" charset="utf-8"></script>
       <script src="https://cdn.jsdelivr.net/npm/vconsole@3.2.0/dist/vconsole.min.js"></script>
-      <script>
-        var vConsole = new VConsole();
-        
-      </script>
-      <script src="js/request.js" defer></script>
-      <script src="js/main.js" defer></script>
+      <script src="js/request.js?v=1"></script>
+      <script src="js/main.js?v=1" defer></script>
       <!-- Page specific javascripts-->
       <script src="js/plugins/vue.min.js"></script>
       <script type="text/javascript" src="js/plugins/slick.min.js"></script>
-      <script type="text/javascript" src="js/index.js?v=2"></script>
+      <script type="text/javascript" src="js/index.js?v=11"></script>
       <!-- Page specific css-->
       <!-- Google analytics script-->
       <script type="text/javascript">

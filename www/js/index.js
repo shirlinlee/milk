@@ -11,9 +11,12 @@ var Index = {
 					gifStoreTree: null,
 					isMounted: false,
 					isShowGuide: false,
+					popRules: false,
+					popPersonal: false,
 					popLogin: false,
 					popReceive: false,
 					popReceiveShort: false,
+					popShareSuccess: false,
 					popLoginAward_1: false,
 					popLoginAward_2: false,
 					popLoginAward_3: false,
@@ -23,6 +26,7 @@ var Index = {
 					popLoginAward_7: false,
 					popSuccess: false,
 					popFailure: false,
+					popClose: false,
 					info: {
 						achievements: [
 							// {
@@ -43,13 +47,29 @@ var Index = {
 						reward_type: null,
 						reward_item: null,
 						coins: '',
+						isLotteried: false,
+						lottery: {
+							type: null,
+							lottery_id: null,
+							icon: null,
+							title: null,
+							name: null,
+						},
 					},
 					lottery: {
-						is_winning: null,
+						isWinning: null,
 						type: null,
+						title: null,
+						name: null,
+						icon: null,
 						lottery_id: null,
 						isInfo: null,
 						isInfoNotFill: null,
+					},
+					picture: {
+						id: '',
+						image_url: '',
+						isFirst: '',
 					},
 					upload: {
 						id: '',
@@ -68,20 +88,22 @@ var Index = {
 						mobile: '',
 						email: '',
 						address: '',
-						agree: false,
+						agreeRule: false,
+						agreePersonal: false,
 					},
 				},
 				computed: {},
 
 				methods: {
-					LiffInit() {},
 					LiffGetProfile() {
 						window.liff
 							.getProfile()
-							.then(({ pictureUrl }) => {
-								this.imgAvatar = pictureUrl
+							.then((data) => {
+								this.imgAvatar = data.pictureUrl
 							})
-							.catch((err) => {})
+							.catch((err) => {
+								console.log('getProfile: ', err)
+							})
 					},
 					EnableApp() {
 						this.isMounted = true
@@ -116,7 +138,6 @@ var Index = {
 											'9',
 											'10',
 											'11',
-											'12',
 											'13',
 											'14',
 										],
@@ -145,13 +166,19 @@ var Index = {
 								GetFrame(url).then((frame) => {
 									Crop(e.target.result, 1 / 1).then(
 										(cropped) => {
-											this.upload.imgThumbnail = cropped.toDataURL()
+											this.upload.imgThumbnail = cropped.toDataURL(
+												'image/jpeg',
+												0.5
+											)
 											CoverFrame(
 												cropped,
 												frame,
 												this.upload.type
 											).then((covered) => {
-												this.upload.imgMerged = covered.toDataURL()
+												this.upload.imgMerged = covered.toDataURL(
+													'image/jpeg',
+													0.5
+												)
 											})
 										}
 									)
@@ -201,9 +228,19 @@ var Index = {
 									outputImage.width = outputWidth
 									outputImage.height = outputHeight
 
+									// // 固定大小 360
+									// outputImage.width = 360
+									// outputImage.height = 360
+
 									// draw our image at position 0, 0 on the canvas
 									const ctx = outputImage.getContext('2d')
-									ctx.drawImage(inputImage, outputX, outputY)
+									ctx.drawImage(
+										inputImage,
+										outputX,
+										outputY
+										// 360,
+										// 360
+									)
 
 									resolve(outputImage)
 								}
@@ -217,14 +254,13 @@ var Index = {
 							return new Promise((resolve) => {
 								var c = document.createElement('canvas')
 
-								c.width = frame.width
-								c.height = frame.height
+								c.width = frame.width / 2
+								c.height = frame.height / 2
 
 								var ratioX = c.width / target.width
 								var ratioY = c.height / target.height
 								var ratio = Math.min(ratioX, ratioY)
 								var ctx = c.getContext('2d')
-								console.log(type)
 								var XPosition = type === 'newyear' ? 150 : 0
 								ctx.drawImage(
 									target,
@@ -234,13 +270,7 @@ var Index = {
 									target.height * ratio
 								)
 
-								ctx.drawImage(
-									frame,
-									0,
-									0,
-									frame.width,
-									frame.height
-								)
+								ctx.drawImage(frame, 0, 0, c.width, c.height)
 
 								resolve(c)
 							})
@@ -269,17 +299,16 @@ var Index = {
 							.UploadPicture(this.upload.imgMerged)
 							.then(({ data }) => {
 								// 第一次上傳圖片
-								if (data.isFirst == true) {
+								this.picture = data
+								this.upload.id = this.picture.id
+								if (this.picture.isFirst == true) {
 									this.info.coins++
 									this.GetInfo()
 								}
-								this.upload.id = data.id
+								this.upload.step = 2
 							})
 							.catch((res) => {
 								alert('圖片上傳失敗')
-							})
-							.finally(() => {
-								this.upload.step = 2
 							})
 					},
 					SendShare() {
@@ -289,8 +318,23 @@ var Index = {
 						}
 						liff.shareTargetPicker([
 							{
+								type: 'image',
+								originalContentUrl: this.picture.image_url,
+								previewImageUrl: this.picture.image_url,
+							},
+							{
 								type: 'text',
-								text: 'ID: ' + this.upload.id,
+								text:
+									'好朋友，快來一起參加天天喝克寧存健康活動',
+							},
+							{
+								type: 'text',
+								text:
+									'只要上傳天天喝克寧照片，就有機會抽到涵碧樓之旅、Switch+健身環等超過1500項大禮👇🏼👇🏼',
+							},
+							{
+								type: 'text',
+								text: 'https://maac.io/1ouNl',
 							},
 						])
 							.then((res) => {
@@ -306,6 +350,8 @@ var Index = {
 											console.log(data)
 											if (data.isFirst == true) {
 												this.info.coins++
+												this.GetInfo()
+												this.OpenPopShareSuccess()
 											}
 										})
 										.catch((res) => {
@@ -332,10 +378,16 @@ var Index = {
 							}
 						}
 
-						if (!this.form.agree) {
-							alert('請同意活動辦法')
+						if (!this.info.isLotteried) {
+							alert('目前無獲獎紀錄')
 							return
 						}
+
+						if (!this.form.agreeRule || !this.form.agreePersonal) {
+							alert('請同意活動辦法與個資法')
+							return
+						}
+
 						if (
 							!this.form.name ||
 							!this.form.mobile ||
@@ -345,13 +397,14 @@ var Index = {
 							alert('表單資料未完成')
 							return
 						}
+
 						if (!ValidateEmail(this.form.email)) {
 							alert('Email 格式錯誤')
 							return
 						}
 						window
 							.SendInfo({
-								lottery_id: this.form.id,
+								lottery_id: this.info.lottery.lottery_id,
 								name: this.form.name,
 								phone: this.form.mobile,
 								email: this.form.email,
@@ -440,25 +493,31 @@ var Index = {
 						this[popAward] = true
 					},
 					GetInfo() {
-						window.GetInfo().then(({ data }) => {
-							this.info = data
-						})
+						window
+							.GetInfo()
+							.then(({ data }) => {
+								this.info = data
+								console.log(data)
+							})
+							.catch((err) => {
+								console.log(err.response)
+							})
 					},
 					GetAchievement(name) {
 						window
 							.GetAchievement({ name })
 							.then((res) => {
-								console.log(res.data)
+								this.OpenPopReceiveShort()
+								this.GetInfo()
 							})
 							.catch((err) => {
-								console.log(err.response)
-							})
-							.finally(() => {
-								this.OpenPopReceiveShort()
+								console.log(err)
+								alert('領取失敗，請聯繫客服')
 							})
 					},
 					GetReward() {
 						this.ClosePopAward()
+						this.GetInfo()
 						this.popReceiveShort = true
 					},
 					GetRewardWithMessage() {
@@ -470,11 +529,11 @@ var Index = {
 									{
 										type: 'text',
 										text:
-											'恭喜您獲得克寧晚安奶粉momo$50元折價序號',
+											'恭喜您獲得克寧純生乳奶粉momo$50元折價序號',
 									},
 									{
 										type: 'text',
-										text: '請複製以下序號使用👇🏼👇🏼👇🏼',
+										text: '請複製以下序號使用👇🏼👇🏼',
 									},
 									{
 										type: 'text',
@@ -488,7 +547,7 @@ var Index = {
 									{
 										type: 'text',
 										text:
-											'恭喜您通過審查獲得LINE POINTS 30點，請點擊以下連結儲值👇🏼👇🏼👇🏼',
+											'恭喜您獲得LINE POINTS 30點，請點擊以下連結儲值👇🏼👇🏼',
 									},
 									{
 										type: 'text',
@@ -499,15 +558,14 @@ var Index = {
 							default:
 								break
 						}
-						liff.sendMessages(message)
+						console.log('(sendMessages) liff.id: ', window.liff.id)
+						window.liff.sendMessages(message)
 							.then(() => {
-								console.log('message sent')
+								this.popReceive = true
 							})
 							.catch((err) => {
-								console.log('error', err)
-							})
-							.finally((err) => {
-								this.popReceive = true
+								console.log(err)
+								alert('領取失敗，請聯繫客服')
 							})
 					},
 					PlayLottery() {
@@ -518,35 +576,47 @@ var Index = {
 						window
 							.StartLottery()
 							.then(({ data }) => {
-								const {
-									is_winning,
-									type,
-									lottery_id,
-									isInfo,
-									isInfoNotFill,
-								} = data
 								this.lottery = data
-
-								if (this.lottery.is_winning) {
+								console.log('window.StartLottery(): ', data)
+								if (this.lottery.isWinning) {
 									this.OpenPopSuccess()
 								} else {
 									this.OpenPopFailure()
 								}
+								this.GetInfo()
 							})
 							.catch(() => {
-								this.OpenPopFailure()
+								alert('抽獎失敗，請聯繫客服')
 							})
 					},
 					ReLottery() {
 						this.ClosePopSuccess()
 						this.ClosePopFailure()
+
+						if (this.info.coins <= 0) {
+							alert('對不起，您的健康幣餘額不足')
+							return
+						}
 						this.gifStoreTree.play()
+					},
+					OpenPopClose() {
+						this.popClose = true
+					},
+					ClosePopClose() {
+						this.popClose = false
 					},
 					OpenPopLogin() {
 						this.popLogin = true
 					},
 					ClosePopLogin() {
 						this.popLogin = false
+					},
+					OpenPopShareSuccess() {
+						this.popShareSuccess = true
+					},
+					ClosePopShareSuccess() {
+						this.GetInfo()
+						this.popShareSuccess = false
 					},
 					OpenPopReceiveShort() {
 						this.popReceiveShort = true
@@ -590,17 +660,26 @@ var Index = {
 					this.isMounted = true
 					// this.isShowGuide = true
 					// this.popLoginAward_7 = true
-					this.LiffInit()
+					var liffId =
+						window.location.hostname === 'klim-healthcoin.bigc.tw'
+							? '1655235209-Y2846394'
+							: '1655275883-ax5XoZAk'
+					console.log('(before init) liff.id: ', window.liff.id)
 					window.liff
 						.init({
-							liffId: '1655275883-ax5XoZAk',
+							liffId,
 						})
 						.then(() => {
 							// if (!liff.isInClient()) {
 							// 	alert('請使用 LINE 開啟')
 							// 	return
 							// }
+							console.log(
+								'(after init) liff.id: ',
+								window.liff.id
+							)
 							window.GetInfo().then(({ data }) => {
+								console.log('window.GetInfo().data : ', data)
 								this.info = data
 								if (this.info.isFirst) {
 									this.ShowGuide()
@@ -614,10 +693,13 @@ var Index = {
 									this.popLogin = true
 									this.ShowAward()
 								}
+
+								if (this.info.isLotteried) {
+									this.OpenPopClose()
+								}
 							})
 							liff.getFriendship()
 								.then((data) => {
-									console.log('liff.getFriendship: ', data)
 									if (data.friendFlag) {
 										// user has friendship
 										window.accessToken = liff.getAccessToken()
@@ -636,11 +718,11 @@ var Index = {
 									}
 								})
 								.catch((err) => {
-									console.log(err)
+									console.log('getFriendship', err)
 								})
 						})
 						.catch((err) => {
-							console.log(err)
+							console.error(err)
 						})
 
 					tree = document.getElementById('gifStoreTree')
@@ -655,7 +737,7 @@ var Index = {
 							},
 						})
 						this.gifStoreTree.load(() => {
-							this.gifStoreTree.play()
+							// this.gifStoreTree.play()
 						})
 					}
 

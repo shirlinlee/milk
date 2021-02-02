@@ -32,7 +32,7 @@
             <div class="f_red f26">請填入真實資料，以利活動小組進行後續中獎通知，<br>若是資料有誤，將無法參與本活動唷!</div>
           </div>
           <h3 class="f34 under_line"><font>獎品內容</font></h3>
-          <h4 class="f50 f_red">{{form.award}}</h4>
+          <h4 class="f50 f_red">{{info.isLotteried ? info.lottery.name : '尚未中獎'}}</h4>
           <form>
             <div class="tr f34">
               <label>姓名</label>
@@ -51,8 +51,12 @@
               <input type="text" v-model="form.address">
             </div>
             <div class="agree_wrap">
-              <input id="agreement" type="checkbox" v-model="form.agree">
-              <label class="f26" for="agreement">我已詳細閱讀<a class="f_red" href="rules.html">活動辦法</a>與<a class="f_red" href="person.html">個資法</a>並同意該聲明書</label>
+              <input id="agreementRule" type="checkbox" v-model="form.agreeRule">
+              <label class="f26" for="agreementRule">我已詳細閱讀<a class="f_red" @click.prevent="popRules=true">活動辦法</a></label>
+            </div>
+            <div class="agree_wrap" style="margin-top: 0px;">
+              <input id="agreementPersonal" type="checkbox" v-model="form.agreePersonal">
+              <label class="f26" for="agreementPersonal">我已詳細閱讀<a class="f_red" @click.prevent="popPersonal=true">個資法</a>並同意該聲明書</label>
             </div>
           </form>
           <div class="btn submit" @click.prevent="SendForm"><a href="sent_form.html">
@@ -60,9 +64,150 @@
         </div>
         <div class="sent_page" v-if="form.step=='sent'"><img class="cow" src="images/cow.png" alt="">
           <h6 class="f50 f_red">您的寄送資料已經成功送出!</h6>
-          <p class="f34">待活動小組查驗您的資格，<br>若確認您的符合得獎資格，<br>贈品將於OO日內統一寄送!<br><br>有任何問題請聯繫活動專線：0000000</p>
-          <div class="btn submit"><a href="./form.html">
-              <p class="f34">確認</p></a>
+          <p class="f34">待活動小組查驗您的資格，<br>若確認您符合得獎資格，將分三梯次寄送：<br><br>第一梯次中獎:<br>2021/1/29~2021/2/28 (含)中獎，2021/3/31前(含)完成寄送。<br><br>第二梯次中獎:<br>2021/3/1~2021/3/31(含)中獎，2021/4/30前(含)完成寄送。<br><br>第三梯次中獎:<br>2021/4/1~2021/4/30(含)中獎，2021/5/30前(含)完成寄送。<br><br>有任何問題請聯繫活動專線： 0809-00-5220</p>
+          <div class="btn submit"><a href="./index.html">
+              <p class="f34">回首頁</p></a>
+          </div>
+        </div>
+        <div class="pop" v-if="popRules">
+          <div class="content rules">
+            <div class="close" @click.prevent="popRules=false">X</div>
+            <div class="scroll">
+              <div class="present_title"><img src="images/title_note.svg" alt="" width="70%"><img class="line" src="images/title_line03.svg" alt=""></div>
+              <p class="f34 under_line"><font>活動期間</font></p>
+              <div class="txt">
+                <p class="f26 t_left">2021/1/29 00:00至2021/4/30 23:59<br></p>
+              </div>
+              <p class="f34 under_line"><font>活動辦法</font></p>
+              <div class="txt">
+                <ul class="f26 t_left">
+                  <li>參加者每上傳一張符合指定規則「內含克寧純生乳/克寧全家人奶粉系列產品+一杯牛奶」的照片，即可獲得一枚健康幣，一枚健康幣可抽一次獎。</li>
+                  <li>上傳的每張照片皆須符合「內含克寧純生乳或是克寧全家人奶粉系列產品+一杯牛奶」規則，中獎時方屬有效，若有任一照片經主辦單位檢查後不符合規則，將取消中獎者資格。</li>
+                  <li>不得重複上傳相同的照片，或與他人重複上傳相同的照片，經主辦單位檢查後重複者，將取消獲獎資格。</li>
+                  <li>一天僅限上傳一張照片。</li>
+                  <li>上傳照片若符合以下指定條件者，則可以累積更多健康幣：</li>
+                  <div class="detail f26">
+                    <p class="circle">達成以下成就指定條件，即可解鎖該成就</p>
+                    <p class="circle">每項成就僅能解鎖一次，惟親朋好友獎不在此限</p>
+                    <p class="circle">每人可解鎖多項成就，每項成就可同時累積兌換</p>
+                    <div class="t_center">
+                      <h4 class="f32">成就種類</h4>
+                    </div><br>
+                    <p class="f_red title">見面禮：</p>
+                    <p>上傳第一張照片，健康幣<font class="f_red">+3</font></p>
+                    <p class="f_red title">邁向健康獎：</p>
+                    <p>累積上傳3天照片者，健康幣<font class="f_red">+5</font></p>
+                    <p class="f_red title">健康鼓勵獎：</p>
+                    <p>累積上傳5天照片者，健康幣<font class="f_red">+10</font></p>
+                    <p class="f_red title">頭好壯壯獎：</p>
+                    <p>累積上傳7天照片者，健康幣<font class="f_red">+15</font></p>
+                    <p class="f_red title">超級健康獎：</p>
+                    <p>連續3天上傳照片者，健康幣<font class="f_red">+10</font></p>
+                    <p class="f_red title">親朋好友獎：</p>
+                    <p>上傳照片並分享該合成圖框給好友者，健康幣<font class="f_red">+1</font></p>
+                    <p class="f_red title">新春特別獎：</p>
+                    <p>新春年假期間(2/10-2/16)上傳1次照片者，健康幣<font class="f_red">+3</font></p>
+                  </div>
+                  <li>每位參加者可重複中獎，參與次數越多，中獎機率越大</li>
+                  <li>所有健康幣需於2021/4/30 23:59前使用完畢，逾期視同放棄所有健康幣抽獎權利。</li>
+                </ul>
+              </div>
+              <p class="f34 under_line"><font>活動獎項</font></p>
+              <div class="dash_box">
+                <div class="item">
+                  <div class="t_center">
+                    <h4 class="f32">首獎</h4>
+                  </div>
+                  <h2 class="f_red f45" style="padding-top:0">身心純淨之旅<br><font class="f32">涵碧樓湖景套房(雙人房)假日住宿券</font></h2><img src="images/hotel.png" alt="" width="50%">
+                  <p class="f26">共3份/ 每月(2021.2-4月)抽出1份</p>
+                </div>
+                <div class="item">
+                  <div class="t_center">
+                    <h4 class="f32">二獎</h4>
+                  </div>
+                  <h2 class="f_red f45" style="padding-top:0">Switch+健身環組合</h2><img src="images/switch.png" alt="" width="90%">
+                  <p class="f26">共6組/ 每月(2021.2-4月)抽出2套</p>
+                </div>
+                <div class="item">
+                  <div class="t_center">
+                    <h4 class="f32">天天健康獎</h4>
+                  </div>
+                  <h2 class="f_red f45" style="padding-top:0">克寧限量馬克杯</h2><img src="images/cup.png" alt="" width="45%" style="margin-left: -10%; padding: 10px 0;">
+                  <p class="f26">共480個/ 每月(2021.2-4月)抽出160個</p>
+                </div>
+                <div class="item">
+                  <h2 class="f_red f45">克寧純生乳奶粉隨手包</h2><img src="images/milkbag.png" alt="" width="30%" style="padding: 10px 0;">
+                  <p class="f26">共720包/ 每月(2021.2-4月)抽出240包</p>
+                </div>
+                <div class="item">
+                  <h2 class="f_red f45">LINE Points</h2>
+                  <div class="point_wrap"><img src="images/linepoint.png" alt=""/>
+                    <h6 class="f50">50點</h6>
+                  </div><b class="f26" style="color: #44150d">&nbsp;90組/每月抽出30份</b><br/><b class="f26" style="color: #cc0000">&nbsp;(兌換效期至2022.6.28)</b><br><br>
+                  <div class="point_wrap"><img src="images/linepoint.png" alt=""/>
+                    <h6 class="f50">30點</h6>
+                  </div><b class="f26" style="color: #44150d">&nbsp;300組/每月抽出100份</b><br/><b class="f26" style="color: #cc0000">&nbsp;(兌換效期至2022.6.28)</b>
+                </div>
+              </div>
+              <p class="f34 under_line"><font>獎品兌獎方式</font></p>
+              <div class="txt">
+                <ul class="f26 t_left">
+                  <li>每次抽獎即可立即得知有無中獎，中獎審核及獎品寄送作業時間請見以下：</li>
+                  <div class="detail f26">
+                    <p class="circle">第一梯次中獎: 2021/1/29~2021/2/28 (含)中獎，2021/3/31前(含)完成寄送。</p>
+                    <p class="circle">第二梯次中獎: 2021/3/1~2021/3/31(含)中獎，2021/4/30前(含)完成寄送。</p>
+                    <p class="circle">第三梯次中獎: 2021/4/1~2021/4/30(含)中獎，2021/5/30前(含)完成寄送</p>
+                  </div>
+                  <li>若抽中以下獎品: 涵碧樓湖景套房(雙人房)假日住宿券、Switch+健身環組合、克寧限量馬克杯、克寧純生乳奶粉隨手包。系統將發送寄送資料填寫頁面，填寫完畢後將由活動小組專人與中獎者聯繫。若因寄送資料填寫有誤、未填寫等情況而導致獎品無法寄出，則視為自動棄權，不具中獎者資格。</li>
+                  <li>中獎者資料經審核無誤後，獎項將於中獎後45個工作天內寄送完成。</li>
+                  <li>克寧奶粉Facebook官方粉絲專頁 (https://www.facebook.com/KLIM.Taiwan/) 將統一於3/5、4/9、5/7公告上個月所有獎項中獎名單，以供參加者查閱。</li>
+                  <li>本活動限設籍中華民國之本國公民始得參加，參加者必須年滿20足歲。</li>
+                  <li>依中華民國稅法規定，獎項價值NT$1,001元(含)以上者，需繳交身分證影本供報稅使用。獎項價值超過NT$20,000元，依法需繳交10％稅金，填寫扣繳憑單並於次年度寄發所得扣(免)繳憑單。中獎者將於次年度收到主辦單位開立之中獎所得扣繳憑單。中獎者若不願意配合，則視為自動棄權，不具中獎者資格。中獎人同意依中華民國相關稅法規定繳納稅捐，並同意主辦單位得依相關法令代扣(繳納)相關稅務。財政部臺北國稅局實施「憑單無紙化」，自2014年起所得稅各式憑單符合一定情形者，憑單填發單位如期向國稅局辦理憑單申報後，原則上免寄發憑單給納稅義務人。中獎者需於隔年5月底前完成申報。</li>
+                  <li>《克寧奶粉活動小組》將依據寄送資料填寫頁面資訊，主動聯繫獎項價值超過NT$1,001元(含)以上中獎者，並提供得獎領據，請中獎者填妥後於2021.5.30前(以郵戳為憑)將「得獎領據」+「身分證正反面影本」掛號寄給《克寧奶粉活動小組》，逾期視為放棄該中獎權利，不得向主辦單位要求任何補償。</li>
+                  <li>主辦單位使用參加者所提供之個人資料(包括: 姓名、生日、手機/市內電話、戶籍地址、獎品收件地址以及身分證正反面影本內有的資料)於此次活動用途及嗣後的行銷活動，且遵守【個人資料保護法】相關規定，以維護參加者權益。中獎者一經寄出上條所述之資料，即視為同意中獎相關個人資料由主辦單位於活動範圍內進行蒐集、電腦處理及利用，但不做其他用途，中獎者並授權主辦單位在必要時公開公布部分姓名。</li>
+                </ul>
+              </div>
+              <p class="f34 under_line"><font>注意事項</font></p>
+              <div class="txt">
+                <ul class="f26 t_left">
+                  <li>此次活動由虎龍犬工作室協助台灣雀巢股份有限公司舉辦，主辦單位保留變更、修改或終止本活動之權利；主辦單位並有權就本活動所有事宜進行審查並做出解釋，任何人均不得異議。</li>
+                  <li>參加者同意所有參加者所留存或產生之任何參與活動的資料及紀錄，皆以主辦單位的電腦系統與時間的紀錄為主。如有任何因電腦、網路、電話、技術或不可歸責於主辦單位之事由，而使參加者送出之資料有延遲、遺失、錯誤、無法辨識之情況，主辦單位不承擔任何相關責任，參加者不得因此異議。</li>
+                  <li>以任何駭客或其它非法行為破壞活動規則者，中獎無效，主辦單位對有關參加者或中獎者保留法律追訴權。</li>
+                  <li>如因寄送過程中發生信件遺失、信封破損或其他不可歸責於主辦單位之原因，導致兌獎憑證遺失或無法辨識，或中獎者資料填寫不完整或不清楚，導致未能或不符資格兌獎，中獎者同意主辦單位無需為此負任何責任。</li>
+                  <li>活動參加者需須保證所有填寫或提出之資料均為真實、正確且有效，並未冒用或盜用他人資料，如有不實、不正確或無效資訊，主辦單位將取消其中獎資格，並就其損害主辦單位或任何第三方權益，保留一切民、刑事追訴之責。</li>
+                  <li>主辦單位有權檢視中獎者兌獎情形，若涉及蓄意操作之不正當行為，如影印、毀損、塗改或偽造中獎憑證、侵入抽獎系統、大量灌票、輸入人頭帳戶抽獎等，足以影響活動抽獎公正性之中獎者，均視為無效中獎，主辦單位並保留法律追訴權。</li>
+                  <li>本活動之所有獎品不得轉換、轉讓或折換現金。</li>
+                  <li>活動主辦單位並非此次活動之所有獎品供應商，故不會承擔任何獎品及售後服務之責任。而獎品價值以贊助商公布之零售價或定價為準，參加者不得異議。</li>
+                  <li>獎項以公布於本網站上的資料為準，如遇不可抗力之因素，主辦單位保留修改活動與獎項細節的權利，無須事前通知，並有權對本活動所有事宜作出解釋或裁決。如本活動因不可抗力之特殊原因無法執行時，主辦單位有權決定取消、終止、修改或暫停本活動，如有任何未盡事宜均以主辦單位依中華民國法律解釋之。</li>
+                  <li>獎品寄送地區僅限為台灣、金門、澎湖、馬祖地區，主辦單位恕不處理郵寄獎項至海外地區之事宜。</li>
+                  <li>中獎者須同意遵守各獎品供應商所列有關獎品之各項條款及細則，且中獎者同意主辦單位對所有領取或使用獎品之後果概無須負責。</li>
+                  <li>本活動網頁之所有內容由主辦單位擁有所有版權，未經許可，不可抄襲、拷貝與複製相關圖片與文字，主辦單位保留所有侵權事宜之法律追訴權利。</li>
+                  <li>參加者參與本活動時，視為同意接受本活動所有內容及細則之規範；倘有違反本活動相關注意規範，主辦單位得取消其中獎資格，並對於任何破壞本活動之行為保留法律追訴權。</li>
+                  <li>如有任何爭議，概以活動主辦單位之最終決定為準。</li>
+                  <li>參加者同意上述事項為加入此品牌及通路行銷活動之必要條件。參加者了解得自由選擇是否加入此品牌及通路行銷活動。</li>
+                  <li>參與本活動者保證所參與過程均為真實且無造假，如有不實或可疑情事，主辦單位有權刪除其參與內容並取消得獎資格。</li>
+                  <li>LINE Points使用方式及條款請見LINE官方公告。</li>
+                </ul>
+              </div>
+              <p class="f_red f26 t_left" style="line-height: 1.4">若有任何疑問，請致電活動小組專線：0809-00-5220，將有專人為您服務。</p><br><br>
+              <p class="f_red f26 t_left" style="line-height: 1.4">若是有關「天天喝克寧，存健康抽好禮」活動問題，也可以至克寧臉書發送訊息詢問：<a href="https://m.facebook.com/KLIM.Taiwan/">https://m.facebook.com/KLIM.Taiwan/</a></p><br><br>
+            </div>
+          </div>
+        </div>
+        <div class="pop" v-if="popPersonal">
+          <div class="content rules">
+            <div class="close" @click.prevent="popPersonal=false">X</div>
+            <div class="scroll">
+              <p class="f34 under_line"><font>個人資料蒐集及特別聲明</font></p>
+              <div class="txt">
+                <ul class="f26 t_left">
+                  <li>本活動參加者本人謹提供之姓名、電話、電子信箱等個人資料，以參加由台灣雀巢股份有限公司所辦理之活動，同意台灣雀巢股份有限公司及虎龍犬工作室以其所委託從事產品推廣、銷售、客戶服務、市場調查之人員、公司、機構或團體，得為推廣、銷售台灣雀巢股份有限公司所製造、進口、推廣、銷售之產品或服務之範圍內，蒐集、處理及利用本人之以下個人資料。利用之期間、地區、對象及方式均不受限制。</li>
+                  <li>本活動參加者本人了解，就所提供之個人資料依法得行使查詢或請求閱覽、請求製給複製本、請求補充或更正、請求停止蒐集、處理或利用以及請求刪除等權利。</li>
+                  <li>本活動參加者本人了解，簽署本同意書為本人參加活動之必要條件。本人得自由選擇是否參加。</li>
+                  <li>本活動之進行需使用及處理用戶之個人資料，如拒絕提供個人資料予台灣雀巢股份有限公司及虎龍犬工作室，將使台灣雀巢股份有限公司及虎龍犬工作室無法進行本活動之抽獎、通知領獎、兌獎聯繫等相關事宜，故拒絕提供個人資料者，將無法參與本活動。</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </main>
@@ -74,15 +219,11 @@
       <script src="js/plugins/slick.min.js"></script>
       <script src="https://static.line-scdn.net/liff/edge/2/sdk.js" charset="utf-8"></script>
       <script src="https://cdn.jsdelivr.net/npm/vconsole@3.2.0/dist/vconsole.min.js"></script>
-      <script>
-        var vConsole = new VConsole();
-        
-      </script>
-      <script src="js/request.js" defer></script>
-      <script src="js/main.js" defer></script>
+      <script src="js/request.js?v=1"></script>
+      <script src="js/main.js?v=1" defer></script>
       <!-- Page specific javascripts-->
       <script src="js/plugins/vue.min.js"></script>
-      <script type="text/javascript" src="js/index.js?v=2"></script>
+      <script type="text/javascript" src="js/index.js?v=11"></script>
       <!-- Page specific css-->
       <link rel="stylesheet" type="text/css" href="css/form_rules.css">
       <!-- Google analytics script-->

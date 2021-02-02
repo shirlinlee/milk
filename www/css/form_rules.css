@@ -126,7 +126,9 @@
   }
 }
 
-.form_page form .agree_wrap input#agreement {
+.form_page form .agree_wrap input#agreement,
+.form_page form .agree_wrap input#agreementRule,
+.form_page form .agree_wrap input#agreementPersonal {
   width: 30px;
   height: 30px;
   padding: 0;
@@ -139,7 +141,9 @@
 }
 
 @media (max-width: 650px) {
-  .form_page form .agree_wrap input#agreement {
+  .form_page form .agree_wrap input#agreement,
+  .form_page form .agree_wrap input#agreementRule,
+  .form_page form .agree_wrap input#agreementPersonal {
     width: 20px;
     height: 20px;
     top: 0;
@@ -147,12 +151,16 @@
 }
 
 @media (max-width: 320px) {
-  .form_page form .agree_wrap input#agreement {
+  .form_page form .agree_wrap input#agreement,
+  .form_page form .agree_wrap input#agreementRule,
+  .form_page form .agree_wrap input#agreementPersonal {
     margin: 0 5px 0 0;
   }
 }
 
-.form_page form .agree_wrap input#agreement:checked:before {
+.form_page form .agree_wrap input#agreement:checked:before,
+.form_page form .agree_wrap input#agreementRule:checked:before,
+.form_page form .agree_wrap input#agreementPersonal:checked:before {
   content: '';
   width: 60%;
   height: 60%;
