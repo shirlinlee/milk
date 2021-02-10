@@ -613,6 +613,7 @@ b {
 		background-repeat: no-repeat;
 		padding-left: 60px;
 		background-size: 34px;
+		padding-top: 0 !important;
 		@media (max-width: 650px) {
 			margin-bottom: 10px;
 			padding-left: 30px;
@@ -641,9 +642,11 @@ b {
 
 .upload_get {
 	> p {
-		margin: 0 5%;
+		margin: 0 0 20px;
+		width: 100%;
 		position: relative;
 		line-height: 1.8;
+		padding-top: 5px !important;
 		padding-bottom: 10px;
 		font-weight: bold;
 		img {
@@ -652,6 +655,9 @@ b {
 			top: 0;
 			left: 0;
 		}
+	}
+	.earn_coin {
+		margin-bottom: 30px;
 	}
 	.btn {
 		margin-left: 5px;
@@ -1209,6 +1215,39 @@ b {
 			z-index: 100;
 		}
 	}
+	.slick-arrow {
+		width: 60px;
+		height: 60px;
+		z-index: 1000;
+		&:before {
+			content: '';
+			background-image: url(../images/arrow_R.svg);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 30px;
+			opacity: 0.6;
+			display: block;
+			width: 100%;
+			height: 100%;
+			@media (max-width: 650px) {
+				background-size: 20px;
+			}
+		}
+		&.slick-next {
+			right: 10px;
+			top: 60%;
+		}
+		&.slick-prev {
+			left: 10px;
+			top: 60%;
+			&:before {
+				background-image: url(../images/arrow_L.svg);
+				// background-position: left center;
+			}
+			// transform: rotate(180deg) translate(0, -50%);
+		}
+	}
+
 	.item {
 		height: 100vh;
 		position: relative;
