@@ -822,6 +822,7 @@ b {
   background-repeat: no-repeat;
   padding-left: 60px;
   background-size: 34px;
+  padding-top: 0 !important;
 }
 
 @media (max-width: 650px) {
@@ -855,9 +856,11 @@ b {
 }
 
 .upload_get > p {
-  margin: 0 5%;
+  margin: 0 0 20px;
+  width: 100%;
   position: relative;
   line-height: 1.8;
+  padding-top: 5px !important;
   padding-bottom: 10px;
   font-weight: bold;
 }
@@ -867,6 +870,10 @@ b {
   width: 100%;
   top: 0;
   left: 0;
+}
+
+.upload_get .earn_coin {
+  margin-bottom: 30px;
 }
 
 .upload_get .btn {
@@ -1575,6 +1582,44 @@ b {
 .guide .slideshow .slick-list {
   height: 100vh;
   z-index: 100;
+}
+
+.guide .slick-arrow {
+  width: 60px;
+  height: 60px;
+  z-index: 1000;
+}
+
+.guide .slick-arrow:before {
+  content: '';
+  background-image: url(../images/arrow_R.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px;
+  opacity: 0.6;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 650px) {
+  .guide .slick-arrow:before {
+    background-size: 20px;
+  }
+}
+
+.guide .slick-arrow.slick-next {
+  right: 10px;
+  top: 60%;
+}
+
+.guide .slick-arrow.slick-prev {
+  left: 10px;
+  top: 60%;
+}
+
+.guide .slick-arrow.slick-prev:before {
+  background-image: url(../images/arrow_L.svg);
 }
 
 .guide .item {

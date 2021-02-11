@@ -24,7 +24,7 @@
       })(window,document,'script','dataLayer','GTM-K7KMVH4');
       
     </script>
-    <title>天天喝克寧，存健康抽好禮</title>
+    <title>一天一杯克寧 存健康拿好禮</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,66 +53,22 @@
         </nav>
       </header><img class="kv" src="images/title.svg?v=1" alt="">
       <main class="app-content">
-        <div class="coin_wrap">
-          <div class="photo" style="background-image: url('images/userphoto.png')"></div>
-          <div class="detail">
-            <h5 class="f26">累積健康幣</h5>
-            <div class="coin f70">140</div>
-          </div>
-          <div class="btn small" @click.prevent="GoToURL('./store.html')">
-            <p class="f34">存健康幣<br/>立即抽獎</p>
-          </div>
-        </div>
-        <div class="btn_area" style="width: 80%">
-          <div class="btn red"><a href="upload.html">
-              <p class="f34">上傳喝克寧照片拿健康幣</p></a><img class="milk" src="images/milkphoto_w.png" alt="">
-          </div>
-        </div>
-        <div class="achieve"><img src="images/title_medal.svg" alt="">
-          <ul>
-            <li><img src="images/medal_login.png" alt="">
-              <div class="detail">
-                <h6 class="title f32">每日登入驚喜</h6>
-              </div>
-              <div class="btn f32 canCheck">查看</div>
-            </li>
-            <li><img src="images/medal_3day_no.png" alt="">
-              <div class="detail">
-                <h6 class="title f32">勤奮努力獎</h6>
-                <p class="des f28">連續3天上傳<font>(3/3)</font></p>
-                <p class="coin f32">x 3</p>
-              </div>
-              <div class="btn f32 canReceive">領取</div>
-            </li>
-            <li><img src="images/medal_first.png" alt="">
-              <div class="detail">
-                <h6 class="title f32">首次完成獎</h6>
-                <p class="des f28">連續3天上傳</p>
-                <p class="coin f32">+ 5</p>
-              </div>
-              <div class="btn f32 done">未領取</div>
-            </li>
-            <li><img src="images/medal_7day_no.png" alt="">
-              <div class="detail">
-                <h6 class="title f32 f32">天天健康獎</h6>
-                <p class="des f28">連續7天上傳<font>(3/7)</font></p>
-                <p class="coin f32 f28">x 5</p>
-              </div>
-              <div class="btn f32 notYet">未達成</div>
-            </li>
-          </ul>
-        </div>
-        <div class="guide">
-          <div class="slideshow">
-            <div class="slider">
-              <div class="item slide_1">
-                <p class="f50">立刻上傳照片拿金幣</p><img src="images/finger.svg" alt="">
-              </div>
-              <div class="item slide_2">
-                <p class="f50">存入一枚健康幣，<br>立即抽一次獎</p><img src="images/finger.svg" alt="">
-              </div>
-              <div class="item slide_3">
-                <p class="f50">只要達成特定條件<br>就可以讓健康幣加倍喔!</p><img src="images/finger.svg" alt="">
+        <div class="pop" style="display: ">
+          <div class="content upload_get">
+            <div class="close">X</div>
+            <p class="f45 f_red">上傳成功獲得健康幣<img src="images/title_line.svg" alt=""/></p>
+            <div class="earn_coin">
+              <p>1</p><img src="images/Hcoin.png" alt=""/>
+            </div>
+            <div class="warning">
+              <p class="f_red f26">小秘訣: 分享照片給親朋好友可以獲得一枚健康幣哦 (一天僅限一次)</p>
+              <p class="f34 under_line"><font>注意事項</font></p>
+              <div class="warning">
+                <ul class="f26">
+                  <li>一天僅能上傳一次照片，重複上傳恕只能得到一枚健康幣</li>
+                  <li>請勿重複上傳相同的照片，經發現將取消獲獎資格</li>
+                  <li>請勿盜用他人的照片，經發現將取消獲獎資格</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -129,50 +85,6 @@
       <script src="js/request.js?v=1"></script>
       <script src="js/main.js?v=1" defer></script>
       <!-- Page specific javascripts-->
-      <script type="text/javascript" src="js/plugins/slick.min.js"></script>
-      <script type="text/javascript">
-        $(document).ready(function(){
-        	$('.slider').slick({
-        		arrows: true,
-        		dots: true,
-        		speed: 600,
-        		infinite: false,
-        	});
-        
-        	$('.btn.red').addClass('spotLight');
-        
-        	$('.slider').on('beforeChange', function(event, slick, direction){
-        		$('.spotLight').removeClass('spotLight');
-        	})
-        
-        	$('.slider').on('afterChange', function(event, slick, direction){
-        		var currentSlide = slick.currentSlide;
-        		switch(currentSlide) {
-        			case 0: {
-        				$('.btn.red').addClass('spotLight');
-        				}
-        				break;
-        			case 1: {
-        				$('.btn.small').addClass('spotLight');
-        				}
-        				break;
-        			case 2: {
-        				$('.canReceive').addClass('spotLight');
-        				}
-        		}
-        	});
-        
-        	$('.slider').on('edge', function(event, slick, direction){
-        		if(direction === 'left'){
-        			$('.guide').hide();
-        			setTimeout(
-        				(function(){
-        					$('.spotLight').removeClass('spotLight');
-        				}), 620);
-        		}
-        	});
-        })
-      </script>
       <!-- Page specific css-->
       <!-- Google analytics script-->
       <script type="text/javascript">
