@@ -178,13 +178,25 @@
             </div>
           </div>
         </div>
+        <div class="pop" style="display: none" v-show="popLoginAward">
+          <div class="content login_award">
+            <div class="close">X</div>
+            <h3 class="f55">登入成功!</h3>
+            <h4 class="f45" v-if="info.reward_type=='momo'"><span>獲得</span><span>MOMO 折價券</span><span class="f80">$50</span></h4>
+            <h4 class="f45" v-if="info.reward_type=='line'"><span>獲得</span><span>LINE Points</span><span class="f80">$30</span></h4>
+            <h4 class="f45" v-if="info.reward_type=='coin'"><span>獲得</span><span class="f80">{{info.reward_item}}</span><span>健康幣</span></h4>
+            <div class="img_wrap"><img class="gift" src="images/openbox.gif" alt=""/><img class="pure_coin" v-if="info.reward_type=='momo'" src="images/momo.png" alt=""/><img class="pure_coin" v-if="info.reward_type=='line'" src="images/linepoint.png" alt=""/><img class="pure_coin" v-if="info.reward_type=='coin'" src="images/Hcoin.png" alt=""/></div>
+            <div class="btn" @click.prevent="GetReward"><a href="pop_login.html">
+                <p class="f34">立即領取</p></a></div>
+          </div>
+        </div>
         <div class="pop" style="display: none" v-show="popLoginAward_1">
           <div class="content login_award">
             <div class="close">X</div>
             <h3 class="f55">登入成功!</h3>
             <h4 class="f45"><span>獲得</span><span>MOMO 折價券</span><span class="f80">$50</span></h4>
             <div class="img_wrap"><img class="gift" src="images/openbox.gif" alt=""/><img class="pure_coin" src="images/momo.png" alt=""/></div>
-            <div class="btn" @click.prevent="GetRewardWithMessage"><a href="pop_login.html">
+            <div class="btn" @click.prevent="GetReward"><a href="pop_login.html">
                 <p class="f34">立即領取</p></a></div>
           </div>
         </div>
@@ -232,7 +244,7 @@
           <div class="content login_award">
             <div class="close">X</div>
             <h3 class="f55">登入成功!</h3>
-            <h4 class="f45"><span>獲得</span><span class="f80">10</span><span>健康幣</span></h4>
+            <h4 class="f45"><span>獲得</span><span class="f80">6</span><span>健康幣</span></h4>
             <div class="img_wrap"><img class="gift" src="images/openbox.gif" alt=""/><img class="pure_coin" src="images/Hcoin.png" alt=""/></div>
             <div class="btn" @click.prevent="GetReward"><a href="pop_login.html">
                 <p class="f34">立即領取</p></a></div>
@@ -244,7 +256,7 @@
             <h3 class="f55">登入成功!</h3>
             <h4 class="f45"><span>獲得</span><span>LINE Points</span><span class="f80">$30</span></h4>
             <div class="img_wrap"><img class="gift" src="images/openbox.gif" alt=""/><img class="pure_coin" src="images/linepoint.png" alt=""/></div>
-            <div class="btn" @click.prevent="GetRewardWithMessage"><a href="pop_login.html">
+            <div class="btn" @click.prevent="GetReward"><a href="pop_login.html">
                 <p class="f34">立即領取</p></a></div>
           </div>
         </div>

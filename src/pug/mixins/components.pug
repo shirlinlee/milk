@@ -141,6 +141,29 @@ mixin pop(type, isVue, typePop, typeClose)
 									img(src="images/gift.svg" alt="")
 								img.check(src="images/check.png" alt="")
 
+			else if typePop==='login_award'
+				h3.f55 登入成功!
+				h4.f45(v-if="info.reward_type=='momo'")
+					span 獲得
+					span MOMO 折價券
+					span.f80 $50
+				h4.f45(v-if="info.reward_type=='line'")
+					span 獲得
+					span LINE Points
+					span.f80 $30
+				h4.f45(v-if="info.reward_type=='coin'")
+					span 獲得
+					span.f80 {{info.reward_item}}
+					span 健康幣
+				.img_wrap
+					img.gift(src="images/openbox.gif" alt="")
+					img.pure_coin(v-if="info.reward_type=='momo'" src="images/momo.png" alt="")
+					img.pure_coin(v-if="info.reward_type=='line'" src="images/linepoint.png" alt="")
+					img.pure_coin(v-if="info.reward_type=='coin'" src="images/Hcoin.png" alt="")
+				div.btn(@click.prevent="GetReward")
+					a(href="pop_login.html")
+						p.f34 立即領取
+
 			else if typePop==='login_award_1'
 				h3.f55 登入成功!
 				h4.f45
@@ -150,7 +173,7 @@ mixin pop(type, isVue, typePop, typeClose)
 				.img_wrap
 					img.gift(src="images/openbox.gif" alt="")
 					img.pure_coin(src="images/momo.png" alt="")
-				div.btn(@click.prevent="GetRewardWithMessage")
+				div.btn(@click.prevent="GetReward")
 					a(href="pop_login.html")
 						p.f34 立即領取
 
@@ -193,7 +216,6 @@ mixin pop(type, isVue, typePop, typeClose)
 					a(href="pop_login.html")
 						p.f34 立即領取
 
-
 			else if typePop==='login_award_5'
 				h3.f55 登入成功!
 				h4.f45
@@ -212,7 +234,7 @@ mixin pop(type, isVue, typePop, typeClose)
 				h3.f55 登入成功!
 				h4.f45
 					span 獲得
-					span.f80 10
+					span.f80 6
 					span 健康幣
 				.img_wrap
 					img.gift(src="images/openbox.gif" alt="")
@@ -231,7 +253,7 @@ mixin pop(type, isVue, typePop, typeClose)
 				.img_wrap
 					img.gift(src="images/openbox.gif" alt="")
 					img.pure_coin(src="images/linepoint.png" alt="")
-				div.btn(@click.prevent="GetRewardWithMessage")
+				div.btn(@click.prevent="GetReward")
 					a(href="pop_login.html")
 						p.f34 立即領取
 

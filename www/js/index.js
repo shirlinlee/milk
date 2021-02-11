@@ -17,6 +17,7 @@ var Index = {
 					popReceive: false,
 					popReceiveShort: false,
 					popShareSuccess: false,
+					popLoginAward: false,
 					popLoginAward_1: false,
 					popLoginAward_2: false,
 					popLoginAward_3: false,
@@ -488,9 +489,10 @@ var Index = {
 						)
 					},
 					ShowAward() {
-						const popAward =
-							'popLoginAward_' + this.info.signInCount
-						this[popAward] = true
+						// const popAward =
+						// 	'popLoginAward_' + this.info.signInCount
+						// this[popAward] = true
+						this.popLoginAward = true;
 					},
 					GetInfo() {
 						window
@@ -515,10 +517,19 @@ var Index = {
 								alert('領取失敗，請聯繫客服')
 							})
 					},
+
 					GetReward() {
-						this.ClosePopAward()
-						this.GetInfo()
-						this.popReceiveShort = true
+						switch (this.info.reward_type) {
+							case 'momo':
+							case 'line':
+								this.GetRewardWithMessage()
+								break
+							default:
+								this.ClosePopAward()
+								this.GetInfo()
+								this.popReceiveShort = true
+								break
+						}
 					},
 					GetRewardWithMessage() {
 						this.ClosePopAward()
@@ -559,7 +570,8 @@ var Index = {
 								break
 						}
 						console.log('(sendMessages) liff.id: ', window.liff.id)
-						window.liff.sendMessages(message)
+						window.liff
+							.sendMessages(message)
 							.then(() => {
 								this.popReceive = true
 							})
@@ -645,6 +657,7 @@ var Index = {
 						this.popFailure = false
 					},
 					ClosePopAward() {
+						this.popLoginAward = false
 						this.popLoginAward_1 = false
 						this.popLoginAward_2 = false
 						this.popLoginAward_3 = false
