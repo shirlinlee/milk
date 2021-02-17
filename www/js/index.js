@@ -17,6 +17,7 @@ var Index = {
 					popReceive: false,
 					popReceiveShort: false,
 					popShareSuccess: false,
+					popUploadGet: false,
 					popLoginAward: false,
 					popLoginAward_1: false,
 					popLoginAward_2: false,
@@ -115,6 +116,9 @@ var Index = {
 					GoToUpload(step) {
 						this.GetInfo()
 						this.upload.step = step
+						if (this.upload.step == 2) {
+							this.OpenPopUploadGet()
+						}
 					},
 					GetRandom(min, max) {
 						return Math.floor(Math.random() * (max - min + 1)) + min
@@ -149,7 +153,13 @@ var Index = {
 									},
 								]
 								// 	新年版 新年才開
-								selectedFrame = frames[this.GetRandom(0, 0)]
+								selectedFrame = frames[this.GetRandom(1, 1)]
+								if (
+									new Date() >
+									new Date('2021-02-21T16:00:00Z')
+								) {
+									selectedFrame = frames[this.GetRandom(0, 0)]
+								}
 								url =
 									'./images/frame/' +
 									selectedFrame.name +
@@ -304,9 +314,8 @@ var Index = {
 								this.upload.id = this.picture.id
 								if (this.picture.isFirst == true) {
 									this.info.coins++
-									this.GetInfo()
 								}
-								this.upload.step = 2
+								this.GoToUpload(2)
 							})
 							.catch((res) => {
 								alert('圖片上傳失敗')
@@ -431,7 +440,7 @@ var Index = {
 						)
 
 						$('.slider').slick({
-							arrows: false,
+							arrows: true,
 							dots: true,
 							speed: 600,
 							infinite: false,
@@ -487,12 +496,39 @@ var Index = {
 								}
 							}
 						)
+
+						$('.slick-next').click(function (e) {
+							var currentSlide = $('.slider').slick(
+								'slickCurrentSlide'
+							)
+							if (window.slickEnd) {
+								Index.instanceVue.isShowGuide = false
+								setTimeout(function () {
+									$('.spotLight').removeClass('spotLight')
+								}, 620)
+							}
+							if (currentSlide == 2) {
+								window.slickEnd = true
+							} else {
+								window.slickEnd = false
+							}
+						})
+						$('.slick-prev').click(function (e) {
+							var currentSlide = $('.slider').slick(
+								'slickCurrentSlide'
+							)
+							if (currentSlide == 2) {
+								window.slickEnd = true
+							} else {
+								window.slickEnd = false
+							}
+						})
 					},
 					ShowAward() {
 						// const popAward =
 						// 	'popLoginAward_' + this.info.signInCount
 						// this[popAward] = true
-						this.popLoginAward = true;
+						this.popLoginAward = true
 					},
 					GetInfo() {
 						window
@@ -622,6 +658,12 @@ var Index = {
 					},
 					ClosePopLogin() {
 						this.popLogin = false
+					},
+					OpenPopUploadGet() {
+						this.popUploadGet = true
+					},
+					ClosePopUploadGet() {
+						this.popUploadGet = false
 					},
 					OpenPopShareSuccess() {
 						this.popShareSuccess = true

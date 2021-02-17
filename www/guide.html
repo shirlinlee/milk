@@ -163,6 +163,7 @@
         	});
         
         	$('.slider').on('edge', function(event, slick, direction){
+        		console.log(event)
         		if(direction === 'left'){
         			$('.guide').hide();
         			setTimeout(

@@ -117,6 +117,7 @@ block specific-js
 			});
 
 			$('.slider').on('edge', function(event, slick, direction){
+				console.log(event)
 				if(direction === 'left'){
 					$('.guide').hide();
 					setTimeout(
@@ -125,7 +126,15 @@ block specific-js
 						}), 620);
 				}
 			});
-		})
+
+			$('.slick-next.slick-arrow').on('click', function () {
+				alert('click working')
+			})
+			$('button.slick-next').click(function(e){
+				console.log(e.target);
+				// Action here
+			});
+	})
 
 
 

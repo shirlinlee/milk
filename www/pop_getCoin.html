@@ -56,8 +56,8 @@
         <div class="pop" style="display: ">
           <div class="content upload_get">
             <div class="close">X</div>
-            <p class="f45 f_red">上傳成功獲得健康幣<img src="images/title_line.svg" alt=""/></p>
-            <div class="earn_coin">
+            <p class="f45 f_red">上傳成功{{picture.isFirst == true?'獲得健康幣':''}}<img src="images/title_line.svg" alt=""/></p>
+            <div class="earn_coin" v-if="picture.isFirst == true">
               <p>1</p><img src="images/Hcoin.png" alt=""/>
             </div>
             <div class="warning">

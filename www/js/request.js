@@ -21,7 +21,6 @@ window.req = () => {
 
 const fakeAPI = (data) => {
 	return new Promise((resolve, reject) => {
-		console.log(data)
 		setTimeout(() => {
 			resolve(data)
 		}, 20)

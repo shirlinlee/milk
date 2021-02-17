@@ -331,17 +331,15 @@ mixin pop(type, isVue, typePop, typeClose)
 
 			else if type==='upload_get'
 				p.f45.f_red
-					| 上傳成功獲得健康幣
+					| 上傳成功{{picture.isFirst == true?'獲得健康幣':''}}
 					img(src="images/title_line.svg", alt="")
 
-				.earn_coin
+				.earn_coin(v-if="picture.isFirst == true")
 					p 1
 					img(src="images/Hcoin.png", alt="")
 
 				.warning
 					p.f_red.f26 小秘訣: 分享照片給親朋好友可以獲得一枚健康幣哦 (一天僅限一次)
-
-
 
 					p.f34.under_line
 						font 注意事項
