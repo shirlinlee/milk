@@ -485,13 +485,9 @@ var Index = {
 								if (direction === 'left') {
 									Index.instanceVue.isShowGuide = false
 									setTimeout(function () {
+										// 導覽結束
 										$('.spotLight').removeClass('spotLight')
-										// Index.instanceVue.popLogin = true
-										// Index.instanceVue[
-										// 	'popLoginAward_' +
-										// 		Index.instanceVue.info
-										// 			.signInCount
-										// ] = true
+										Index.instanceVue.GoToURL('./upload.html')
 									}, 620)
 								}
 							}
@@ -564,6 +560,7 @@ var Index = {
 								this.ClosePopAward()
 								this.GetInfo()
 								this.popReceiveShort = true
+								this.GoToURL('./upload.html')
 								break
 						}
 					},
@@ -610,6 +607,7 @@ var Index = {
 							.sendMessages(message)
 							.then(() => {
 								this.popReceive = true
+								this.GoToURL('./upload.html')
 							})
 							.catch((err) => {
 								console.log(err)
@@ -736,10 +734,13 @@ var Index = {
 							window.GetInfo().then(({ data }) => {
 								console.log('window.GetInfo().data : ', data)
 								this.info = data
+
+								// 第一次登入
 								if (this.info.isFirst) {
 									this.ShowGuide()
 								}
 
+								// 第 N 次登入 && 當天還沒登入 && 已登入天數大於 0
 								if (
 									!this.info.isFirst &&
 									!this.info.isSignInToday &&
@@ -749,6 +750,7 @@ var Index = {
 									this.ShowAward()
 								}
 
+								// 使用者有中獎
 								if (this.info.isLotteried) {
 									this.OpenPopClose()
 								}
