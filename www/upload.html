@@ -65,15 +65,15 @@
         </div>
         <div class="upload" v-if="upload.step==1">
           <label for="file_0">
+            <div class="btn_area" style="margin-bottom:20px">
+              <div class="btn" @click.prevent="TriggerUpload"><a href="#">
+                  <p class="f34 btn_upload">上傳照片</p></a></div>
+              <div class="btn" @click.prevent="SendUpload"><a href="#">
+                  <p class="f34">確認送出</p></a></div>
+            </div>
             <p class="f45">請上傳一張<br><font class="f_red">今日飲用克寧牛奶</font>的美照</p><img class="img-thumbnail" :src="upload.imgThumbnail" alt="">
           </label>
           <input type="file" id="file_0" name="uploadedimages0" accept="image/*" hidden @change="HandleUpload" ref="fileInput">
-          <div class="btn_area">
-            <div class="btn" @click.prevent="TriggerUpload"><a href="#">
-                <p class="f34 btn_upload">上傳照片</p></a></div>
-            <div class="btn" @click.prevent="SendUpload"><a href="#">
-                <p class="f34">確認送出</p></a></div>
-          </div>
         </div>
         <div class="warning" v-if="upload.step==1">
           <p class="f_red f28">照片需含有克寧純生乳(100%天然純淨即溶)/全家人奶粉系列產品和一杯牛奶(不限容器)，不然<span class="f32" style="background-color:red; color:white; font-weight:bold;">將失去得獎資格</span></p>
@@ -84,18 +84,18 @@
           </ul>
         </div>
         <div class="upload_get" v-if="upload.step==2">
+          <div class="btn_area" style="margin-bottom:20px">
+            <div class="btn"><a href="./index.html">
+                <p class="f34 btn_upload">回首頁</p></a></div>
+            <div class="btn" @click.prevent="SendShare"><a href="#">
+                <p class="f34">立即分享</p></a></div>
+          </div>
           <p class="f45 f_red" v-if="picture.isFirst == true">上傳成功獲得健康幣<img src="images/title_line.svg" alt=""></p>
           <p class="f45 f_red" v-if="picture.isFirst == false">上傳成功<img src="images/title_line.svg" alt=""></p>
           <div class="earn_coin" v-if="picture.isFirst == true">
             <p>1</p><img src="images/Hcoin.png" alt="">
           </div>
           <div class="comebined_img"><img class="img-merged" :src="upload.imgMerged" alt=""></div>
-          <div class="btn_area">
-            <div class="btn"><a href="./index.html">
-                <p class="f34 btn_upload">回首頁</p></a></div>
-            <div class="btn" @click.prevent="SendShare"><a href="#">
-                <p class="f34">立即分享</p></a></div>
-          </div>
         </div>
         <div class="warning" v-if="upload.step==2">
           <p class="f_red f26">小秘訣: 分享照片給親朋好友可以獲得一枚健康幣哦 (一天僅限一次)</p>

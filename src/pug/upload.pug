@@ -12,6 +12,13 @@ block content
 	+vue_coin('','{{info.coins}}','')
 	.upload(v-if="upload.step==1")
 		label(for="file_0")
+			.btn_area(style="margin-bottom:20px")
+				div.btn(@click.prevent="TriggerUpload")
+					a(href="#")
+						p.f34.btn_upload 上傳照片
+				div.btn(@click.prevent="SendUpload")
+					a(href="#")
+						p.f34 確認送出
 			p.f45
 				| 請上傳一張
 				br
@@ -22,13 +29,6 @@ block content
 
 		input(type="file" id="file_0" name="uploadedimages0" accept="image/*" hidden @change="HandleUpload" ref="fileInput")
 
-		.btn_area
-			div.btn(@click.prevent="TriggerUpload")
-				a(href="#")
-					p.f34.btn_upload 上傳照片
-			div.btn(@click.prevent="SendUpload")
-				a(href="#")
-					p.f34 確認送出
 	.warning(v-if="upload.step==1")
 		p.f_red.f28 照片需含有克寧純生乳(100%天然純淨即溶)/全家人奶粉系列產品和一杯牛奶(不限容器)，不然
 			span.f32(style="background-color:red; color:white; font-weight:bold;") 將失去得獎資格
@@ -37,6 +37,13 @@ block content
 			li 請勿重複上傳相同的照片，經發現將取消獲獎資格
 			li 請勿盜用他人的照片，經發現將取消獲獎資格
 	.upload_get(v-if="upload.step==2")
+		.btn_area(style="margin-bottom:20px")
+			div.btn()
+				a(href="./index.html")
+					p.f34.btn_upload 回首頁
+			div.btn(@click.prevent="SendShare")
+				a(href="#")
+					p.f34 立即分享
 		p.f45.f_red(v-if="picture.isFirst == true")
 			| 上傳成功獲得健康幣
 			img(src="images/title_line.svg", alt="")
@@ -52,13 +59,6 @@ block content
 		.comebined_img
 			img.img-merged(:src="upload.imgMerged" , alt="")
 
-		.btn_area
-			div.btn()
-				a(href="./index.html")
-					p.f34.btn_upload 回首頁
-			div.btn(@click.prevent="SendShare")
-				a(href="#")
-					p.f34 立即分享
 	.warning(v-if="upload.step==2")
 		p.f_red.f26 小秘訣: 分享照片給親朋好友可以獲得一枚健康幣哦 (一天僅限一次)
 
